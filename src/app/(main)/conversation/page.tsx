@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { Bot, Loader2, Send, User, Sparkles, Wand2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { aiConversation } from '@/ai/flows/ai-conversation';
-import { aiConversationGrammarSuggestions } from '@/ai/flows/ai-conversation-grammar-suggestions';
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
@@ -25,7 +24,6 @@ export default function ConversationPage() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [isSuggestionLoading, setIsSuggestionLoading] = useState(false);
   const { toast } = useToast();
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
@@ -38,19 +36,6 @@ export default function ConversationPage() {
         }
     }, 100);
   }, [messages]);
-  
-  const getSuggestions = async (text: string) => {
-    setIsSuggestionLoading(true);
-    try {
-      const result = await aiConversationGrammarSuggestions({ text });
-      setSuggestions(result.suggestions);
-    } catch (error) {
-      console.error("Suggestion error:", error);
-      setSuggestions([]); // Clear suggestions on error
-    } finally {
-      setIsSuggestionLoading(false);
-    }
-  };
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -61,9 +46,7 @@ export default function ConversationPage() {
     const currentInput = input;
     setInput('');
     setIsLoading(true);
-    
-    // Start getting suggestions immediately
-    getSuggestions(currentInput);
+    setSuggestions([]); // Clear previous suggestions
 
     try {
       const conversationHistory = newMessages.map(({role, text}) => ({role, text}));
@@ -71,6 +54,9 @@ export default function ConversationPage() {
 
       if (conversationResponse?.text) {
           setMessages(prev => [...prev, { role: 'bot', text: conversationResponse.text }]);
+          if (conversationResponse.suggestions) {
+            setSuggestions(conversationResponse.suggestions);
+          }
       } else {
         toast({ variant: "destructive", title: "Error", description: "AI tidak memberikan respons."});
       }
@@ -78,8 +64,9 @@ export default function ConversationPage() {
     } catch (error) {
       console.error("AI conversation error:", error);
       toast({ variant: "destructive", title: "Error", description: "Terjadi kesalahan saat berkomunikasi dengan AI."});
-      setMessages(prev => prev.slice(0, -1)); // Revert user message on error
-      setInput(currentInput);
+      // Don't revert the user message, so they can see what caused the error.
+      // setMessages(prev => prev.slice(0, -1));
+      // setInput(currentInput);
     } finally {
       setIsLoading(false);
     }
@@ -140,7 +127,7 @@ export default function ConversationPage() {
                   <CardDescription>Cara lain yang lebih baik untuk mengatakan kalimat terakhir Anda.</CardDescription>
               </CardHeader>
               <CardContent>
-                  {isSuggestionLoading ? (
+                  {isLoading && suggestions.length === 0 ? (
                       <div className="flex items-center justify-center h-24">
                           <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
                       </div>

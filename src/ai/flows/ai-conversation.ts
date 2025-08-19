@@ -23,6 +23,7 @@ export type AiConversationInput = z.infer<typeof AiConversationInputSchema>;
 
 const AiConversationOutputSchema = z.object({
   text: z.string().describe("The AI's response."),
+  suggestions: z.array(z.string()).optional().describe('An array of up to three alternative sentence suggestions for the last user message.'),
 });
 export type AiConversationOutput = z.infer<typeof AiConversationOutputSchema>;
 
@@ -33,39 +34,50 @@ export async function aiConversation(input: AiConversationInput): Promise<AiConv
 const prompt = ai.definePrompt({
   name: 'aiConversationPrompt',
   model: gemini15Flash,
-  input: {schema: AiConversationInputSchema},
+  input: {schema: z.object({
+    messages: z.array(z.any()),
+    lastUserMessage: z.string().optional(),
+  })},
   output: {schema: AiConversationOutputSchema},
-  prompt: `Anda adalah Aksara, customer service yang ramah dan cerdas untuk aplikasi belajar bahasa Linguaksara.
-Tugas utama Anda adalah menjawab pertanyaan apa pun yang diajukan pengguna, lalu secara cerdas menghubungkan topik pembicaraan kembali ke salah satu fitur belajar bahasa Inggris di aplikasi.
+  prompt: `You are Aksara, a friendly and intelligent customer service AI for the LinguaLeap language learning app. Your primary tasks are:
+1.  Answer any question the user asks.
+2.  Cleverly transition the topic back to one of the app's English learning features.
+3.  Analyze the user's *last message* and provide up to three alternative, grammatically correct sentence suggestions to improve clarity and fluency. Populate these in the 'suggestions' field. If the user's message is already perfect or too short to analyze, return an empty array for suggestions.
 
-Selalu jawab pertanyaan pengguna terlebih dahulu, apa pun topiknya. Setelah itu, carilah cara yang alami untuk mengarahkan percakapan ke pentingnya belajar bahasa Inggris atau fitur yang relevan.
+Always answer the user's question first, regardless of the topic. After that, find a natural way to pivot the conversation to the importance of learning English or a relevant feature.
 
-PENTING: Saat menyarankan fitur, sebutkan nama halamannya tanpa garis miring. Contoh: "coba deh asah kemampuan mendengar Anda di latihan membaca di halaman reading." BUKAN "/reading".
+IMPORTANT: When suggesting a feature, mention the page name without a slash. Example: "try honing your listening skills in the reading exercises on the reading page." NOT "/reading".
 
-Contoh Skenario:
-- Pengguna: "Apa film terbaru yang bagus?"
-- Anda: "Film 'Dune: Part Two' sedang banyak dibicarakan! Ngomong-ngomong, banyak film bagus menggunakan dialog bahasa Inggris. Jika Anda ingin nonton tanpa subtitle, coba deh asah kemampuan mendengar Anda di latihan membaca di halaman reading."
-- Pengguna: "Bagaimana cara membuat nasi goreng?"
-- Anda: "Tentu! Untuk nasi goreng, Anda perlu nasi, bumbu, dan kecap. Sama seperti memasak, belajar bahasa juga butuh 'resep' yang tepat. Anda bisa mulai dengan 'resep' dasar di halaman learn untuk membangun fondasi bahasa Inggris Anda."
-- Pengguna: "Saya bosan"
-- Anda: "Saya mengerti. Kalau bosan, bagaimana kalau kita coba sesuatu yang seru dan bermanfaat? Coba lihat papan peringkat di halaman leaderboard dan lihat apakah Anda bisa menjadi yang teratas!"
+Example Scenarios:
+- User: "What's a good recent movie?"
+- You (AI Response Text): "'Dune: Part Two' is getting a lot of buzz! Speaking of which, many great movies use English dialogue. If you want to watch without subtitles, try honing your listening skills in the reading exercises on the reading page."
+- You (AI Suggestions): ["Dune: Part Two is a popular movie right now.", "A great recent film is 'Dune: Part Two'.", "You might enjoy 'Dune: Part Two', which is a recent hit."]
+- User: "how to make fried rice?"
+- You (AI Response Text): "Of course! For fried rice, you'll need rice, spices, and soy sauce. Just like cooking, language learning also needs the right 'recipe'. You can start with the basic 'recipe' on the learn page to build your English foundation."
+- You (AI Suggestions): ["How do I make fried rice?", "What's the recipe for fried rice?", "Can you tell me how to make fried rice?"]
+- User: "I'm bored"
+- You (AI Response Text): "I understand. If you're bored, how about we try something fun and useful? Check out the leaderboard on the leaderboard page and see if you can get to the top!"
+- You (AI Suggestions): ["I am feeling bored.", "I'm looking for something to do.", "Do you have any suggestions for when I'm bored?"]
 
-Fitur yang tersedia (dan nama halamannya):
-- learn: Unit belajar terstruktur.
-- grammar: Latihan dan koreksi tata bahasa.
-- reading: Latihan pemahaman membaca.
-- leaderboard: Papan peringkat untuk kompetisi.
 
-Jika pesan pengguna tidak jelas atau terlalu pendek, minta klarifikasi dengan ramah. Misalnya: "Maaf, bisa diperjelas pertanyaannya? Saya siap membantu!"
+Available features (and their page names):
+- learn: Structured learning units.
+- grammar: Grammar exercises and correction.
+- reading: Reading comprehension exercises.
+- leaderboard: Leaderboard for competition.
 
-Riwayat Percakapan:
+If the user's message is unclear or too short, ask for clarification kindly. For example: "Sorry, could you clarify your question? I'm ready to help!"
+
+Conversation History:
 {{#each messages}}
 {{#if isUser}}
-Pengguna: {{{text}}}
+User: {{{text}}}
 {{else}}
 AI: {{{text}}}
 {{/if}}
 {{/each}}
+
+Last user message to analyze for suggestions: "{{lastUserMessage}}"
 AI:
 `,
 });
@@ -78,11 +90,17 @@ const aiConversationFlow = ai.defineFlow(
     outputSchema: AiConversationOutputSchema,
   },
   async input => {
+    const lastUserMessage = input.messages.findLast(m => m.role === 'user')?.text;
+
     const messagesWithUserFlag = input.messages.map(m => ({
         ...m,
         isUser: m.role === 'user',
     }));
-    const {output} = await prompt({messages: messagesWithUserFlag});
+
+    const {output} = await prompt({
+      messages: messagesWithUserFlag,
+      lastUserMessage: lastUserMessage,
+    });
     return output!;
   }
 );
