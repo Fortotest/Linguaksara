@@ -76,7 +76,10 @@ export const readingData: Story[] = [
       type: 'multiple-choice',
       questions: [
         { question: "What was the main challenge during the journey to Eldoria?", options: ["Lack of food", "Arduous terrain and rivers", "Internal team conflicts", "Bad weather"], answer: "Arduous terrain and rivers"},
-        { question: "What was the team's primary goal?", options: ["To find treasure", "To establish a new settlement", "To document and preserve the city's legacy", "To map the jungle"], answer: "To document and preserve the city's legacy"}
+        { question: "What was the team's primary goal?", options: ["To find treasure", "To establish a new settlement", "To document and preserve the city's legacy", "To map the jungle"], answer: "To document and preserve the city's legacy"},
+        { question: "How did the team feel upon entering Eldoria?", options: ["Disappointed", "Afraid", "A sense of awe", "Tired and bored"], answer: "A sense of awe"},
+        { question: "What was a characteristic of Eldoria's architecture?", options: ["Simple wooden huts", "Underground tunnels", "Towers piercing the clouds", "Small, crowded buildings"], answer: "Towers piercing the clouds"},
+        { question: "What does the word 'resilient' mean in the context of the story?", options: ["Giving up easily", "Able to recover quickly from difficulties", "Moving very slowly", "Having a lot of equipment"], answer: "Able to recover quickly from difficulties"}
       ]
     }
   },
@@ -109,7 +112,8 @@ export const readingData: Story[] = [
         { statement: "Unit 734 was one of many robots still active.", answer: false },
         { statement: "The robot was initially scared of the human child.", answer: false },
         { statement: "The child taught the robot about friendship.", answer: true },
-        { statement: "The robot learned its true purpose was about connection.", answer: true }
+        { statement: "The robot learned its true purpose was about connection.", answer: true },
+        { statement: "Unit 734 was saved from shutdown because it was a newer model.", answer: false }
       ]
     }
   },
@@ -140,7 +144,10 @@ export const readingData: Story[] = [
       type: 'multiple-choice',
       questions: [
           { question: "What was Detective Corbin's first clue?", options: ["A torn piece of fabric", "A muddy footprint and a scratch", "A broken window", "A witness testimony"], answer: "A muddy footprint and a scratch"},
-          { question: "Who was the real thief?", options: ["Mr. Silas, the butler", "Marco, the art dealer", "A professional burglar", "Lady Eleanor, the owner"], answer: "Lady Eleanor, the owner"}
+          { question: "Who was the real thief?", options: ["Mr. Silas, the butler", "Marco, the art dealer", "A professional burglar", "Lady Eleanor, the owner"], answer: "Lady Eleanor, the owner"},
+          { question: "Where was the diamond hidden?", options: ["In the garden", "In the kitchen", "Inside a hollow book", "In Marco's pocket"], answer: "Inside a hollow book"},
+          { question: "What was Lady Eleanor's motive for the theft?", options: ["Greed for more jewels", "She was burdened by debt", "She wanted to frame the butler", "She disliked the diamond"], answer: "She was burdened by debt"},
+          { question: "Which suspect claimed to be in the garden?", options: ["Mr. Silas", "Marco", "Detective Corbin", "Lady Eleanor"], answer: "Lady Eleanor"}
       ]
     }
   },
@@ -173,7 +180,9 @@ export const readingData: Story[] = [
       questions: [
           { question: "What was the initial form of Roman government?", options: ["Monarchy", "Republic", "Empire", "Democracy"], answer: "Republic" },
           { question: "What does 'Pax Romana' refer to?", options: ["A great war", "A period of peace and prosperity", "The fall of Rome", "A Roman law"], answer: "A period of peace and prosperity" },
-          { question: "Which of these was NOT a factor in the decline of the Roman Empire?", options: ["Political instability", "Economic troubles", "Lack of military", "Over-expansion"], answer: "Lack of military" }
+          { question: "Which of these was a major factor in the Roman Empire's decline?", options: ["Political instability", "Lack of artistic innovation", "Technological regression", "Religious unity"], answer: "Political instability" },
+          { question: "When is the official fall of the Western Roman Empire often dated?", options: ["509 BCE", "1st Century CE", "476 CE", "1453 CE"], answer: "476 CE"},
+          { question: "What is an example of the Roman Empire's legacy?", options: ["Modern computer science", "Its influence on Western law and language", "The invention of the printing press", "Its cuisine becoming popular worldwide"], answer: "Its influence on Western law and language"}
       ]
     }
   },
@@ -203,8 +212,11 @@ export const readingData: Story[] = [
     activity: {
       type: 'multiple-choice',
       questions: [
-        { question: "Which field did Leonardo da Vinci NOT study?", options: ["Art", "Anatomy", "Invention", "Computer Science"], answer: "Computer Science" },
-        { question: "What is the 'Mona Lisa'?", options: ["A scientific notebook", "A famous painting", "An invention", "A sculpture"], answer: "A famous painting" }
+        { question: "Which famous painting is mentioned as one of Leonardo's masterpieces?", options: ["Starry Night", "The Scream", "The Last Supper", "Guernica"], answer: "The Last Supper" },
+        { question: "What did Leonardo study by dissecting human bodies?", options: ["Geology", "Astrology", "Anatomy", "Botany"], answer: "Anatomy" },
+        { question: "Which of these was an invention concept by Leonardo?", options: ["The steam engine", "The telephone", "The light bulb", "A flying machine"], answer: "A flying machine"},
+        { question: "What period is Leonardo da Vinci a symbol of?", options: ["The Middle Ages", "The Industrial Revolution", "The Renaissance", "The Enlightenment"], answer: "The Renaissance"},
+        { question: "What does the text say is Leonardo's greatest legacy?", options: ["His wealth", "His political power", "His approach of combining art and science", "The number of paintings he sold"], answer: "His approach of combining art and science"}
       ]
     }
   },
@@ -235,7 +247,10 @@ export const readingData: Story[] = [
       type: 'multiple-choice',
       questions: [
         { question: "What was the most famous product from China on the Silk Road?", options: ["Spices", "Gold", "Silk", "Wool"], answer: "Silk" },
-        { question: "Besides goods, what else was exchanged on the Silk Road?", options: ["Only money", "Ideas and culture", "Only animals", "Passwords"], answer: "Ideas and culture" }
+        { question: "Besides goods, what else was exchanged on the Silk Road?", options: ["Only money", "Ideas and culture", "Only animals", "Passwords"], answer: "Ideas and culture" },
+        { question: "What animal was essential for travel on the Silk Road?", options: ["Horses", "Elephants", "Camels", "Donkeys"], answer: "Camels"},
+        { question: "Which religion is mentioned as spreading along the Silk Road?", options: ["Christianity", "Islam", "Judaism", "Buddhism"], answer: "Buddhism"},
+        { question: "The Silk Road connected which two general regions?", options: ["North and South America", "Australia and Africa", "The East and West", "Antarctica and Europe"], answer: "The East and West"}
       ]
     }
   },
@@ -267,7 +282,10 @@ export const readingData: Story[] = [
       type: 'multiple-choice',
       questions: [
         { question: "What are the three parts of the 'Habit Loop'?", options: ["Cue, Action, Result", "Trigger, Behavior, Consequence", "Cue, Routine, Reward", "Start, Middle, End"], answer: "Cue, Routine, Reward" },
-        { question: "What is the golden rule of habit change?", options: ["Change the cue and the reward", "Keep the cue and reward, but change the routine", "Eliminate the cue completely", "Focus only on the reward"], answer: "Keep the cue and reward, but change the routine" }
+        { question: "What is the golden rule of habit change?", options: ["Change the cue and the reward", "Keep the cue and reward, but change the routine", "Eliminate the cue completely", "Focus only on the reward"], answer: "Keep the cue and reward, but change the routine" },
+        { question: "What is the 'cue' in the habit loop?", options: ["The action itself", "The positive feeling you get", "The trigger for the habit", "The end result"], answer: "The trigger for the habit"},
+        { question: "What is the purpose of the 'reward'?", options: ["To make the habit harder", "To confuse the brain", "To help the brain remember the loop", "To create a negative feeling"], answer: "To help the brain remember the loop"},
+        { question: "According to the text, habits are actions we perform...", options: ["with great effort", "only once", "automatically", "rarely"], answer: "automatically"}
       ]
     }
   },
@@ -299,7 +317,9 @@ export const readingData: Story[] = [
       questions: [
         { statement: "'Deep Work' is best performed while multi-tasking.", answer: false },
         { statement: "The Pomodoro Technique involves long, unbroken work sessions.", answer: false },
-        { statement: "A dedicated, interruption-free workspace is important for focus.", answer: true }
+        { statement: "A dedicated, interruption-free workspace is important for focus.", answer: true },
+        { statement: "The ability to focus is becoming more common in the modern world.", answer: false },
+        { statement: "'Deep Work' is described as an easy skill to master.", answer: false }
       ]
     }
   },
@@ -331,7 +351,9 @@ export const readingData: Story[] = [
       questions: [
         { statement: "Saying 'no' is always a sign of being selfish.", answer: false },
         { statement: "Saying 'yes' to everything can lead to stress and burnout.", answer: true },
-        { statement: "You must always give a long explanation when you say 'no'.", answer: false }
+        { statement: "You must always give a long explanation when you say 'no'.", answer: false },
+        { statement: "Setting boundaries is a sign of disrespect to others.", answer: false },
+        { statement: "Saying 'no' helps you create space for your priorities.", answer: true }
       ]
     }
   },
@@ -364,7 +386,9 @@ export const readingData: Story[] = [
         questions: [
             { question: "What is the core principle of Stoicism mentioned in the text?", options: ["The pursuit of wealth", "The dichotomy of control", "Eliminating all emotions", "Seeking pleasure"], answer: "The dichotomy of control" },
             { question: "According to Stoics, what is the only true good?", options: ["Health", "Fame", "Virtue", "Power"], answer: "Virtue" },
-            { question: "What should we focus our energy on, according to Stoicism?", options: ["What other people think", "Things within our control", "The weather", "Past events"], answer: "Things within our control" }
+            { question: "What should we focus our energy on, according to Stoicism?", options: ["What other people think", "Things within our control", "The weather", "Past events"], answer: "Things within our control" },
+            { question: "What is 'apatheia' in Stoicism?", options: ["A state of happiness", "A state of inner peace", "A type of virtue", "A logical fallacy"], answer: "A state of inner peace"},
+            { question: "How does Stoicism view external things like wealth and health?", options: ["As the most important goals", "As evil and to be avoided", "As the only true good", "As indifferent, but nice to have"], answer: "As indifferent, but nice to have"}
         ]
     }
   },
@@ -396,7 +420,9 @@ export const readingData: Story[] = [
       questions: [
         { statement: "In a democracy, a single ruler holds all the power.", answer: false },
         { statement: "The word 'democracy' means 'rule by the elite'.", answer: false },
-        { statement: "Free and fair elections are essential for a representative democracy.", answer: true }
+        { statement: "Free and fair elections are essential for a representative democracy.", answer: true },
+        { statement: "In a direct democracy, citizens elect officials to make decisions for them.", answer: false },
+        { statement: "The 'rule of law' means that the government is above the law.", answer: false }
       ]
     }
   },
@@ -427,10 +453,14 @@ export const readingData: Story[] = [
       type: 'multiple-choice',
       questions: [
         { question: "What is the 'Socratic method' primarily based on?", options: ["Writing books", "Giving lectures", "Asking and answering questions", "Silent meditation"], answer: "Asking and answering questions" },
-        { question: "Why was Socrates sentenced to death?", options: ["For being poor", "For leaving Athens", "For corrupting the youth", "For writing plays"], answer: "For corrupting the youth" }
+        { question: "Why was Socrates sentenced to death?", options: ["For being poor", "For leaving Athens", "For corrupting the youth", "For writing plays"], answer: "For corrupting the youth" },
+        { question: "Who wrote down most of Socrates's philosophy?", options: ["Socrates himself", "Aristotle", "His student, Plato", "The government of Athens"], answer: "His student, Plato"},
+        { question: "What did Socrates believe was 'not worth living'?", options: ["The unexamined life", "A life without wealth", "A life without power", "A life outside of Athens"], answer: "The unexamined life"},
+        { question: "What did Socrates claim to know?", options: ["Everything", "The meaning of life", "The future", "That he knew nothing"], answer: "That he knew nothing"}
       ]
     }
   }
 ];
 
+    
     
