@@ -5,12 +5,14 @@ import { useState, useRef, useEffect } from 'react';
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Bot, Loader2, Send, User } from "lucide-react";
+import { Bot, Loader2, Send, User, Sparkles, Wand2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { aiConversation } from '@/ai/flows/ai-conversation';
+import { aiConversationGrammarSuggestions } from '@/ai/flows/ai-conversation-grammar-suggestions';
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
+import { Separator } from '@/components/ui/separator';
 
 type Message = {
     role: 'user' | 'bot';
@@ -23,6 +25,8 @@ export default function ConversationPage() {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [isSuggestionLoading, setIsSuggestionLoading] = useState(false);
   const { toast } = useToast();
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
@@ -34,6 +38,19 @@ export default function ConversationPage() {
       }, 100);
     }
   }, [messages]);
+  
+  const getSuggestions = async (text: string) => {
+    setIsSuggestionLoading(true);
+    try {
+      const result = await aiConversationGrammarSuggestions({ text });
+      setSuggestions(result.suggestions);
+    } catch (error) {
+      console.error("Suggestion error:", error);
+      setSuggestions([]); // Clear suggestions on error
+    } finally {
+      setIsSuggestionLoading(false);
+    }
+  };
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -44,6 +61,9 @@ export default function ConversationPage() {
     const currentInput = input;
     setInput('');
     setIsLoading(true);
+    
+    // Start getting suggestions immediately
+    getSuggestions(currentInput);
 
     try {
       const conversationHistory = newMessages.map(({role, text}) => ({role, text}));
@@ -66,41 +86,71 @@ export default function ConversationPage() {
   };
 
   return (
-    <div className="h-[calc(100vh-8rem)] flex items-center justify-center">
-        <Card className="w-full max-w-2xl h-full flex flex-col">
-            <CardHeader>
-                <CardTitle>AI Assistant</CardTitle>
-                <CardDescription>Ngobrol dengan Aksara untuk bertanya atau berlatih.</CardDescription>
-            </CardHeader>
-            <CardContent className="flex-grow flex flex-col gap-4 overflow-hidden">
-                <ScrollArea className="flex-grow pr-4 -mr-4" ref={scrollAreaRef}>
-                    <div className="space-y-6">
-                        {messages.map((message, index) => (
-                            <div key={index} className={cn("flex items-start gap-4", message.role === 'user' ? 'justify-end' : 'justify-start')}>
-                                {message.role === 'bot' && <Avatar className="h-8 w-8"><AvatarFallback><Bot /></AvatarFallback></Avatar>}
-                                <div className={cn("px-4 py-2 rounded-lg max-w-md", message.role === 'user' ? 'bg-primary text-primary-foreground rounded-br-none' : 'bg-muted rounded-bl-none')}>
-                                    <p className="whitespace-pre-wrap">{message.text}</p>
-                                </div>
-                                {message.role === 'user' && <Avatar className="h-8 w-8"><AvatarFallback><User /></AvatarFallback></Avatar>}
+    <div className="grid lg:grid-cols-3 gap-8 h-full">
+      <Card className="lg:col-span-2 h-full flex flex-col">
+        <CardHeader>
+            <CardTitle>AI Assistant</CardTitle>
+            <CardDescription>Ngobrol dengan Aksara untuk bertanya atau berlatih.</CardDescription>
+        </CardHeader>
+        <CardContent className="flex-grow flex flex-col gap-4 overflow-hidden">
+            <ScrollArea className="flex-grow pr-4 -mr-4" ref={scrollAreaRef}>
+                <div className="space-y-6">
+                    {messages.map((message, index) => (
+                        <div key={index} className={cn("flex items-start gap-4", message.role === 'user' ? 'justify-end' : 'justify-start')}>
+                            {message.role === 'bot' && <Avatar className="h-8 w-8 bg-primary text-primary-foreground"><AvatarFallback><Bot /></AvatarFallback></Avatar>}
+                            <div className={cn("px-4 py-2 rounded-lg max-w-md shadow-sm", message.role === 'user' ? 'bg-primary text-primary-foreground rounded-br-none' : 'bg-muted rounded-bl-none')}>
+                                <p className="whitespace-pre-wrap">{message.text}</p>
                             </div>
-                        ))}
-                    </div>
-                </ScrollArea>
-                <div className="flex w-full items-center space-x-2 mt-4">
-                    <Input 
-                        type="text" 
-                        placeholder="Ketik pesan Anda..." 
-                        value={input}
-                        onChange={(e) => setInput(e.target.value)}
-                        onKeyPress={(e) => e.key === 'Enter' && !isLoading && handleSend()}
-                        disabled={isLoading}
-                    />
-                    <Button type="submit" onClick={handleSend} disabled={isLoading || !input.trim()}>
-                        {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
-                    </Button>
+                            {message.role === 'user' && <Avatar className="h-8 w-8"><AvatarFallback><User /></AvatarFallback></Avatar>}
+                        </div>
+                    ))}
                 </div>
-            </CardContent>
-        </Card>
+            </ScrollArea>
+            <div className="flex w-full items-center space-x-2 mt-4">
+                <Input 
+                    type="text" 
+                    placeholder="Ketik pesan Anda..." 
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && !isLoading && handleSend()}
+                    disabled={isLoading}
+                />
+                <Button type="submit" onClick={handleSend} disabled={isLoading || !input.trim()}>
+                    {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+                </Button>
+            </div>
+        </CardContent>
+      </Card>
+      
+      <div className="lg:col-span-1">
+          <Card>
+              <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                      <Wand2 className="h-5 w-5 text-primary" />
+                      <span>Saran Kalimat</span>
+                  </CardTitle>
+                  <CardDescription>Cara lain yang lebih baik untuk mengatakan kalimat terakhir Anda.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                  {isSuggestionLoading ? (
+                      <div className="flex items-center justify-center h-24">
+                          <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+                      </div>
+                  ) : suggestions.length > 0 ? (
+                      <ul className="space-y-3">
+                          {suggestions.map((suggestion, index) => (
+                              <li key={index} className="flex items-start gap-3">
+                                  <Sparkles className="h-4 w-4 text-yellow-500 mt-1 flex-shrink-0" />
+                                  <p className="text-sm font-medium">"{suggestion}"</p>
+                              </li>
+                          ))}
+                      </ul>
+                  ) : (
+                      <p className="text-sm text-muted-foreground text-center h-24 flex items-center justify-center">Kirim pesan untuk mendapatkan saran perbaikan kalimat.</p>
+                  )}
+              </CardContent>
+          </Card>
+      </div>
     </div>
   );
 }
