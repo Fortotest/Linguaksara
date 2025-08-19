@@ -1,6 +1,4 @@
 
-import { BookOpen, PencilRuler } from "lucide-react";
-
 export type LessonType = "Lesson" | "Quiz" | "Practice";
 
 export const unitsData = {
@@ -37,7 +35,7 @@ export const unitsData = {
       { id: "1", title: "Talking About Movies", description: "Diskusikan film favorit Anda seperti seorang kritikus.", type: "Lesson", completed: false },
       { id: "2", title: "Discussing Music Genres", description: "Pelajari cara membicarakan selera musik Anda.", type: "Lesson", completed: false },
       { id: "3", title: "Reading a News Article", description: "Latih pemahaman membaca dengan artikel berita.", type: "Practice", completed: false },
-      { id: "4", title: "Quiz: Hobbies & Media", description: "Uji wawasan Anda tentang hobi dan media.", type: "Quiz", completed: false },
+      { id: "4", "title": "Quiz: Hobbies & Media", "description": "Uji wawasan Anda tentang hobi dan media.", "type": "Quiz", "completed": false },
     ]
   },
 };
