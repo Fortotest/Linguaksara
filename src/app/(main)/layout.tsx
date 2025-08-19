@@ -1,10 +1,11 @@
 import { MainNav } from "@/components/main-nav";
 import { UserNav } from "@/components/user-nav";
 import { Logo } from "@/components/logo";
-import { Search } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -24,14 +25,38 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       </div>
       <div className="flex flex-col bg-gradient-to-br from-blue-100 via-blue-50 to-white dark:from-blue-950/80 dark:via-slate-900 dark:to-background">
         <header className="flex h-14 items-center gap-4 border-b bg-card/60 px-4 shadow-sm backdrop-blur-lg lg:h-[60px] lg:px-6 sticky top-0 z-30">
-          {/* Mobile Nav can be added here if needed */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                className="shrink-0 md:hidden"
+              >
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="flex flex-col">
+              <nav className="grid gap-2 text-lg font-medium">
+                <Link
+                  href="/dashboard"
+                  className="flex items-center gap-2 text-lg font-semibold mb-4"
+                >
+                  <Logo className="h-6 w-6 text-primary" />
+                  <span className="text-xl">Linguaksara</span>
+                </Link>
+                <MainNav />
+              </nav>
+            </SheetContent>
+          </Sheet>
+
           <div className="w-full flex-1">
             <form>
               <div className="relative">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
                   type="search"
-                  placeholder="Cari pelajaran..."
+                  placeholder="Search lessons..."
                   className="w-full appearance-none bg-transparent pl-8 shadow-none md:w-2/3 lg:w-1/3"
                 />
               </div>
