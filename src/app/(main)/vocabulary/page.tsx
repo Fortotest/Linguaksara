@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Volume2, Check, X } from "lucide-react";
 import { Input } from '@/components/ui/input';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 const vocabularyList = [
   { id: 1, word: "Commit", translation: "Berkomitmen", image: "https://placehold.co/400x200.png", hint: "To promise to do something.", example: "She committed to finishing the project on time.", learned: false, dataAiHint: "promise agreement" },
