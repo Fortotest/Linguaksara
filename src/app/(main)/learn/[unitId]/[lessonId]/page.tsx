@@ -24,7 +24,7 @@ export default async function LessonPage({
 }: {
   params: {unitId: string; lessonId: string};
 }) {
-  const {unitId, lessonId} = await params;
+  const {unitId, lessonId} = params;
   const unit = unitsData[unitId as keyof typeof unitsData];
   const lesson = unit?.lessons.find(l => l.id === lessonId);
 
