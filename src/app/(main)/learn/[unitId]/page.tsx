@@ -10,17 +10,17 @@ const unitsData = {
   "1": { 
     title: "Unit 1: The Basics", 
     lessons: [
-      { title: "Greetings and Introductions", type: "Lesson", completed: true },
-      { title: "Basic Phrases", type: "Lesson", completed: true },
-      { title: "Alphabet and Numbers", type: "Lesson", completed: true },
-      { title: "Quiz: The Basics", type: "Quiz", completed: true },
+      { title: "Greetings and Introductions", type: "Lesson", completed: false },
+      { title: "Basic Phrases", type: "Lesson", completed: false },
+      { title: "Alphabet and Numbers", type: "Lesson", completed: false },
+      { title: "Quiz: The Basics", type: "Quiz", completed: false },
     ] 
   },
   "2": { 
     title: "Unit 2: Traveling",
     lessons: [
-      { title: "At the Airport", type: "Lesson", completed: true },
-      { title: "Booking a Hotel", type: "Lesson", completed: true },
+      { title: "At the Airport", type: "Lesson", completed: false },
+      { title: "Booking a Hotel", type: "Lesson", completed: false },
       { title: "Asking for Directions", type: "Lesson", completed: false },
       { title: "Quiz: Traveling", type: "Quiz", completed: false },
     ]
@@ -28,7 +28,7 @@ const unitsData = {
   "3": { 
     title: "Unit 3: At the Workplace",
     lessons: [
-      { title: "Writing a Professional Email", type: "Lesson", completed: true },
+      { title: "Writing a Professional Email", type: "Lesson", completed: false },
       { title: "Common Business Idioms", type: "Lesson", completed: false },
       { title: "Phone Call Simulation", type: "Practice", completed: false },
       { title: "Quiz: Workplace English", type: "Quiz", completed: false },
@@ -92,7 +92,7 @@ export default function UnitDetailPage({ params }: { params: { unitId: string } 
                             <h3 className="font-semibold">{lesson.title}</h3>
                             <Badge variant="outline" className="mt-1">{lesson.type}</Badge>
                         </div>
-                        <Button variant={lesson.completed ? "ghost" : "default"} size="sm" className="ml-auto">
+                        <Button variant={lesson.completed ? "ghost" : "default"} size="sm" className="ml-auto" disabled={lesson.completed}>
                             {lesson.completed ? (
                                 <>
                                     <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
