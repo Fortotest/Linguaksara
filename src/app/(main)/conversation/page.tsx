@@ -14,7 +14,6 @@ import { useToast } from '@/hooks/use-toast';
 type Message = {
   role: 'user' | 'bot';
   text: string;
-  suggestions?: string[];
 };
 
 export default function ConversationPage() {
@@ -35,15 +34,6 @@ export default function ConversationPage() {
     }
   }, [messages]);
 
-  const handleError = () => {
-    toast({
-      variant: "destructive",
-      title: "Error",
-      description: "An unexpected error occurred. Please try again.",
-    });
-    setMessages(prev => prev.slice(0, -1));
-  }
-
   const handleSend = async () => {
     if (!input.trim()) return;
 
@@ -58,15 +48,24 @@ export default function ConversationPage() {
       
       const conversationResponse = await aiConversation({ messages: conversationHistory });
 
-      if (!conversationResponse || !conversationResponse.text) {
-          throw new Error("AI did not return a valid response.");
+      if (conversationResponse && conversationResponse.text) {
+          setMessages(prev => [...prev, { role: 'bot', text: conversationResponse.text }]);
+      } else {
+        // AI returned empty response, handle it gracefully without showing an error toast to user.
+        // The prompt is now robust enough to ask for clarification.
+        console.error("AI returned an empty or invalid response.");
+        setMessages(prev => [...prev, { role: 'bot', text: "I'm not sure how to respond to that. Could you say it differently?" }]);
       }
-      
-      setMessages(prev => [...prev, { role: 'bot', text: conversationResponse.text }]);
 
     } catch (error) {
       console.error("AI conversation error:", error);
-      handleError();
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+      });
+      // Rollback the user message on error
+      setMessages(prev => prev.slice(0, -1));
     } finally {
       setIsLoading(false);
     }
@@ -93,17 +92,6 @@ export default function ConversationPage() {
                                   <div className={cn("px-4 py-2 rounded-lg", message.role === 'user' ? 'bg-primary text-primary-foreground rounded-br-none' : 'bg-muted rounded-bl-none')}>
                                       <p className="whitespace-pre-wrap">{message.text}</p>
                                   </div>
-                                  {message.suggestions && message.suggestions.length > 0 && (
-                                    <div className="p-3 rounded-lg bg-accent text-left">
-                                      <div className="flex items-center gap-2 mb-2">
-                                        <Sparkles className="h-4 w-4 text-primary"/>
-                                        <h4 className="text-sm font-semibold">Suggestions</h4>
-                                      </div>
-                                      <ul className="space-y-1.5 text-sm list-disc list-inside">
-                                        {message.suggestions.slice(0, 3).map((s, i) => <li key={i}>{s}</li>)}
-                                      </ul>
-                                    </div>
-                                  )}
                                 </div>
                                 {message.role === 'user' && (
                                     <Avatar className="h-8 w-8">
