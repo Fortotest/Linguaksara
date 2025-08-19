@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 export default function LandingPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-background bg-gradient-to-br from-background via-black to-primary/20">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-100 via-blue-50 to-white dark:from-blue-950/80 dark:via-slate-900 dark:to-background">
       <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Logo className="h-8 w-8 text-primary" />
@@ -46,7 +46,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <section className="bg-background/50 py-20 backdrop-blur-sm">
+        <section className="bg-card/30 py-20 backdrop-blur-sm">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-center mb-12">Why LinguaLeap?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

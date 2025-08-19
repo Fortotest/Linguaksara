@@ -28,7 +28,7 @@ const chartConfig = {
 export default function DashboardPage() {
   return (
     <>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-3xl font-bold font-headline">Welcome back, Sofia!</h1>
           <p className="text-muted-foreground">Here's your progress and learning plan for today.</p>
@@ -48,35 +48,35 @@ export default function DashboardPage() {
             <CardDescription>Complete these tasks to reach your daily goal.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
-            <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary">
-              <div className="bg-accent p-3 rounded-full">
+            <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary/70">
+              <div className="bg-primary/10 p-3 rounded-full">
                 <BookOpen className="h-6 w-6 text-primary" />
               </div>
               <div>
                 <p className="font-semibold">Vocabulary Practice</p>
-                <p className="text-sm text-muted-foreground">Learn 10 new words to expand your lexicon.</p>
+                <p className="text-sm text-muted-foreground">Expand your lexicon by learning 10 new words.</p>
               </div>
               <Button className="ml-auto" size="sm">Start</Button>
             </div>
-            <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary">
-              <div className="bg-accent p-3 rounded-full">
+            <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary/70">
+              <div className="bg-primary/10 p-3 rounded-full">
                 <Bot className="h-6 w-6 text-primary" />
               </div>
               <div>
                 <p className="font-semibold">AI Conversation</p>
-                <p className="text-sm text-muted-foreground">Practice speaking for 5 minutes to improve fluency.</p>
+                <p className="text-sm text-muted-foreground">Improve your fluency with a 5-minute chat.</p>
               </div>
               <Button className="ml-auto" size="sm">Start</Button>
             </div>
-            <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary">
-              <div className="bg-accent p-3 rounded-full">
+            <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary/70">
+              <div className="bg-primary/10 p-3 rounded-full">
                 <PenTool className="h-6 w-6 text-primary" />
               </div>
               <div>
                 <p className="font-semibold">Grammar Lesson</p>
-                <p className="text-sm text-muted-foreground">Review the rules for the Past Tense.</p>
+                <p className="text-sm text-muted-foreground">Master the Past Tense rules.</p>
               </div>
-               <Button className="ml-auto" size="sm">Start</Button>
+               <Button className="ml-auto" size="sm" variant="outline" disabled>Completed</Button>
             </div>
           </CardContent>
         </Card>

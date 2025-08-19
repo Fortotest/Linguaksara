@@ -39,9 +39,9 @@ export function MainNav({ className, ...props }: React.HTMLAttributes<HTMLElemen
             key={item.href}
             href={item.href}
             className={cn(
-              "flex w-full items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary",
+              "flex w-full items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary hover:bg-primary/10",
               isActive
-                ? "bg-accent text-primary font-semibold"
+                ? "bg-primary/10 text-primary font-semibold"
                 : "text-muted-foreground"
             )}
           >
