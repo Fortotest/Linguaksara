@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 export default function LandingPage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-background bg-gradient-to-br from-background via-black to-primary/20">
       <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Logo className="h-8 w-8 text-primary" />
@@ -40,58 +40,58 @@ export default function LandingPage() {
               alt="LinguaLeap dashboard preview"
               width={1200}
               height={600}
-              className="rounded-lg shadow-2xl"
+              className="rounded-xl shadow-2xl border-2 border-primary/20"
               data-ai-hint="language learning dashboard"
             />
           </div>
         </section>
 
-        <section className="bg-secondary py-20">
+        <section className="bg-background/50 py-20 backdrop-blur-sm">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-center mb-12">Why LinguaLeap?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <Card className="text-center">
+              <Card className="text-center glass-card">
                 <CardHeader>
-                  <div className="mx-auto bg-accent p-4 rounded-full w-fit">
+                  <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                     <BookOpen className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="mt-4">Interactive Lessons</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p>Engaging exercises and structured units make learning effective and fun.</p>
+                  <p className="text-muted-foreground">Engaging exercises and structured units make learning effective and fun.</p>
                 </CardContent>
               </Card>
-              <Card className="text-center">
+              <Card className="text-center glass-card">
                 <CardHeader>
-                  <div className="mx-auto bg-accent p-4 rounded-full w-fit">
+                  <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                     <Bot className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="mt-4">AI Conversation</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p>Practice speaking with our AI chatbot and get instant feedback.</p>
+                  <p className="text-muted-foreground">Practice speaking with our AI chatbot and get instant feedback.</p>
                 </CardContent>
               </Card>
-              <Card className="text-center">
+              <Card className="text-center glass-card">
                 <CardHeader>
-                  <div className="mx-auto bg-accent p-4 rounded-full w-fit">
+                  <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                     <Award className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="mt-4">Gamified Learning</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p>Earn XP, level up, and compete on the leaderboard to stay motivated.</p>
+                  <p className="text-muted-foreground">Earn XP, level up, and compete on the leaderboard to stay motivated.</p>
                 </CardContent>
               </Card>
-              <Card className="text-center">
+              <Card className="text-center glass-card">
                 <CardHeader>
-                  <div className="mx-auto bg-accent p-4 rounded-full w-fit">
+                  <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                     <Sparkles className="h-8 w-8 text-primary" />
                   </div>
                   <CardTitle className="mt-4">Personalized Path</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p>AI adapts to your progress, creating a learning journey just for you.</p>
+                  <p className="text-muted-foreground">AI adapts to your progress, creating a learning journey just for you.</p>
                 </CardContent>
               </Card>
             </div>
