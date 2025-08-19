@@ -36,6 +36,16 @@ export default function ConversationPage() {
     }
   }, [messages]);
 
+  const handleError = () => {
+    toast({
+      variant: "destructive",
+      title: "Error",
+      description: "I'm having a little trouble understanding. Please try again.",
+    });
+    // remove the user message if there was an error
+    setMessages(prev => prev.slice(0, -1));
+  }
+
   const handleSend = async () => {
     if (!input.trim()) return;
 
@@ -47,11 +57,20 @@ export default function ConversationPage() {
 
     try {
       const conversationHistory = newMessages.map(({role, text}) => ({role, text}));
-      const conversationResponse = await aiConversation({ messages: conversationHistory });
-      const { text: botText } = conversationResponse;
       
-      const suggestionsResponse = await aiConversationGrammarSuggestions({ text: userMessage.text });
+      const [conversationResponse, suggestionsResponse] = await Promise.all([
+        aiConversation({ messages: conversationHistory }),
+        aiConversationGrammarSuggestions({ text: userMessage.text })
+      ]);
+      
+      const { text: botText } = conversationResponse;
       const { suggestions } = suggestionsResponse;
+
+      if (!botText) {
+        console.error("AI conversation returned empty response.");
+        handleError();
+        return;
+      }
 
       setMessages(prev => {
           const updatedMessages = [...prev];
@@ -64,13 +83,7 @@ export default function ConversationPage() {
 
     } catch (error) {
       console.error("AI conversation error:", error);
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "I'm having a little trouble understanding. Please try again.",
-      });
-      // remove the user message if there was an error
-      setMessages(prev => prev.slice(0, -1));
+      handleError();
     } finally {
       setIsLoading(false);
     }
