@@ -55,7 +55,7 @@ Jika pesan pengguna sangat pendek, tidak masuk akal, atau tidak jelas (seperti s
 
 Riwayat Percakapan:
 {{#each messages}}
-{{#if (eq role 'user')}}
+{{#if isUser}}
 Pengguna: {{{text}}}
 {{else}}
 AI: {{{text}}}
@@ -73,7 +73,11 @@ const aiConversationFlow = ai.defineFlow(
     outputSchema: AiConversationOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
+    const messagesWithUserFlag = input.messages.map(m => ({
+        ...m,
+        isUser: m.role === 'user',
+    }));
+    const {output} = await prompt({messages: messagesWithUserFlag});
     return output!;
   }
 );
