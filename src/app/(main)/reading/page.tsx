@@ -19,7 +19,7 @@ export default function ReadingLibraryPage() {
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {readingData.map((story) => (
-          <Link key={story.id} href={`/reading/${story.id}`}>
+          <Link key={story.id} href={`/reading/${story.id}`} title={story.title} className="block">
             <Card className="h-full flex flex-col hover:shadow-primary/20 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
               <CardHeader className="p-0">
                 <Image
@@ -32,9 +32,11 @@ export default function ReadingLibraryPage() {
                 />
               </CardHeader>
               <CardContent className="p-4 flex flex-col flex-grow">
-                <Badge variant="outline" className="mb-2 w-fit">{story.level}</Badge>
-                <CardTitle className="text-lg font-semibold leading-tight mb-1 flex-grow">{story.title}</CardTitle>
-                <CardDescription className="text-xs line-clamp-2">{story.synopsis}</CardDescription>
+                 <h3 className="font-semibold leading-tight mb-2 flex-grow">{story.title}</h3>
+                 <div className="flex justify-between items-center">
+                    <Badge variant="outline" className="w-fit">{story.level}</Badge>
+                 </div>
+                <CardDescription className="text-xs line-clamp-2 mt-2">{story.synopsis}</CardDescription>
               </CardContent>
             </Card>
           </Link>
