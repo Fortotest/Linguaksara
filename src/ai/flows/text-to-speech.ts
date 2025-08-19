@@ -8,9 +8,9 @@
  */
 
 import {ai} from '@/ai/config';
-import {googleAI} from '@genkit-ai/googleai';
 import {z} from 'genkit';
-import wav from 'wav';
+import {TextToSpeechClient} from '@google-cloud/text-to-speech';
+import {promisify} from 'util';
 
 const TextToSpeechInputSchema = z.object({
   text: z.string().describe('The text to be converted to speech.'),
@@ -32,33 +32,6 @@ export async function textToSpeech(
   return textToSpeechFlow(input);
 }
 
-async function toWav(
-  pcmData: Buffer,
-  channels = 1,
-  rate = 24000,
-  sampleWidth = 2
-): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const writer = new wav.Writer({
-      channels,
-      sampleRate: rate,
-      bitDepth: sampleWidth * 8,
-    });
-
-    const bufs: Buffer[] = [];
-    writer.on('error', reject);
-    writer.on('data', function (d) {
-      bufs.push(d);
-    });
-    writer.on('end', function () {
-      resolve(Buffer.concat(bufs).toString('base64'));
-    });
-
-    writer.write(pcmData);
-    writer.end();
-  });
-}
-
 const textToSpeechFlow = ai.defineFlow(
   {
     name: 'textToSpeechFlow',
@@ -66,28 +39,24 @@ const textToSpeechFlow = ai.defineFlow(
     outputSchema: TextToSpeechOutputSchema,
   },
   async input => {
-    const {media} = await ai.generate({
-      model: googleAI.model('gemini-2.5-flash-preview-tts'),
-      config: {
-        responseModalities: ['AUDIO'],
-        speechConfig: {
-          voiceConfig: {
-            prebuiltVoiceConfig: {voiceName: 'vindemiatrix'},
-          },
-        },
-      },
-      prompt: input.text,
-    });
-    if (!media) {
-      throw new Error('No audio media was generated.');
+    const client = new TextToSpeechClient();
+
+    const request = {
+      input: {text: input.text},
+      voice: {languageCode: 'en-US', ssmlGender: 'FEMALE' as const, name: 'en-US-Standard-C'},
+      audioConfig: {audioEncoding: 'MP3' as const},
+    };
+
+    const [response] = await client.synthesizeSpeech(request);
+    
+    if (!response.audioContent) {
+        throw new Error('No audio content was generated.');
     }
-    const audioBuffer = Buffer.from(
-      media.url.substring(media.url.indexOf(',') + 1),
-      'base64'
-    );
-    const wavBase64 = await toWav(audioBuffer);
+
+    const audioBase64 = Buffer.from(response.audioContent).toString('base64');
+    
     return {
-      audioDataUri: 'data:audio/wav;base64,' + wavBase64,
+      audioDataUri: 'data:audio/mp3;base64,' + audioBase64,
     };
   }
 );
