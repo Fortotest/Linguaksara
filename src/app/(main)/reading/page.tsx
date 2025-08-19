@@ -41,7 +41,7 @@ export default function ReadingPage() {
         </CardHeader>
         <CardContent className="space-y-4">
           <Image
-            src="https://placehold.co/800x300.png"
+            src="https://raw.githubusercontent.com/tesweb2025/Market-Intelligence-5.1/d1ef5d75d025e2d4a8b2de87f2f59ac04fe3942a/assets_task_01k31ncqgffyy9dnfc7x1639ew_1755623967_img_0.webp"
             alt="Kota Kuno"
             width={800}
             height={300}
