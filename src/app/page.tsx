@@ -26,10 +26,10 @@ export default function LandingPage() {
       <main className="flex-grow">
         <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4">
-            Buka Pintu Dunia dengan Bahasa Inggris
+            Platform Bahasa Inggris #1 di Indonesia
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            Linguaksara adalah cara termudah untuk menguasai bahasa Inggris. Belajar dari dasar, berlatih dengan AI, dan capai impian Anda.
+            Bergabunglah dengan jutaan orang dan kuasai bahasa Inggris bersama Linguaksara, platform belajar terbaik yang dirancang khusus untuk Anda—sepenuhnya gratis.
           </p>
           <Button size="lg" asChild>
             <Link href="/signup">Mulai Belajar, Gratis!</Link>
@@ -100,7 +100,7 @@ export default function LandingPage() {
       </main>
 
       <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Linguaksara. Semua hak cipta dilindungi.</p>
+        <p>&copy; {new Date().getFullYear()} Linguaksara. Platform Belajar Bahasa Inggris #1 di Indonesia.</p>
       </footer>
     </div>
   );
