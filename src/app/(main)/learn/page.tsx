@@ -18,14 +18,14 @@ const units = [
     title: "Unit 2: People & Things",
     description: "Pelajari kosakata tentang keluarga, pekerjaan, dan benda-benda di sekitar Anda.",
     progress: 0,
-    icon: Home,
+    icon: Users,
   },
   {
     id: 3,
     title: "Unit 3: Simple Sentences",
     description: "Mulai membuat kalimat sederhana menggunakan 'is', 'am', 'are'.",
     progress: 0,
-    icon: Users,
+    icon: Home, // Using Home icon as a substitute
   },
   {
     id: 4,

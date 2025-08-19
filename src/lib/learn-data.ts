@@ -3,7 +3,8 @@ export type LessonType = "Lesson" | "Quiz" | "Practice";
 
 export const unitsData = {
   "1": { 
-    title: "Unit 1: The Basics", 
+    title: "Unit 1: The Basics",
+    description: "Mulai dengan salam, perkenalan, dan alfabet untuk fondasi yang kuat.",
     lessons: [
       { id: "1", title: "Greetings and Introductions", description: "Pelajari cara menyapa dan memperkenalkan diri.", type: "Lesson", completed: false },
       { id: "2", title: "The Alphabet & Numbers", description: "Kenali huruf dan angka dalam bahasa Inggris.", type: "Lesson", completed: false },
@@ -13,6 +14,7 @@ export const unitsData = {
   },
   "2": { 
     title: "Unit 2: People & Things",
+    description: "Pelajari kosakata tentang keluarga, pekerjaan, dan benda-benda di sekitar Anda.",
     lessons: [
       { id: "1", title: "Family Members", description: "Pelajari nama-nama anggota keluarga.", type: "Lesson", completed: false },
       { id: "2", title: "Common Jobs", description: "Kenali nama-nama pekerjaan umum.", type: "Lesson", completed: false },
@@ -22,6 +24,7 @@ export const unitsData = {
   },
   "3": { 
     title: "Unit 3: Simple Sentences",
+    description: "Mulai membuat kalimat sederhana menggunakan 'is', 'am', 'are'.",
     lessons: [
       { id: "1", title: "Using 'is', 'am', 'are'", description: "Pelajari cara menggunakan 'to be' dalam kalimat.", type: "Lesson", completed: false },
       { id: "2", title: "This is / That is", description: "Belajar menunjuk benda dengan 'this' dan 'that'.", type: "Lesson", completed: false },
@@ -31,6 +34,7 @@ export const unitsData = {
   },
   "4": { 
     title: "Unit 4: Asking Questions",
+    description: "Belajar bertanya menggunakan 'What', 'Where', 'Who', dan 'How'.",
     lessons: [
       { id: "1", title: "What & Who", description: "Belajar bertanya tentang benda dan orang.", type: "Lesson", completed: false },
       { id: "2", title: "Where & When", description: "Belajar bertanya tentang tempat dan waktu.", type: "Lesson", completed: false },
@@ -40,6 +44,7 @@ export const unitsData = {
   },
   "5": {
     title: "Unit 5: Food and Dining",
+    description: "Pelajari cara memesan makanan dan berinteraksi di restoran.",
     lessons: [
       { id: "1", title: "Common Food and Drinks", description: "Kenali nama-nama makanan dan minuman umum.", type: "Lesson", completed: false },
       { id: "2", title: "Ordering at a Restaurant", description: "Latihan memesan makanan dan minuman.", type: "Practice", completed: false },
@@ -48,6 +53,7 @@ export const unitsData = {
   },
   "6": {
     title: "Unit 6: Daily Routines",
+    description: "Bicarakan tentang jadwal dan kebiasaan harian Anda.",
     lessons: [
       { id: "1", title: "Daily Activities", description: "Jelaskan aktivitas harian dari pagi hingga malam.", type: "Lesson", completed: false },
       { id: "2", title: "Telling Time", description: "Pelajari cara menanyakan dan memberitahu waktu.", type: "Lesson", completed: false },
