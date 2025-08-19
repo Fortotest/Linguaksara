@@ -39,11 +39,21 @@ export const unitsData = {
       { id: "1", title: "What & Who", description: "Belajar bertanya tentang benda dan orang.", type: "Lesson", completed: false },
       { id: "2", title: "Where & When", description: "Belajar bertanya tentang tempat dan waktu.", type: "Lesson", completed: false },
       { id: "3", title: "How are you?", description: "Latih cara menanyakan kabar dan menjawabnya.", type: "Practice", completed: false },
-      { id: "4", "title": "Quiz: Asking Questions", "description": "Uji kemampuan Anda dalam bertanya.", "type": "Quiz", "completed": false },
+      { id: "4", title: "Quiz: Asking Questions", description: "Uji kemampuan Anda dalam bertanya.", type: "Quiz", completed: false },
     ]
   },
   "5": {
-    title: "Unit 5: Food and Dining",
+    title: "Unit 5: Basic Action Verbs",
+    description: "Kuasai kata kerja aksi paling umum seperti 'have', 'eat', 'drink', 'go', 'want', dan 'like'.",
+    lessons: [
+      { id: "1", title: "Using 'have' and 'has'", description: "Pelajari cara menyatakan kepemilikan.", type: "Lesson", completed: false },
+      { id: "2", title: "Actions: 'eat', 'drink', 'go'", description: "Gunakan kata kerja untuk aktivitas sehari-hari.", type: "Lesson", completed: false },
+      { id: "3", title: "Feelings: 'want' and 'like'", description: "Ekspresikan keinginan dan kesukaan Anda.", type: "Lesson", completed: false },
+      { id: "4", title: "Quiz: Action Verbs", description: "Uji pemahaman Anda tentang kata kerja aksi.", type: "Quiz", completed: false },
+    ]
+  },
+  "6": {
+    title: "Unit 6: Food and Dining",
     description: "Pelajari cara memesan makanan dan berinteraksi di restoran.",
     lessons: [
       { id: "1", title: "Common Food and Drinks", description: "Kenali nama-nama makanan dan minuman umum.", type: "Lesson", completed: false },
@@ -51,13 +61,22 @@ export const unitsData = {
       { id: "3", title: "Quiz: Food and Dining", description: "Uji kosakata Anda seputar makanan.", type: "Quiz", completed: false },
     ]
   },
-  "6": {
-    title: "Unit 6: Daily Routines",
+  "7": {
+    title: "Unit 7: Daily Routines",
     description: "Bicarakan tentang jadwal dan kebiasaan harian Anda.",
     lessons: [
       { id: "1", title: "Daily Activities", description: "Jelaskan aktivitas harian dari pagi hingga malam.", type: "Lesson", completed: false },
       { id: "2", title: "Telling Time", description: "Pelajari cara menanyakan dan memberitahu waktu.", type: "Lesson", completed: false },
       { id: "3", title: "Quiz: Daily Routines", description: "Uji pemahaman Anda tentang rutinitas harian.", type: "Quiz", completed: false },
+    ]
+  },
+  "8": {
+    title: "Unit 8: Review & Consolidation",
+    description: "Uji semua yang telah kamu pelajari dari Unit 1 hingga 7 dalam sebuah latihan skenario besar.",
+    lessons: [
+        { id: "1", title: "Practice: A New Friend", description: "Latihan percakapan dari perkenalan hingga bertanya soal pekerjaan.", type: "Practice", completed: false },
+        { id: "2", title: "Practice: Ordering Coffee", description: "Latihan menggabungkan semua skill untuk memesan di kafe.", type: "Practice", completed: false },
+        { id: "3", title: "Final Quiz", description: "Kuis komprehensif untuk semua unit.", type: "Quiz", completed: false },
     ]
   }
 };

@@ -1,8 +1,7 @@
 
-
 import { Button } from "@/components/ui/button";
 import { unitsData } from "@/lib/learn-data";
-import { ArrowLeft, Check, Lightbulb, Pencil, MessageSquareQuote, HelpCircle, BookCopy, Utensils, Clock, Home, Users } from "lucide-react";
+import { ArrowLeft, Check, Lightbulb, Pencil, MessageSquareQuote, HelpCircle, BookCopy, Utensils, Clock, Home, Users, Flame, Star } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -207,9 +206,47 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                     </ul>
                 </>
             )}
-            
-            {/* Unit 5 Content */}
+
+            {/* Unit 5 Content - NEW */}
             {params.unitId === '5' && params.lessonId === '1' && (
+              <>
+                <p>Kata kerja 'have' dan 'has' sangat penting untuk menyatakan kepemilikan.</p>
+                <h3 className="flex items-center gap-2"><Flame className="h-5 w-5 text-primary"/>Menggunakan 'have' dan 'has'</h3>
+                <ul>
+                    <li>Gunakan <strong>have</strong> dengan <strong>I, you, we, they</strong>. &rarr; <strong>I have</strong> a cat. (Saya punya seekor kucing). <strong>They have</strong> a car. (Mereka punya sebuah mobil).</li>
+                    <li>Gunakan <strong>has</strong> dengan <strong>he, she, it</strong>. &rarr; <strong>She has</strong> a book. (Dia punya sebuah buku).</li>
+                </ul>
+              </>
+            )}
+            {params.unitId === '5' && params.lessonId === '2' && (
+              <>
+                <p>Kata kerja aksi dasar ini akan membuat kalimat Anda lebih hidup.</p>
+                <h3 className="flex items-center gap-2"><Flame className="h-5 w-5 text-primary"/>Kata Kerja Aksi Umum</h3>
+                <ul>
+                    <li><strong>eat</strong> (makan): I <strong>eat</strong> rice. (Saya makan nasi).</li>
+                    <li><strong>drink</strong> (minum): I <strong>drink</strong> water. (Saya minum air).</li>
+                    <li><strong>go</strong> (pergi): I <strong>go</strong> to school. (Saya pergi ke sekolah).</li>
+                </ul>
+              </>
+            )}
+            {params.unitId === '5' && params.lessonId === '3' && (
+              <>
+                <p>Belajar cara mengekspresikan apa yang Anda inginkan dan sukai.</p>
+                <h3 className="flex items-center gap-2"><Flame className="h-5 w-5 text-primary"/>Mengekspresikan Keinginan</h3>
+                <ul>
+                    <li><strong>want</strong> (ingin): I <strong>want</strong> coffee. (Saya ingin kopi).</li>
+                    <li><strong>like</strong> (suka): I <strong>like</strong> music. (Saya suka musik).</li>
+                </ul>
+                <h4 className="font-semibold">Contoh Dialog</h4>
+                <div className="not-prose">
+                  <Dialogue character="You" text="Hello. I want a coffee, please." />
+                  <Dialogue character="Barista" text="Okay. One coffee." />
+                </div>
+              </>
+            )}
+            
+            {/* Unit 6 Content */}
+            {params.unitId === '6' && params.lessonId === '1' && (
               <>
                 <p>Mari kita pelajari nama-nama makanan dan minuman yang sering kita temui sehari-hari.</p>
                 <h3 className="flex items-center gap-2"><Utensils className="h-5 w-5 text-primary"/>Makanan (Food)</h3>
@@ -230,8 +267,8 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
               </>
             )}
 
-            {/* Unit 6 Content */}
-            {params.unitId === '6' && params.lessonId === '1' && (
+            {/* Unit 7 Content */}
+            {params.unitId === '7' && params.lessonId === '1' && (
               <>
                 <p>Menceritakan kegiatan sehari-hari adalah cara yang bagus untuk melatih penggunaan present tense.</p>
                 <h3 className="flex items-center gap-2"><Clock className="h-5 w-5 text-primary"/>Kosakata Rutinitas Harian</h3>
@@ -246,7 +283,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                 </ul>
               </>
             )}
-            {params.unitId === '6' && params.lessonId === '2' && (
+            {params.unitId === '7' && params.lessonId === '2' && (
               <>
                 <p>Belajar membaca jam sangat penting untuk membicarakan jadwal.</p>
                 <h3 className="flex items-center gap-2"><Clock className="h-5 w-5 text-primary"/>Cara Bertanya Jam</h3>
@@ -281,7 +318,57 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
              <div className="not-prose">
               <p>Latihan interaktif ini akan membantu Anda menerapkan apa yang telah Anda pelajari.</p>
               <Practice>
-                <p>Konten latihan sedang dalam pengembangan. Fitur latihan interaktif akan segera hadir!</p>
+                {/* Unit 2 Practice */}
+                {params.unitId === '2' && params.lessonId === '3' && (
+                    <p>Sebutkan 5 benda yang Anda lihat di ruangan Anda sekarang dalam bahasa Inggris. Contoh: "This is a chair."</p>
+                )}
+                 {/* Unit 3 Practice */}
+                {params.unitId === '3' && params.lessonId === '3' && (
+                    <p>Buat 3 kalimat sederhana tentang diri Anda. Contoh: "I am a student. I am happy. I am not a doctor."</p>
+                )}
+                {/* Unit 4 Practice */}
+                {params.unitId === '4' && params.lessonId === '3' && (
+                     <div className="space-y-4">
+                        <p>Latih dialog singkat ini dengan teman atau dengan diri sendiri.</p>
+                        <Dialogue character="A" text="Hi! How are you?" />
+                        <Dialogue character="B" text="I'm fine, thank you. And you?" />
+                        <Dialogue character="A" text="I'm great, thanks!" />
+                     </div>
+                )}
+                {/* Unit 6 Practice */}
+                {params.unitId === '6' && params.lessonId === '2' && (
+                    <div className="space-y-4">
+                        <p>Bayangkan Anda berada di sebuah restoran. Latih dialog ini.</p>
+                        <Dialogue character="Waiter" text="Hello. Can I help you?" />
+                        <Dialogue character="You" text="Yes, please. I want one pizza and one water." />
+                        <Dialogue character="Waiter" text="Okay. One pizza and one water. Anything else?" />
+                        <Dialogue character="You" text="No, thank you." />
+                    </div>
+                )}
+                {/* Unit 8 Practice */}
+                 {params.unitId === '8' && params.lessonId === '1' && (
+                    <div className="space-y-4">
+                        <p><strong>Skenario:</strong> Anda bertemu teman baru di sebuah acara.</p>
+                        <ol className="list-decimal list-inside space-y-2">
+                            <li>Sapa dia. (Hi/Hello)</li>
+                            <li>Perkenalkan diri Anda. (My name is...)</li>
+                            <li>Tanyakan namanya. (What is your name?)</li>
+                            <li>Tanyakan apa pekerjaannya. (What is your job?)</li>
+                            <li>Katakan senang bertemu dengannya. (Nice to meet you.)</li>
+                        </ol>
+                    </div>
+                )}
+                {params.unitId === '8' && params.lessonId === '2' && (
+                    <div className="space-y-4">
+                        <p><strong>Skenario:</strong> Anda berada di kafe dan ingin memesan.</p>
+                         <ol className="list-decimal list-inside space-y-2">
+                            <li>Sapa barista. (Hello)</li>
+                            <li>Katakan apa yang Anda inginkan. (I want...)</li>
+                            <li>Gunakan 'please' untuk kesopanan.</li>
+                            <li>Ucapkan terima kasih. (Thank you)</li>
+                        </ol>
+                    </div>
+                )}
               </Practice>
              </div>
         )}

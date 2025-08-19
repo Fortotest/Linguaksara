@@ -4,7 +4,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { GraduationCap, Users, Home, HelpCircle, Utensils, Clock, CheckCircle } from "lucide-react";
+import { GraduationCap, Users, Home, HelpCircle, Utensils, Clock, CheckCircle, Flame, Star } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -36,15 +36,27 @@ const unitDetails = [
   },
   {
     id: 5,
-    title: "Unit 5: Food and Dining",
+    title: "Unit 5: Basic Action Verbs",
+    description: "Kuasai kata kerja aksi paling umum seperti 'have', 'eat', 'drink', 'go', 'want', dan 'like'.",
+    icon: Flame,
+  },
+  {
+    id: 6,
+    title: "Unit 6: Food and Dining",
     description: "Pelajari cara memesan makanan dan berinteraksi di restoran.",
     icon: Utensils,
   },
   {
-    id: 6,
-    title: "Unit 6: Daily Routines",
+    id: 7,
+    title: "Unit 7: Daily Routines",
     description: "Bicarakan tentang jadwal dan kebiasaan harian Anda.",
     icon: Clock,
+  },
+  {
+    id: 8,
+    title: "Unit 8: Review & Consolidation",
+    description: "Uji semua yang telah kamu pelajari dari Unit 1 hingga 7 dalam sebuah latihan skenario besar.",
+    icon: Star,
   },
 ];
 
