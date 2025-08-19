@@ -1,14 +1,14 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Utensils, Plane, Briefcase, Film } from "lucide-react";
+import { GraduationCap, Plane, Briefcase, Film } from "lucide-react";
 
 const units = [
   {
     title: "Unit 1: Dasar-Dasar",
     description: "Mulai dengan salam, perkenalan, dan frasa penting untuk percakapan sehari-hari.",
     progress: 100,
-    icon: Utensils,
+    icon: GraduationCap,
   },
   {
     title: "Unit 2: Bepergian",

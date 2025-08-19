@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import {
   LayoutDashboard,
-  BookMarked,
-  Layers,
-  PenTool,
+  GraduationCap,
+  BookText,
+  SpellCheck,
   BookOpenCheck,
   MessagesSquare,
   Trophy,
@@ -15,9 +15,9 @@ import {
 
 const navItems = [
   { href: "/dashboard", label: "Dasbor", icon: LayoutDashboard },
-  { href: "/learn", label: "Belajar", icon: BookMarked },
-  { href: "/vocabulary", label: "Kosakata", icon: Layers },
-  { href: "/grammar", label: "Tata Bahasa", icon: PenTool },
+  { href: "/learn", label: "Belajar", icon: GraduationCap },
+  { href: "/vocabulary", label: "Kosakata", icon: BookText },
+  { href: "/grammar", label: "Tata Bahasa", icon: SpellCheck },
   { href: "/reading", label: "Membaca", icon: BookOpenCheck },
   { href: "/conversation", label: "Percakapan", icon: MessagesSquare },
   { href: "/leaderboard", label: "Peringkat", icon: Trophy },
