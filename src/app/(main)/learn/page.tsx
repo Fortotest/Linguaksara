@@ -4,7 +4,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { GraduationCap, Users, Home, HelpCircle, Utensils, Clock, CheckCircle, Flame, Star, MessageSquareQuestion } from "lucide-react";
+import { GraduationCap, Users, Home, Utensils, Clock, CheckCircle, Flame, Star, MessageSquareQuote } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -36,7 +36,7 @@ const unitDetails = [
     prefix: "Unit 4",
     title: "Asking Questions",
     description: "Kuasai cara bertanya tentang berbagai hal memakai 'What' dan 'Where'.",
-    icon: MessageSquareQuestion,
+    icon: MessageSquareQuote,
   },
   {
     id: 5,
@@ -112,12 +112,12 @@ export default function LearnPage() {
                 <div className="w-full">
                   <p className="text-sm font-semibold text-primary">{unit.prefix}</p>
                   <CardTitle className="text-2xl font-bold font-headline !mt-0">{unit.title}</CardTitle>
-                  <CardDescription>{unit.description}</CardDescription>
                 </div>
               </CardHeader>
-              <CardContent>
-                <Progress value={unitProgress} className="h-2" />
-                <p className="text-sm text-muted-foreground mt-2">{unitProgress}% Selesai</p>
+               <CardContent>
+                  <CardDescription>{unit.description}</CardDescription>
+                  <Progress value={unitProgress} className="h-2 mt-4" />
+                  <p className="text-sm text-muted-foreground mt-2">{unitProgress}% Selesai</p>
               </CardContent>
               <CardFooter className="mt-auto">
                 <Button asChild className="w-full" variant={isCompleted ? "outline" : "default"}>
