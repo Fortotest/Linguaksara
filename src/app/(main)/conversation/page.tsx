@@ -65,7 +65,7 @@ export default function ConversationPage() {
 
     } catch (error) {
       console.error("AI conversation error:", error);
-      handleError();
+      handleError("Sorry, an error occurred while communicating with the AI. Please check the console and try again.");
       // Rollback the user message on error
       setMessages(prev => prev.slice(0, -1));
       // Restore input
