@@ -4,6 +4,7 @@ import { unitsData } from "@/lib/learn-data";
 import { ArrowLeft, Check, Lightbulb, Pencil, MessageSquareQuote, HelpCircle, BookCopy, Utensils, Clock, Home, Users, Flame, Star } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
+import { PronunciationCoach } from "@/components/pronunciation-coach";
 
 export default function LessonPage({ params }: { params: { unitId: string, lessonId: string } }) {
   const unit = unitsData[params.unitId as keyof typeof unitsData];
@@ -374,6 +375,9 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
         )}
 
       </div>
+
+      <PronunciationCoach />
+
       <div className="mt-8 mb-4 text-center">
         <Button asChild size="lg">
           <Link href={`/learn/${params.unitId}?completedLessonId=${lesson.id}`}>
