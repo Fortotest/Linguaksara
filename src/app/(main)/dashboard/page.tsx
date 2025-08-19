@@ -120,7 +120,7 @@ export default function DashboardPage() {
                     <YAxis tickLine={false} axisLine={false} />
                     <ChartTooltip
                       cursor={false}
-                      content={<ChartTooltipContent indicator="dot" formatter={(value, name) => `${day}: +${value} XP`} />}
+                      content={<ChartTooltipContent indicator="dot" formatter={(value, name, props) => `${props.payload.day}: +${value} XP`} />}
                     />
                     <Bar dataKey="xp" fill="var(--color-xp)" radius={8} />
                   </BarChart>
