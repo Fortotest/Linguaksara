@@ -10,7 +10,6 @@
 import {ai} from '@/ai/config';
 import {z} from 'genkit';
 import {TextToSpeechClient} from '@google-cloud/text-to-speech';
-import {promisify} from 'util';
 
 const TextToSpeechInputSchema = z.object({
   text: z.string().describe('The text to be converted to speech.'),
@@ -43,8 +42,8 @@ const textToSpeechFlow = ai.defineFlow(
 
     const request = {
       input: {text: input.text},
-      voice: {languageCode: 'en-US', ssmlGender: 'FEMALE' as const, name: 'en-US-Standard-C'},
-      audioConfig: {audioEncoding: 'MP3' as const},
+      voice: {languageCode: 'en-US'},
+      audioConfig: {audioEncoding: 'LINEAR16' as const},
     };
 
     const [response] = await client.synthesizeSpeech(request);
@@ -56,7 +55,7 @@ const textToSpeechFlow = ai.defineFlow(
     const audioBase64 = Buffer.from(response.audioContent).toString('base64');
     
     return {
-      audioDataUri: 'data:audio/mp3;base64,' + audioBase64,
+      audioDataUri: 'data:audio/wav;base64,' + audioBase64,
     };
   }
 );
