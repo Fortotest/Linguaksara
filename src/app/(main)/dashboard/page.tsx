@@ -61,16 +61,6 @@ export default function DashboardPage() {
           <CardContent className="grid gap-4">
             <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary/70">
               <div className="bg-primary/10 p-3 rounded-full">
-                <BookOpen className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <p className="font-semibold">Vocabulary Practice</p>
-                <p className="text-sm text-muted-foreground">Perkaya kosakatamu dengan 10 kata baru.</p>
-              </div>
-              <Button className="ml-auto" size="sm" asChild><Link href="/vocabulary">Mulai</Link></Button>
-            </div>
-            <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary/70">
-              <div className="bg-primary/10 p-3 rounded-full">
                 <Bot className="h-6 w-6 text-primary" />
               </div>
               <div>
