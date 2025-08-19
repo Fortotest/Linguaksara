@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { unitsData } from "@/lib/learn-data";
 import { ArrowLeft, Check, Lightbulb, Pencil, MessageSquareQuote } from "lucide-react";
 import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function LessonPage({ params }: { params: { unitId: string, lessonId: string } }) {
   const unit = unitsData[params.unitId as keyof typeof unitsData];
@@ -10,7 +11,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
 
   if (!unit || !lesson) {
     return (
-        <div className="text-center">
+        <div className="text-center p-4">
             <h1 className="text-2xl font-bold">Pelajaran tidak ditemukan</h1>
             <p className="text-muted-foreground">Pelajaran yang Anda cari tidak ada.</p>
             <Button asChild className="mt-4">
@@ -22,27 +23,27 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
 
   const Tip = ({ children }: { children: React.ReactNode }) => (
     <div className="my-6 flex items-start gap-4 rounded-lg border border-primary/20 bg-primary/5 p-4">
-      <Lightbulb className="h-6 w-6 text-primary mt-1" />
+      <Lightbulb className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
       <div>
         <h4 className="font-bold text-primary mb-1">Pro Tip</h4>
-        <div className="text-sm text-primary/90">{children}</div>
+        <div className="text-sm text-primary/90 prose prose-sm max-w-none">{children}</div>
       </div>
     </div>
   );
 
   const Practice = ({ children }: { children: React.ReactNode }) => (
     <div className="my-6 flex items-start gap-4 rounded-lg border border-accent-foreground/20 bg-accent p-4">
-      <Pencil className="h-6 w-6 text-accent-foreground mt-1" />
+      <Pencil className="h-6 w-6 text-accent-foreground mt-1 flex-shrink-0" />
       <div>
         <h4 className="font-bold text-accent-foreground mb-1">Latihan</h4>
-        <div className="text-sm text-muted-foreground">{children}</div>
+        <div className="text-sm text-muted-foreground prose prose-sm max-w-none">{children}</div>
       </div>
     </div>
   );
 
   const Dialogue = ({ character, text }: { character: string, text: string }) => (
     <div className="flex items-start gap-3 my-2">
-      <div className="font-bold w-16 text-right text-muted-foreground">{character}:</div>
+      <div className="font-bold text-right text-muted-foreground text-sm w-16 flex-shrink-0">{character}:</div>
       <div className="flex-1 bg-muted rounded-md p-3 text-sm">{text}</div>
     </div>
   );
@@ -54,17 +55,17 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
             <ArrowLeft className="mr-2 h-4 w-4" />
             Kembali ke {unit.title}
         </Link>
-        <h1 className="text-4xl font-bold font-headline">{lesson.title}</h1>
+        <h1 className="text-3xl md:text-4xl font-bold font-headline">{lesson.title}</h1>
         <p className="text-lg text-muted-foreground mt-1">{lesson.description}</p>
       </div>
 
       <div className="prose dark:prose-invert max-w-none">
         {lesson.type === 'Lesson' && (
           <>
-            <p>Dalam pelajaran ini, kita akan fokus pada dasar-dasar yang akan membantu Anda memulai percakapan dalam bahasa Inggris.</p>
-            
             {params.lessonId === '1' && (
               <>
+                <p>Dalam pelajaran ini, kita akan fokus pada dasar-dasar yang akan membantu Anda memulai percakapan dalam bahasa Inggris.</p>
+                
                 <h3 className="flex items-center gap-2"><MessageSquareQuote className="h-5 w-5 text-primary"/>Sapaan (Greetings)</h3>
                 <p>Sapaan adalah cara untuk memulai percakapan. Berikut adalah beberapa sapaan yang paling umum:</p>
                 <ul>
@@ -92,10 +93,12 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                 </Practice>
 
                 <h4 className="font-semibold">Contoh Dialog</h4>
-                <Dialogue character="Anna" text="Hello!" />
-                <Dialogue character="Budi" text="Hi! My name is Budi. What's your name?" />
-                <Dialogue character="Anna" text="I'm Anna. Nice to meet you, Budi." />
-                <Dialogue character="Budi" text="Nice to meet you too, Anna." />
+                <div className="not-prose">
+                  <Dialogue character="Anna" text="Hello!" />
+                  <Dialogue character="Budi" text="Hi! My name is Budi. What's your name?" />
+                  <Dialogue character="Anna" text="I'm Anna. Nice to meet you, Budi." />
+                  <Dialogue character="Budi" text="Nice to meet you too, Anna." />
+                </div>
               </>
             )}
 
@@ -114,34 +117,41 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                 </Tip>
               </>
             )}
+             {params.lessonId !== '1' && params.lessonId !== '2' && (
+                <p className="text-muted-foreground">Konten untuk pelajaran ini sedang dalam pengembangan. Silakan periksa kembali nanti!</p>
+            )}
           </>
         )}
 
         {lesson.type === 'Quiz' && (
             <>
                 <p>Saatnya menguji pengetahuan Anda! Jawablah pertanyaan-pertanyaan berikut berdasarkan apa yang telah Anda pelajari di unit ini.</p>
-                <Card className="my-6">
-                    <CardContent className="p-6 space-y-4">
-                        <div>
+                <Card className="my-6 not-prose">
+                    <CardContent className="p-6 space-y-6">
+                        <div className="space-y-2">
                             <p className="font-semibold">1. Bagaimana cara Anda menyapa seseorang di pagi hari?</p>
-                            <p className="text-sm text-muted-foreground">Jawaban: Good morning.</p>
+                            <p className="text-sm text-green-600 dark:text-green-400">Jawaban: Good morning.</p>
                         </div>
-                         <div>
+                         <div className="space-y-2">
                             <p className="font-semibold">2. Apa yang Anda katakan setelah seseorang berterima kasih kepada Anda?</p>
-                            <p className="text-sm text-muted-foreground">Jawaban: You're welcome.</p>
+                            <p className="text-sm text-green-600 dark:text-green-400">Jawaban: You're welcome.</p>
                         </div>
-                         <div>
+                         <div className="space-y-2">
                             <p className="font-semibold">3. "Nice to meet you" artinya...</p>
-                            <p className="text-sm text-muted-foreground">Jawaban: Senang bertemu dengan Anda.</p>
+                            <p className="text-sm text-green-600 dark:text-green-400">Jawaban: Senang bertemu dengan Anda.</p>
                         </div>
                     </CardContent>
                 </Card>
             </>
         )}
+        
+        {lesson.type === 'Practice' && (
+             <p className="text-muted-foreground">Konten untuk latihan ini sedang dalam pengembangan. Silakan periksa kembali nanti!</p>
+        )}
 
       </div>
-      <div className="mt-8 text-center">
-        <Button asChild>
+      <div className="mt-8 mb-4 text-center">
+        <Button asChild size="lg">
           <Link href={`/learn/${params.unitId}`}>
             <Check className="mr-2 h-4 w-4" />
             Selesaikan Pelajaran
