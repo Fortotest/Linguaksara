@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useState, useRef, useEffect } from 'react';
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Bot, Loader2, Send, Sparkles, User } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { aiConversationGrammarSuggestions } from '@/ai/flows/ai-conversation-grammar-suggestions';
+import { aiConversation } from '@/ai/flows/ai-conversation';
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from '@/lib/utils';
+import { useToast } from '@/hooks/use-toast';
 
 type Message = {
   role: 'user' | 'bot';
@@ -22,26 +24,55 @@ export default function ConversationPage() {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollAreaRef.current) {
+        const viewport = scrollAreaRef.current.querySelector('div[data-radix-scroll-area-viewport]');
+        if (viewport) {
+            viewport.scrollTop = viewport.scrollHeight;
+        }
+    }
+  }, [messages]);
 
   const handleSend = async () => {
     if (!input.trim()) return;
 
     const userMessage: Message = { role: 'user', text: input };
-    setMessages(prev => [...prev, userMessage]);
+    const newMessages: Message[] = [...messages, userMessage];
+    setMessages(newMessages);
     setInput('');
     setIsLoading(true);
 
     try {
-      const { suggestions } = await aiConversationGrammarSuggestions({ text: input });
-      setMessages(prev => prev.map(msg => msg === userMessage ? { ...msg, suggestions } : msg));
+      // Fetch suggestions and AI response in parallel
+      const [suggestionsResponse, conversationResponse] = await Promise.all([
+        aiConversationGrammarSuggestions({ text: userMessage.text }),
+        aiConversation({ messages: newMessages.map(({role, text}) => ({role, text})) })
+      ]);
       
-      const botResponse: Message = { role: 'bot', text: "That's interesting! Tell me more." };
-      setMessages(prev => [...prev, botResponse]);
+      const { suggestions } = suggestionsResponse;
+      const { text: botText } = conversationResponse;
+
+      setMessages(prev => {
+          const updatedMessages = [...prev];
+          const lastMessageIndex = updatedMessages.length - 1;
+          if(updatedMessages[lastMessageIndex].role === 'user') {
+              updatedMessages[lastMessageIndex] = { ...updatedMessages[lastMessageIndex], suggestions };
+          }
+          return [...updatedMessages, { role: 'bot', text: botText }];
+      });
 
     } catch (error) {
       console.error("AI conversation error:", error);
-      const errorResponse: Message = { role: 'bot', text: "I'm having a little trouble understanding. Could you try rephrasing?" };
-      setMessages(prev => [...prev, errorResponse]);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "I'm having a little trouble understanding. Please try again.",
+      });
+      // remove the user message if there was an error
+      setMessages(prev => prev.slice(0, -1));
     } finally {
       setIsLoading(false);
     }
@@ -55,7 +86,7 @@ export default function ConversationPage() {
                 <CardDescription>Chat with our AI to improve your speaking and fluency.</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow flex flex-col gap-4 overflow-hidden">
-                <ScrollArea className="flex-grow pr-4 -mr-4">
+                <ScrollArea className="flex-grow pr-4 -mr-4" ref={scrollAreaRef}>
                     <div className="space-y-6">
                         {messages.map((message, index) => (
                             <div key={index} className={cn("flex items-start gap-4", message.role === 'user' ? 'justify-end' : 'justify-start')}>
@@ -66,7 +97,7 @@ export default function ConversationPage() {
                                 )}
                                 <div className={cn("max-w-xs md:max-w-md lg:max-w-lg space-y-2", message.role === 'user' && 'text-right items-end flex flex-col')}>
                                   <div className={cn("px-4 py-2 rounded-lg", message.role === 'user' ? 'bg-primary text-primary-foreground rounded-br-none' : 'bg-muted rounded-bl-none')}>
-                                      <p>{message.text}</p>
+                                      <p className="whitespace-pre-wrap">{message.text}</p>
                                   </div>
                                   {message.suggestions && message.suggestions.length > 0 && (
                                     <div className="p-3 rounded-lg bg-accent text-left">
