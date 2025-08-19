@@ -1,4 +1,5 @@
 
+
 import { Button } from "@/components/ui/button";
 import { unitsData } from "@/lib/learn-data";
 import { ArrowLeft, Check, Lightbulb, Pencil, MessageSquareQuote, HelpCircle, BookCopy, Utensils, Clock } from "lucide-react";
@@ -171,7 +172,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                         <li>Meminta meja: <strong>"A table for two, please."</strong> (Meja untuk dua orang.)</li>
                         <li>Meminta menu: <strong>"Can I see the menu, please?"</strong> (Bolehkah saya lihat menunya?)</li>
                         <li>Siap memesan: <strong>"I'm ready to order."</strong> (Saya siap memesan.)</li>
-                        <li>Memesan makanan: <strong>"I would like the chicken soup."</strong> (Saya ingin memesan sup ayam.) atau <strong>"I'll have the steak."</strong> (Saya pesan steak.)</li>
+                        <li>Memesan makanan: - <strong>"I would like the chicken soup."</strong> (Saya ingin memesan sup ayam.) atau <strong>"I'll have the steak."</strong> (Saya pesan steak.)</li>
                         <li>Meminta tagihan: <strong>"Can I have the bill, please?"</strong> (Bolehkah saya minta tagihannya?)</li>
                     </ul>
                      <h4 className="font-semibold">Contoh Dialog</h4>
@@ -242,7 +243,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
       </div>
       <div className="mt-8 mb-4 text-center">
         <Button asChild size="lg">
-          <Link href={`/learn/${params.unitId}`}>
+          <Link href={`/learn/${params.unitId}?completedLessonId=${lesson.id}`}>
             <Check className="mr-2 h-4 w-4" />
             Selesaikan Pelajaran
           </Link>

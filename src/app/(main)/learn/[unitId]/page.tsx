@@ -1,4 +1,6 @@
 
+'use client';
+
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, CheckCircle, BookOpen, PencilRuler } from "lucide-react";
 import Link from "next/link";
@@ -6,6 +8,8 @@ import { unitsData } from "@/lib/learn-data";
 import type { LessonType } from "@/lib/learn-data";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const getLessonIcon = (type: LessonType) => {
   switch (type) {
@@ -17,6 +21,19 @@ const getLessonIcon = (type: LessonType) => {
 
 export default function UnitDetailPage({ params }: { params: { unitId: string } }) {
   const unit = unitsData[params.unitId as keyof typeof unitsData];
+  const searchParams = useSearchParams();
+  const [lessons, setLessons] = useState(unit?.lessons || []);
+
+  useEffect(() => {
+    const completedLessonId = searchParams.get('completedLessonId');
+    if (completedLessonId) {
+      setLessons(prevLessons => 
+        prevLessons.map(lesson => 
+          lesson.id === completedLessonId ? { ...lesson, completed: true } : lesson
+        )
+      );
+    }
+  }, [searchParams]);
 
   if (!unit) {
     return (
@@ -41,7 +58,7 @@ export default function UnitDetailPage({ params }: { params: { unitId: string } 
         </div>
 
         <div className="space-y-4">
-            {unit.lessons.map((lesson) => (
+            {lessons.map((lesson) => (
                  <Card key={lesson.id} className="hover:shadow-md transition-shadow">
                     <CardContent className="flex items-center gap-4 p-4">
                         <div className="p-3 bg-accent rounded-lg">
@@ -51,7 +68,7 @@ export default function UnitDetailPage({ params }: { params: { unitId: string } 
                             <h3 className="font-semibold">{lesson.title}</h3>
                             <Badge variant="outline" className="mt-1">{lesson.type}</Badge>
                         </div>
-                        <Button asChild variant={lesson.completed ? "ghost" : "default"} size="sm" className="ml-auto">
+                        <Button asChild variant={lesson.completed ? "ghost" : "default"} size="sm" className="ml-auto" disabled={lesson.completed}>
                            <Link href={`/learn/${params.unitId}/${lesson.id}`}>
                               {lesson.completed ? (
                                   <>

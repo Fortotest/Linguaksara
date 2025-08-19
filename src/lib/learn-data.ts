@@ -5,8 +5,8 @@ export const unitsData = {
   "1": { 
     title: "Unit 1: The Basics", 
     lessons: [
-      { id: "1", title: "Greetings and Introductions", description: "Pelajari cara menyapa dan memperkenalkan diri Anda.", type: "Lesson", completed: false },
-      { id: "2", title: "Basic Phrases", description: "Kuasai frasa penting untuk komunikasi sehari-hari.", type: "Lesson", completed: false },
+      { id: "1", title: "Greetings and Introductions", description: "Pelajari cara menyapa dan memperkenalkan diri Anda.", type: "Lesson", completed: true },
+      { id: "2", title: "Basic Phrases", description: "Kuasai frasa penting untuk komunikasi sehari-hari.", type: "Lesson", completed: true },
       { id: "3", title: "Alphabet and Numbers", description: "Kenali alfabet dan angka dalam bahasa Inggris.", type: "Lesson", completed: false },
       { id: "5", title: "Asking Simple Questions", description: "Belajar membuat pertanyaan dasar (Who, What, Where).", type: "Lesson", completed: false },
       { id: "4", title: "Quiz: The Basics", description: "Uji pemahaman Anda tentang dasar-dasar.", type: "Quiz", completed: false },
