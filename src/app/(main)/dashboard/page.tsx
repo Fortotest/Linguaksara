@@ -3,10 +3,11 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Bot, BookOpen, PenTool } from "lucide-react";
+import { CheckCircle2, Bot, BookOpen, PenTool, Flame, ArrowRight } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
+import Link from "next/link";
 
 const chartData = [
   { day: "Sen", xp: 50 },
@@ -24,6 +25,16 @@ const chartConfig = {
     color: "hsl(var(--primary))",
   },
 };
+
+const streakDays = [
+    { day: "S", active: true },
+    { day: "S", active: true },
+    { day: "R", active: true },
+    { day: "K", active: false },
+    { day: "J", active: true },
+    { day: "S", active: true },
+    { day: "M", active: true },
+]
 
 export default function DashboardPage() {
   return (
@@ -56,7 +67,7 @@ export default function DashboardPage() {
                 <p className="font-semibold">Vocabulary Practice</p>
                 <p className="text-sm text-muted-foreground">Perkaya kosakatamu dengan 10 kata baru.</p>
               </div>
-              <Button className="ml-auto" size="sm">Mulai</Button>
+              <Button className="ml-auto" size="sm" asChild><Link href="/vocabulary">Mulai</Link></Button>
             </div>
             <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary/70">
               <div className="bg-primary/10 p-3 rounded-full">
@@ -66,7 +77,7 @@ export default function DashboardPage() {
                 <p className="font-semibold">AI Conversation</p>
                 <p className="text-sm text-muted-foreground">Latih kelancaranmu dengan ngobrol 5 menit.</p>
               </div>
-              <Button className="ml-auto" size="sm">Mulai</Button>
+              <Button className="ml-auto" size="sm" asChild><Link href="/conversation">Mulai</Link></Button>
             </div>
             <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary/70">
               <div className="bg-primary/10 p-3 rounded-full">
@@ -80,32 +91,66 @@ export default function DashboardPage() {
             </div>
           </CardContent>
         </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Weekly Progress</CardTitle>
-            <CardDescription>Perolehan XP kamu dalam 7 hari terakhir.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ChartContainer config={chartConfig} className="h-[200px] w-full">
-              <BarChart accessibilityLayer data={chartData}>
-                <CartesianGrid vertical={false} />
-                <XAxis
-                  dataKey="day"
-                  tickLine={false}
-                  tickMargin={10}
-                  axisLine={false}
-                />
-                 <YAxis tickLine={false} axisLine={false} />
-                <ChartTooltip
-                  cursor={false}
-                  content={<ChartTooltipContent indicator="dot" />}
-                />
-                <Bar dataKey="xp" fill="var(--color-xp)" radius={8} />
-              </BarChart>
-            </ChartContainer>
-          </CardContent>
-        </Card>
+
+        <div className="space-y-6">
+            <Card>
+                <CardHeader>
+                    <CardTitle>Daily Streak</CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-col items-center justify-center gap-4">
+                    <div className="flex items-center gap-2">
+                        <Flame className="h-12 w-12 text-orange-500" />
+                        <span className="text-5xl font-bold">16</span>
+                    </div>
+                    <div className="flex gap-2">
+                        {streakDays.map((d, i) => (
+                            <div key={i} className={`h-8 w-8 rounded-full flex items-center justify-center font-bold text-xs ${d.active ? 'bg-orange-500 text-white' : 'bg-muted'}`}>
+                                {d.day}
+                            </div>
+                        ))}
+                    </div>
+                </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Weekly Progress</CardTitle>
+                <CardDescription>Perolehan XP kamu dalam 7 hari terakhir.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ChartContainer config={chartConfig} className="h-[150px] w-full">
+                  <BarChart accessibilityLayer data={chartData}>
+                    <CartesianGrid vertical={false} />
+                    <XAxis
+                      dataKey="day"
+                      tickLine={false}
+                      tickMargin={10}
+                      axisLine={false}
+                    />
+                    <YAxis tickLine={false} axisLine={false} />
+                    <ChartTooltip
+                      cursor={false}
+                      content={<ChartTooltipContent indicator="dot" formatter={(value, name) => `${day}: +${value} XP`} />}
+                    />
+                    <Bar dataKey="xp" fill="var(--color-xp)" radius={8} />
+                  </BarChart>
+                </ChartContainer>
+              </CardContent>
+            </Card>
+        </div>
+
       </div>
+        <Card className="mt-6">
+            <CardContent className="p-6 flex items-center justify-between">
+                <div>
+                    <h3 className="font-semibold text-lg">Lanjutkan Belajar</h3>
+                    <p className="text-muted-foreground">Terakhir kamu belajar: Unit 3 - Simple Sentences</p>
+                </div>
+                <Button asChild size="lg">
+                    <Link href="/learn/3" className="flex items-center gap-2">Lanjutkan Belajar <ArrowRight className="h-4 w-4" /></Link>
+                </Button>
+            </CardContent>
+        </Card>
     </>
   );
 }

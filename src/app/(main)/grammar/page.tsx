@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -8,6 +9,39 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { correctGrammar } from '@/ai/flows/grammar-correction';
 import { Loader2, Wand2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
+
+const FillInTheBlank = ({ question, options, answer, onCorrect }: { question: string, options: string[], answer: string, onCorrect: () => void }) => {
+    const [selected, setSelected] = useState('');
+    const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+
+    const checkAnswer = () => {
+        if(selected === answer) {
+            setIsCorrect(true);
+            onCorrect();
+        } else {
+            setIsCorrect(false);
+        }
+    }
+
+    return (
+        <div className="p-4 border rounded-lg mt-4 bg-background">
+            <p className="font-semibold mb-2" dangerouslySetInnerHTML={{ __html: question }} />
+            <RadioGroup value={selected} onValueChange={setSelected}>
+                {options.map(opt => (
+                    <div key={opt} className="flex items-center space-x-2">
+                        <RadioGroupItem value={opt} id={opt} />
+                        <Label htmlFor={opt}>{opt}</Label>
+                    </div>
+                ))}
+            </RadioGroup>
+            <Button onClick={checkAnswer} size="sm" className="mt-4" disabled={isCorrect !== null}>Cek Jawaban</Button>
+            {isCorrect === true && <p className="text-green-600 font-semibold mt-2">Benar!</p>}
+            {isCorrect === false && <p className="text-red-600 font-semibold mt-2">Coba lagi.</p>}
+        </div>
+    );
+};
 
 export default function GrammarPage() {
   const [text, setText] = useState('');
@@ -35,29 +69,56 @@ export default function GrammarPage() {
   };
 
   return (
-    <div className="grid gap-6 md:grid-cols-2">
+    <div className="grid gap-8 md:grid-cols-2">
       <div>
         <div className="mb-6">
             <h1 className="text-3xl font-bold font-headline">Grammar Lessons</h1>
-            <p className="text-muted-foreground">Perdalam pengetahuan Anda dengan pelajaran ringkas ini.</p>
+            <p className="text-muted-foreground">Perdalam pengetahuan Anda dengan pelajaran dan latihan interaktif ini.</p>
         </div>
-        <Accordion type="single" collapsible className="w-full">
+        <Accordion type="single" collapsible className="w-full" defaultValue="item-1">
           <AccordionItem value="item-1">
             <AccordionTrigger>Present Tense (Waktu Sekarang)</AccordionTrigger>
             <AccordionContent>
-              Gunakan untuk membicarakan kejadian saat ini atau fakta umum. Contoh: "I speak English." (Saya berbicara bahasa Inggris) atau "The sun rises in the east." (Matahari terbit dari timur).
+                <div className="space-y-4">
+                    <p>Gunakan untuk membicarakan kejadian saat ini atau fakta umum. Contoh: "I speak English." (Saya berbicara bahasa Inggris) atau "The sun rises in the east." (Matahari terbit dari timur).</p>
+                    <p>Setelah penjelasan ini, langsung coba latihan di bawah untuk mempraktikkan pengetahuan Anda.</p>
+                    <FillInTheBlank
+                        question="The cat ___ sleeping on the sofa."
+                        options={['am', 'is', 'are']}
+                        answer="is"
+                        onCorrect={() => {}}
+                    />
+                </div>
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
             <AccordionTrigger>Past Tense (Waktu Lampau)</AccordionTrigger>
             <AccordionContent>
-              Gunakan untuk tindakan yang dimulai dan selesai di masa lalu. Contoh: "I walked to the park yesterday." (Saya berjalan ke taman kemarin).
+                <div className="space-y-4">
+                    <p>Gunakan untuk tindakan yang dimulai dan selesai di masa lalu. Contoh: "I walked to the park yesterday." (Saya berjalan ke taman kemarin).</p>
+                    <p>Aturan dasarnya adalah menambahkan '-ed' pada kata kerja reguler.</p>
+                    <FillInTheBlank
+                        question="They ___ the movie last night."
+                        options={['watch', 'watched', 'watches']}
+                        answer="watched"
+                        onCorrect={() => {}}
+                    />
+                </div>
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
             <AccordionTrigger>Future Tense (Waktu Depan)</AccordionTrigger>
             <AccordionContent>
-              Gunakan untuk menggambarkan hal-hal yang belum terjadi. Contoh: "I will travel to Spain next year." (Saya akan bepergian ke Spanyol tahun depan).
+                <div className="space-y-4">
+                    <p>Gunakan untuk menggambarkan hal-hal yang belum terjadi. Cara paling umum adalah menggunakan 'will' diikuti kata kerja dasar.</p>
+                    <p>Contoh: "I will travel to Spain next year." (Saya akan bepergian ke Spanyol tahun depan).</p>
+                    <FillInTheBlank
+                        question="We ___ visit our grandmother tomorrow."
+                        options={['will', 'would', 'did']}
+                        answer="will"
+                        onCorrect={() => {}}
+                    />
+                </div>
             </AccordionContent>
           </AccordionItem>
         </Accordion>
