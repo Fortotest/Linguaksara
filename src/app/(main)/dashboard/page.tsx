@@ -53,7 +53,7 @@ export default function DashboardPage() {
                 <BookOpen className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <p className="font-semibold">Latihan Kosakata</p>
+                <p className="font-semibold">Vocabulary Practice</p>
                 <p className="text-sm text-muted-foreground">Perkaya kosakatamu dengan 10 kata baru.</p>
               </div>
               <Button className="ml-auto" size="sm">Mulai</Button>
@@ -63,7 +63,7 @@ export default function DashboardPage() {
                 <Bot className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <p className="font-semibold">Percakapan AI</p>
+                <p className="font-semibold">AI Conversation</p>
                 <p className="text-sm text-muted-foreground">Latih kelancaranmu dengan ngobrol 5 menit.</p>
               </div>
               <Button className="ml-auto" size="sm">Mulai</Button>
@@ -73,7 +73,7 @@ export default function DashboardPage() {
                 <PenTool className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <p className="font-semibold">Pelajaran Tata Bahasa</p>
+                <p className="font-semibold">Grammar Lesson</p>
                 <p className="text-sm text-muted-foreground">Kuasai aturan 'Past Tense'.</p>
               </div>
                <Button className="ml-auto" size="sm" variant="outline" disabled>Selesai</Button>
