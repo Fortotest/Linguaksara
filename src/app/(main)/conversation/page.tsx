@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Bot, Loader2, Send, User, Sparkles, Wand2 } from "lucide-react";
+import { Bot, Loader2, Send, User } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { aiConversation } from '@/ai/flows/ai-conversation';
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -23,7 +23,6 @@ export default function ConversationPage() {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [suggestions, setSuggestions] = useState<string[]>([]);
   const { toast } = useToast();
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
@@ -43,10 +42,8 @@ export default function ConversationPage() {
     const userMessage: Message = { role: 'user', text: input };
     const newMessages: Message[] = [...messages, userMessage];
     setMessages(newMessages);
-    const currentInput = input;
     setInput('');
     setIsLoading(true);
-    setSuggestions([]); // Clear previous suggestions
 
     try {
       const conversationHistory = newMessages.map(({role, text}) => ({role, text}));
@@ -54,9 +51,6 @@ export default function ConversationPage() {
 
       if (conversationResponse?.text) {
           setMessages(prev => [...prev, { role: 'bot', text: conversationResponse.text }]);
-          if (conversationResponse.suggestions) {
-            setSuggestions(conversationResponse.suggestions);
-          }
       } else {
         toast({ variant: "destructive", title: "Error", description: "AI tidak memberikan respons."});
       }
@@ -64,17 +58,13 @@ export default function ConversationPage() {
     } catch (error) {
       console.error("AI conversation error:", error);
       toast({ variant: "destructive", title: "Error", description: "Terjadi kesalahan saat berkomunikasi dengan AI."});
-      // Don't revert the user message, so they can see what caused the error.
-      // setMessages(prev => prev.slice(0, -1));
-      // setInput(currentInput);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="grid lg:grid-cols-3 gap-8 h-full">
-      <Card className="lg:col-span-2 h-full flex flex-col">
+      <Card className="h-full flex flex-col">
         <CardHeader>
             <CardTitle>AI Assistant</CardTitle>
             <CardDescription>Ngobrol dengan Aksara untuk bertanya atau berlatih.</CardDescription>
@@ -116,36 +106,5 @@ export default function ConversationPage() {
             </div>
         </CardContent>
       </Card>
-      
-      <div className="lg:col-span-1">
-          <Card>
-              <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                      <Wand2 className="h-5 w-5 text-primary" />
-                      <span>Saran Kalimat</span>
-                  </CardTitle>
-                  <CardDescription>Cara lain yang lebih baik untuk mengatakan kalimat terakhir Anda.</CardDescription>
-              </CardHeader>
-              <CardContent>
-                  {isLoading && suggestions.length === 0 ? (
-                      <div className="flex items-center justify-center h-24">
-                          <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
-                      </div>
-                  ) : suggestions.length > 0 ? (
-                      <ul className="space-y-3">
-                          {suggestions.map((suggestion, index) => (
-                              <li key={index} className="flex items-start gap-3">
-                                  <Sparkles className="h-4 w-4 text-yellow-500 mt-1 flex-shrink-0" />
-                                  <p className="text-sm font-medium">"{suggestion}"</p>
-                              </li>
-                          ))}
-                      </ul>
-                  ) : (
-                      <p className="text-sm text-muted-foreground text-center h-24 flex items-center justify-center">Kirim pesan untuk mendapatkan saran perbaikan kalimat.</p>
-                  )}
-              </CardContent>
-          </Card>
-      </div>
-    </div>
   );
 }

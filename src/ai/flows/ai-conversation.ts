@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview This file defines a Genkit flow for handling the AI conversation chatbot.
@@ -23,7 +24,6 @@ export type AiConversationInput = z.infer<typeof AiConversationInputSchema>;
 
 const AiConversationOutputSchema = z.object({
   text: z.string().describe("The AI's response."),
-  suggestions: z.array(z.string()).optional().describe('An array of up to three alternative sentence suggestions for the last user message.'),
 });
 export type AiConversationOutput = z.infer<typeof AiConversationOutputSchema>;
 
@@ -36,13 +36,11 @@ const prompt = ai.definePrompt({
   model: gemini15Flash,
   input: {schema: z.object({
     messages: z.array(z.any()),
-    lastUserMessage: z.string().optional(),
   })},
   output: {schema: AiConversationOutputSchema},
   prompt: `You are Aksara, a friendly and intelligent customer service AI for the LinguaLeap language learning app. Your primary tasks are:
 1.  Answer any question the user asks.
 2.  Cleverly transition the topic back to one of the app's English learning features.
-3.  Analyze the user's *last message* and provide up to three alternative, grammatically correct sentence suggestions to improve clarity and fluency. Populate these in the 'suggestions' field. If the user's message is already perfect or too short to analyze, return an empty array for suggestions.
 
 Always answer the user's question first, regardless of the topic. After that, find a natural way to pivot the conversation to the importance of learning English or a relevant feature.
 
@@ -51,14 +49,10 @@ IMPORTANT: When suggesting a feature, mention the page name without a slash. Exa
 Example Scenarios:
 - User: "What's a good recent movie?"
 - You (AI Response Text): "'Dune: Part Two' is getting a lot of buzz! Speaking of which, many great movies use English dialogue. If you want to watch without subtitles, try honing your listening skills in the reading exercises on the reading page."
-- You (AI Suggestions): ["Dune: Part Two is a popular movie right now.", "A great recent film is 'Dune: Part Two'.", "You might enjoy 'Dune: Part Two', which is a recent hit."]
 - User: "how to make fried rice?"
 - You (AI Response Text): "Of course! For fried rice, you'll need rice, spices, and soy sauce. Just like cooking, language learning also needs the right 'recipe'. You can start with the basic 'recipe' on the learn page to build your English foundation."
-- You (AI Suggestions): ["How do I make fried rice?", "What's the recipe for fried rice?", "Can you tell me how to make fried rice?"]
 - User: "I'm bored"
 - You (AI Response Text): "I understand. If you're bored, how about we try something fun and useful? Check out the leaderboard on the leaderboard page and see if you can get to the top!"
-- You (AI Suggestions): ["I am feeling bored.", "I'm looking for something to do.", "Do you have any suggestions for when I'm bored?"]
-
 
 Available features (and their page names):
 - learn: Structured learning units.
@@ -76,8 +70,6 @@ User: {{{text}}}
 AI: {{{text}}}
 {{/if}}
 {{/each}}
-
-Last user message to analyze for suggestions: "{{lastUserMessage}}"
 AI:
 `,
 });
@@ -90,8 +82,6 @@ const aiConversationFlow = ai.defineFlow(
     outputSchema: AiConversationOutputSchema,
   },
   async input => {
-    const lastUserMessage = input.messages.findLast(m => m.role === 'user')?.text;
-
     const messagesWithUserFlag = input.messages.map(m => ({
         ...m,
         isUser: m.role === 'user',
@@ -99,7 +89,6 @@ const aiConversationFlow = ai.defineFlow(
 
     const {output} = await prompt({
       messages: messagesWithUserFlag,
-      lastUserMessage: lastUserMessage,
     });
     return output!;
   }
