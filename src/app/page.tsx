@@ -29,14 +29,14 @@ export default function LandingPage() {
             Mulai Petualangan Bahasa Inggris Anda
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Bergabunglah dengan jutaan orang dan kuasai bahasa Inggris bersama Linguaksara, platform belajar bahasa Inggris #1 di Indonesia—dirancang khusus untuk Anda dan sepenuhnya gratis.
+            Bergabunglah dengan jutaan orang dan kuasai bahasa Inggris bersama Linguaksara, platform belajar bahasa Inggris #1 di Indonesia yang dirancang untuk membuka potensimu—sepenuhnya gratis.
           </p>
           <Button size="lg" asChild>
             <Link href="/signup">Mulai Belajar, Gratis!</Link>
           </Button>
           <div className="mt-12 relative">
              <Image 
-              src="https://raw.githubusercontent.com/tesweb2025/Market-Intelligence-5.1/1ccb02596d257dec4beb1e512a6e9339df244cea/header%20231%20baru.jpg"
+              src="https://raw.githubusercontent.com/tesweb2025/Market-Intelligence-5.1/45009b7b2db685e4bcac627743e0dfc299b2451a/3d%20header%20baru.png"
               alt="Pratinjau dashboard Linguaksara"
               width={1200}
               height={600}
