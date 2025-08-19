@@ -14,6 +14,7 @@ import { useState, useRef, useEffect } from "react";
 import Link from 'next/link';
 import { useToast } from '@/hooks/use-toast';
 import { textToSpeech } from '@/ai/flows/text-to-speech';
+import { cn } from '@/lib/utils';
 
 type WordWithDefinitionProps = {
   word: string;
@@ -52,8 +53,8 @@ export default function ReadingStoryPage() {
   const { toast } = useToast();
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const [userAnswers, setUserAnswers] = useState<Record<number, string>>({});
-  const [score, setScore] =useState<number | null>(null);
+  const [userAnswers, setUserAnswers] = useState<Record<number, string | boolean>>({});
+  const [score, setScore] = useState<number | null>(null);
 
   const handlePlayPause = async () => {
     if (isPlaying && audioRef.current) {
@@ -137,18 +138,21 @@ export default function ReadingStoryPage() {
     return <p className="leading-relaxed">{result}</p>;
   };
 
-  const handleAnswerChange = (questionIndex: number, value: string) => {
+  const handleAnswerChange = (questionIndex: number, value: string | boolean) => {
     setUserAnswers(prev => ({...prev, [questionIndex]: value}));
   }
 
   const handleSubmitQuiz = () => {
-    if (!story.activity || story.activity.type !== 'multiple-choice') return;
+    if (!story.activity) return;
+
     let correctAnswers = 0;
-    story.activity.questions.forEach((q, i) => {
-        if(userAnswers[i] === q.answer) {
-            correctAnswers++;
-        }
-    });
+    if (story.activity.type === 'multiple-choice' || story.activity.type === 'true-false') {
+        story.activity.questions.forEach((q, i) => {
+            if(userAnswers[i] === q.answer) {
+                correctAnswers++;
+            }
+        });
+    }
     setScore(correctAnswers);
   };
   
@@ -156,7 +160,8 @@ export default function ReadingStoryPage() {
     if (!story.activity) return null;
 
     switch(story.activity.type) {
-        case 'multiple-choice':
+        case 'multiple-choice': {
+            if (!story.activity.questions) return null;
             return (
                 <Card className="mt-6">
                     <CardHeader>
@@ -189,17 +194,58 @@ export default function ReadingStoryPage() {
                     </CardContent>
                 </Card>
             )
-        case 'true-false':
+        }
+        case 'true-false': {
+            if (!story.activity.questions) return null;
              return (
                 <Card className="mt-6">
                     <CardHeader>
                         <CardTitle>Benar atau Salah?</CardTitle>
                         <CardDescription>Tentukan apakah pernyataan berikut benar atau salah.</CardDescription>
                     </CardHeader>
-                    {/* ... Implementasi True/False ... */}
+                    <CardContent className="space-y-6">
+                        {story.activity.questions.map((q, index) => (
+                            <div key={index}>
+                                <p className="font-semibold mb-2">{index + 1}. {q.statement}</p>
+                                <div className="flex gap-4">
+                                    <Button
+                                      variant={userAnswers[index] === true ? 'default' : 'outline'}
+                                      onClick={() => handleAnswerChange(index, true)}
+                                      disabled={score !== null}
+                                      className={cn(
+                                        score !== null && q.answer === true && 'bg-green-500 hover:bg-green-600',
+                                        score !== null && userAnswers[index] === true && userAnswers[index] !== q.answer && 'bg-red-500 hover:bg-red-600'
+                                      )}
+                                    >
+                                        Benar
+                                    </Button>
+                                    <Button
+                                      variant={userAnswers[index] === false ? 'default' : 'outline'}
+                                      onClick={() => handleAnswerChange(index, false)}
+                                      disabled={score !== null}
+                                      className={cn(
+                                        score !== null && q.answer === false && 'bg-green-500 hover:bg-green-600',
+                                        score !== null && userAnswers[index] === false && userAnswers[index] !== q.answer && 'bg-red-500 hover:bg-red-600'
+                                      )}
+                                    >
+                                        Salah
+                                    </Button>
+                                </div>
+                            </div>
+                        ))}
+                         <Button onClick={handleSubmitQuiz} disabled={Object.keys(userAnswers).length !== story.activity.questions.length || score !== null}>
+                            Lihat Hasil
+                        </Button>
+                        {score !== null && (
+                            <div className="mt-4 p-4 rounded-lg bg-accent">
+                                <h3 className="font-bold text-lg">Hasil Anda:</h3>
+                                <p>Anda menjawab dengan benar {score} dari {story.activity.questions.length} pertanyaan!</p>
+                            </div>
+                        )}
+                    </CardContent>
                 </Card>
             )
-        // ... tambahkan case lain di sini
+        }
         default:
             return null;
     }
@@ -257,3 +303,5 @@ export default function ReadingStoryPage() {
     </div>
   );
 }
+
+    

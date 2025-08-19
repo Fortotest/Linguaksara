@@ -40,7 +40,9 @@ export interface Story {
   dataAiHint: string;
   paragraphs: string[];
   keywords: WordDefinition[];
-  activity: Activity;
+  activity: 
+    | { type: 'multiple-choice', questions: MultipleChoiceQuestion[] }
+    | { type: 'true-false', questions: TrueFalseQuestion[] }
 }
 
 export const readingData: Story[] = [
@@ -71,13 +73,10 @@ export const readingData: Story[] = [
       { word: "legacy", definition: "Sesuatu yang ditinggalkan oleh seseorang atau dari masa lalu; warisan." },
     ],
     activity: {
-      type: 'chronology',
-      items: [
-        "Menavigasi hutan lebat",
-        "Menyeberangi sungai berbahaya",
-        "Melewati gerbang batu yang tertutup lumut",
-        "Melihat arsitektur yang megah",
-        "Mendokumentasikan temuan untuk melestarikan warisan"
+      type: 'multiple-choice',
+      questions: [
+        { question: "What was the main challenge during the journey to Eldoria?", options: ["Lack of food", "Arduous terrain and rivers", "Internal team conflicts", "Bad weather"], answer: "Arduous terrain and rivers"},
+        { question: "What was the team's primary goal?", options: ["To find treasure", "To establish a new settlement", "To document and preserve the city's legacy", "To map the jungle"], answer: "To document and preserve the city's legacy"}
       ]
     }
   },
@@ -110,8 +109,7 @@ export const readingData: Story[] = [
         { statement: "Unit 734 was one of many robots still active.", answer: false },
         { statement: "The robot was initially scared of the human child.", answer: false },
         { statement: "The child taught the robot about friendship.", answer: true },
-        { statement: "The robot's only purpose was to perform its programmed tasks.", answer: false },
-        { statement: "Unit 734 felt lonely before meeting the child.", answer: true }
+        { statement: "The robot learned its true purpose was about connection.", answer: true }
       ]
     }
   },
@@ -139,13 +137,11 @@ export const readingData: Story[] = [
         { word: "reveal", definition: "Membuat sesuatu yang sebelumnya rahasia atau tidak diketahui menjadi diketahui." }
     ],
     activity: {
-      type: 'guess-who',
-      suspects: [
-        { name: "Lady Eleanor", image: "https://placehold.co/100x100.png" },
-        { name: "Mr. Silas", image: "https://placehold.co/100x100.png" },
-        { name: "Marco", image: "https://placehold.co/100x100.png" }
-      ],
-      culprit: "Lady Eleanor"
+      type: 'multiple-choice',
+      questions: [
+          { question: "What was Detective Corbin's first clue?", options: ["A torn piece of fabric", "A muddy footprint and a scratch", "A broken window", "A witness testimony"], answer: "A muddy footprint and a scratch"},
+          { question: "Who was the real thief?", options: ["Mr. Silas, the butler", "Marco, the art dealer", "A professional burglar", "Lady Eleanor, the owner"], answer: "Lady Eleanor, the owner"}
+      ]
     }
   },
   // Sejarah & Biografi
@@ -205,12 +201,10 @@ export const readingData: Story[] = [
       { word: "genius", definition: "Kecerdasan, kreativitas, atau kemampuan alami asli yang luar biasa." }
     ],
     activity: {
-      type: 'match',
-      pairs: [
-        { item: "Mona Lisa", match: "Karya seni lukisan terkenal" },
-        { item: "Flying Machine", match: "Konsep penemuan untuk penerbangan" },
-        { item: "Anatomy Studies", match: "Studi ilmiah tentang tubuh manusia" },
-        { item: "The Last Supper", match: "Lukisan dinding ikonik" }
+      type: 'multiple-choice',
+      questions: [
+        { question: "Which field did Leonardo da Vinci NOT study?", options: ["Art", "Anatomy", "Invention", "Computer Science"], answer: "Computer Science" },
+        { question: "What is the 'Mona Lisa'?", options: ["A scientific notebook", "A famous painting", "An invention", "A sculpture"], answer: "A famous painting" }
       ]
     }
   },
@@ -270,8 +264,11 @@ export const readingData: Story[] = [
       { word: "strategy", definition: "Rencana tindakan atau kebijakan yang dirancang untuk mencapai tujuan utama." }
     ],
     activity: {
-      type: 'plan-habit',
-      items: ["Pemicu (Cue)", "Rutinitas Baru (New Routine)", "Hadiah (Reward)"]
+      type: 'multiple-choice',
+      questions: [
+        { question: "What are the three parts of the 'Habit Loop'?", options: ["Cue, Action, Result", "Trigger, Behavior, Consequence", "Cue, Routine, Reward", "Start, Middle, End"], answer: "Cue, Routine, Reward" },
+        { question: "What is the golden rule of habit change?", options: ["Change the cue and the reward", "Keep the cue and reward, but change the routine", "Eliminate the cue completely", "Focus only on the reward"], answer: "Keep the cue and reward, but change the routine" }
+      ]
     }
   },
   {
@@ -297,9 +294,13 @@ export const readingData: Story[] = [
       { word: "technique", definition: "Cara melakukan tugas tertentu, terutama yang melibatkan keterampilan praktis." },
       { word: "environment", definition: "Lingkungan atau kondisi di mana seseorang, hewan, atau tumbuhan hidup atau beroperasi." }
     ],
-    activity: {
-      type: 'identify-distractions',
-      items: []
+     activity: {
+      type: 'true-false',
+      questions: [
+        { statement: "'Deep Work' is best performed while multi-tasking.", answer: false },
+        { statement: "The Pomodoro Technique involves long, unbroken work sessions.", answer: false },
+        { statement: "A dedicated, interruption-free workspace is important for focus.", answer: true }
+      ]
     }
   },
   {
@@ -326,8 +327,12 @@ export const readingData: Story[] = [
       { word: "well-being", definition: "Keadaan nyaman, sehat, atau bahagia." }
     ],
     activity: {
-      type: 'scenario-simulation',
-      items: []
+      type: 'true-false',
+      questions: [
+        { statement: "Saying 'no' is always a sign of being selfish.", answer: false },
+        { statement: "Saying 'yes' to everything can lead to stress and burnout.", answer: true },
+        { statement: "You must always give a long explanation when you say 'no'.", answer: false }
+      ]
     }
   },
   // Filsafat & Politik
@@ -411,7 +416,7 @@ export const readingData: Story[] = [
       "This constant questioning, however, made powerful people in Athens uncomfortable. They accused him of corrupting the youth and not believing in the city's gods. He was put on trial, found guilty, and sentenced to death.",
       "Despite his tragic end, Socrates's influence is immeasurable. His emphasis on reason, self-examination, and the relentless pursuit of truth has shaped the course of Western thought for over two millennia. He taught us not what to think, but how to think."
     ],
-s_keywords: [
+    keywords: [
       { word: "philosopher", definition: "Seseorang yang mempelajari filsafat, yang merupakan studi tentang sifat dasar pengetahuan, realitas, dan eksistensi." },
       { word: "Socratic method", definition: "Metode bertanya untuk merangsang pemikiran kritis." },
       { word: "stimulate", definition: "Meningkatkan tingkat aktivitas fisiologis atau saraf dalam tubuh atau bagian tubuh." },
