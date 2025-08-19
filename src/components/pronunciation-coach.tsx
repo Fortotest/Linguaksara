@@ -47,7 +47,7 @@ export function PronunciationCoach() {
       <CardHeader>
         <CardTitle className="text-xl flex items-center gap-2">
           <Volume2 className="h-6 w-6 text-primary" />
-          AI Pronunciation Coach
+          Pronunciation Practice
         </CardTitle>
       </CardHeader>
       <CardContent>
