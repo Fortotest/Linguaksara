@@ -19,7 +19,7 @@ export function PronunciationCoach() {
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: 'Silakan masukkan teks terlebih dahulu.',
+        description: 'Please enter some text first.',
       });
       return;
     }
@@ -35,7 +35,7 @@ export function PronunciationCoach() {
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: 'Maaf, terjadi kesalahan saat membuat audio.',
+        description: 'Sorry, an error occurred while generating the audio.',
       });
     } finally {
       setIsLoading(false);
@@ -47,13 +47,13 @@ export function PronunciationCoach() {
       <CardHeader>
         <CardTitle className="text-xl flex items-center gap-2">
           <Volume2 className="h-6 w-6 text-primary" />
-          Pelatih Pengucapan AI
+          AI Pronunciation Coach
         </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="grid w-full gap-2">
           <Textarea
-            placeholder="Ketik atau tempel kalimat apa pun di sini..."
+            placeholder="Type any English sentence here..."
             value={text}
             onChange={e => setText(e.target.value)}
             rows={3}
@@ -63,15 +63,15 @@ export function PronunciationCoach() {
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />{' '}
-                Memproses...
+                Processing...
               </>
             ) : (
-              'Dengarkan'
+              'Listen'
             )}
           </Button>
           <audio ref={audioRef} className="hidden" />
           <p className="text-xs text-muted-foreground mt-2">
-            Eksperimen dengan kalimat apa pun untuk melatih pendengaran Anda.
+            Type any sentence to hear its accurate pronunciation from our AI.
           </p>
         </div>
       </CardContent>
