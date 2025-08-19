@@ -11,14 +11,14 @@ export default function LandingPage() {
       <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Logo className="h-8 w-8 text-primary" />
-          <span className="text-xl font-bold">LinguaLeap</span>
+          <span className="text-xl font-bold">Linguaksara</span>
         </Link>
         <div className="flex items-center gap-4">
           <Button variant="ghost" asChild>
-            <Link href="/login">Login</Link>
+            <Link href="/login">Masuk</Link>
           </Button>
           <Button asChild>
-            <Link href="/signup">Sign Up</Link>
+            <Link href="/signup">Daftar</Link>
           </Button>
         </div>
       </header>
@@ -26,18 +26,18 @@ export default function LandingPage() {
       <main className="flex-grow">
         <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4">
-            Leap Into New Languages
+            Buka Pintu Dunia dengan Bahasa Inggris
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            Master any language with interactive lessons, AI-powered practice, and a personalized learning path. Join LinguaLeap and start speaking with confidence.
+            Linguaksara adalah cara termudah untuk menguasai bahasa Inggris. Belajar dari dasar, berlatih dengan AI, dan capai impian Anda.
           </p>
           <Button size="lg" asChild>
-            <Link href="/signup">Get Started for Free</Link>
+            <Link href="/signup">Mulai Belajar, Gratis!</Link>
           </Button>
           <div className="mt-12 relative">
              <Image 
               src="https://raw.githubusercontent.com/tesweb2025/Market-Intelligence-5.1/1ccb02596d257dec4beb1e512a6e9339df244cea/header%20231%20baru.jpg"
-              alt="LinguaLeap dashboard preview"
+              alt="Pratinjau dashboard Linguaksara"
               width={1200}
               height={600}
               className="rounded-xl shadow-2xl border-2 border-primary/20"
@@ -48,17 +48,17 @@ export default function LandingPage() {
 
         <section className="bg-card/30 py-20 backdrop-blur-sm">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-center mb-12">Why LinguaLeap?</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">Kenapa Memilih Linguaksara?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <Card className="text-center glass-card">
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                     <BookOpen className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="mt-4">Interactive Lessons</CardTitle>
+                  <CardTitle className="mt-4">Pelajaran Terstruktur</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">Engaging exercises and structured units make learning effective and fun.</p>
+                  <p className="text-muted-foreground">Materi dirancang khusus untuk pemula, membuat proses belajar jadi mudah dan menyenangkan.</p>
                 </CardContent>
               </Card>
               <Card className="text-center glass-card">
@@ -66,10 +66,10 @@ export default function LandingPage() {
                   <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                     <Bot className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="mt-4">AI Conversation</CardTitle>
+                  <CardTitle className="mt-4">Tutor AI Cerdas</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">Practice speaking with our AI chatbot and get instant feedback.</p>
+                  <p className="text-muted-foreground">Berlatih percakapan kapan saja dengan AI yang siap memberikan masukan instan.</p>
                 </CardContent>
               </Card>
               <Card className="text-center glass-card">
@@ -77,10 +77,10 @@ export default function LandingPage() {
                   <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                     <Award className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="mt-4">Gamified Learning</CardTitle>
+                  <CardTitle className="mt-4">Belajar Sambil Bermain</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">Earn XP, level up, and compete on the leaderboard to stay motivated.</p>
+                  <p className="text-muted-foreground">Kumpulkan poin, naik level, dan bersaing di papan peringkat agar tetap termotivasi.</p>
                 </CardContent>
               </Card>
               <Card className="text-center glass-card">
@@ -88,10 +88,10 @@ export default function LandingPage() {
                   <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                     <Sparkles className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="mt-4">Personalized Path</CardTitle>
+                  <CardTitle className="mt-4">Jalur Belajar Pribadi</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">AI adapts to your progress, creating a learning journey just for you.</p>
+                  <p className="text-muted-foreground">AI kami akan menyesuaikan materi dengan kemajuan Anda, membuat belajar lebih efektif.</p>
                 </CardContent>
               </Card>
             </div>
@@ -100,7 +100,7 @@ export default function LandingPage() {
       </main>
 
       <footer className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} LinguaLeap. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Linguaksara. Semua hak cipta dilindungi.</p>
       </footer>
     </div>
   );

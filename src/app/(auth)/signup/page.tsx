@@ -15,41 +15,41 @@ export default function SignupPage() {
         <Link href="/" className="flex items-center justify-center gap-2 mb-4">
           <Logo className="h-8 w-8 text-primary" />
         </Link>
-        <CardTitle className="text-2xl">Create an Account</CardTitle>
-        <CardDescription>Enter your information to create an account</CardDescription>
+        <CardTitle className="text-2xl">Buat Akun Baru</CardTitle>
+        <CardDescription>Isi data diri Anda untuk memulai perjalanan baru.</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="grid gap-4">
           <div className="grid gap-2">
-            <Label htmlFor="full-name">Full name</Label>
-            <Input id="full-name" placeholder="Ada Lovelace" required />
+            <Label htmlFor="full-name">Nama Lengkap</Label>
+            <Input id="full-name" placeholder="Contoh: Budi Sanjaya" required />
           </div>
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="m@example.com" required />
+            <Input id="email" type="email" placeholder="nama@email.com" required />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">Kata Sandi</Label>
             <Input id="password" type="password" required />
           </div>
           <Button type="submit" className="w-full" asChild>
-            <Link href="/dashboard">Create account</Link>
+            <Link href="/dashboard">Buat Akun</Link>
           </Button>
           <div className="relative my-2">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-card px-2 text-muted-foreground">Or sign up with</span>
+              <span className="bg-card px-2 text-muted-foreground">Atau daftar dengan</span>
             </div>
           </div>
           <Button variant="outline" className="w-full"><GoogleIcon/>Google</Button>
           <Button variant="outline" className="w-full"><FacebookIcon />Facebook</Button>
         </div>
         <div className="mt-4 text-center text-sm">
-          Already have an account?{' '}
+          Sudah punya akun?{' '}
           <Link href="/login" className="underline">
-            Login
+            Masuk
           </Link>
         </div>
       </CardContent>

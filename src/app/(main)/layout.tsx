@@ -14,7 +14,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
             <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
               <Logo className="h-6 w-6 text-primary" />
-              <span className="">LinguaLeap</span>
+              <span className="">Linguaksara</span>
             </Link>
           </div>
           <div className="flex-1">
@@ -31,7 +31,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                 <Input
                   type="search"
-                  placeholder="Search lessons..."
+                  placeholder="Cari pelajaran..."
                   className="w-full appearance-none bg-transparent pl-8 shadow-none md:w-2/3 lg:w-1/3"
                 />
               </div>

@@ -15,42 +15,42 @@ export default function LoginPage() {
         <Link href="/" className="flex items-center justify-center gap-2 mb-4">
           <Logo className="h-8 w-8 text-primary" />
         </Link>
-        <CardTitle className="text-2xl">Welcome Back</CardTitle>
-        <CardDescription>Enter your email below to login to your account</CardDescription>
+        <CardTitle className="text-2xl">Selamat Datang Kembali</CardTitle>
+        <CardDescription>Masuk ke akun Anda untuk melanjutkan petualangan belajar.</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="grid gap-4">
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="m@example.com" required />
+            <Input id="email" type="email" placeholder="nama@email.com" required />
           </div>
           <div className="grid gap-2">
             <div className="flex items-center">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Kata Sandi</Label>
               <Link href="#" className="ml-auto inline-block text-sm underline">
-                Forgot your password?
+                Lupa kata sandi?
               </Link>
             </div>
             <Input id="password" type="password" required />
           </div>
           <Button type="submit" className="w-full" asChild>
-            <Link href="/dashboard">Login</Link>
+            <Link href="/dashboard">Masuk</Link>
           </Button>
           <div className="relative my-2">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
+              <span className="bg-card px-2 text-muted-foreground">Atau lanjutkan dengan</span>
             </div>
           </div>
           <Button variant="outline" className="w-full"><GoogleIcon/>Google</Button>
           <Button variant="outline" className="w-full"><FacebookIcon />Facebook</Button>
         </div>
         <div className="mt-4 text-center text-sm">
-          Don&apos;t have an account?{' '}
+          Belum punya akun?{' '}
           <Link href="/signup" className="underline">
-            Sign up
+            Daftar di sini
           </Link>
         </div>
       </CardContent>

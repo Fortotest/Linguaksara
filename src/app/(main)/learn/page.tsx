@@ -5,26 +5,26 @@ import { Utensils, Plane, Briefcase, Film } from "lucide-react";
 
 const units = [
   {
-    title: "Unit 1: The Basics",
-    description: "Start with greetings, introductions, and essential phrases for everyday conversation.",
+    title: "Unit 1: Dasar-Dasar",
+    description: "Mulai dengan salam, perkenalan, dan frasa penting untuk percakapan sehari-hari.",
     progress: 100,
     icon: Utensils,
   },
   {
-    title: "Unit 2: Traveling",
-    description: "Learn vocabulary for airports, hotels, and getting around a new city.",
+    title: "Unit 2: Bepergian",
+    description: "Pelajari kosakata untuk bandara, hotel, dan berkeliling di kota baru.",
     progress: 75,
     icon: Plane,
   },
   {
-    title: "Unit 3: At Work",
-    description: "Master business-related terms, emails, and professional communication.",
+    title: "Unit 3: Di Tempat Kerja",
+    description: "Kuasai istilah bisnis, email, dan komunikasi profesional.",
     progress: 40,
     icon: Briefcase,
   },
   {
-    title: "Unit 4: Hobbies & Media",
-    description: "Talk about your favorite movies, music, and pastimes.",
+    title: "Unit 4: Hobi & Media",
+    description: "Bicarakan tentang film, musik, dan hiburan favorit Anda.",
     progress: 0,
     icon: Film,
   },
@@ -34,8 +34,8 @@ export default function LearnPage() {
   return (
     <>
       <div>
-        <h1 className="text-3xl font-bold font-headline">Your Learning Path</h1>
-        <p className="text-muted-foreground">Follow the units to build your skills step-by-step.</p>
+        <h1 className="text-3xl font-bold font-headline">Jalur Belajar Anda</h1>
+        <p className="text-muted-foreground">Ikuti unit-unit ini untuk membangun keahlian Anda selangkah demi selangkah.</p>
       </div>
       <div className="grid gap-6 md:grid-cols-2">
         {units.map((unit, index) => {
@@ -53,11 +53,11 @@ export default function LearnPage() {
               </CardHeader>
               <CardContent>
                 <Progress value={unit.progress} className="h-2" />
-                <p className="text-sm text-muted-foreground mt-2">{unit.progress}% Complete</p>
+                <p className="text-sm text-muted-foreground mt-2">{unit.progress}% Selesai</p>
               </CardContent>
               <CardFooter>
                 <Button className="w-full" disabled={unit.progress === 100}>
-                  {unit.progress === 100 ? "Completed" : unit.progress > 0 ? "Continue" : "Start Unit"}
+                  {unit.progress === 100 ? "Selesai" : unit.progress > 0 ? "Lanjutkan" : "Mulai Unit"}
                 </Button>
               </CardFooter>
             </Card>

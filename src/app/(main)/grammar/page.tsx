@@ -27,7 +27,7 @@ export default function GrammarPage() {
       toast({
         variant: "destructive",
         title: "Error",
-        description: "Sorry, an error occurred while correcting the text.",
+        description: "Maaf, terjadi kesalahan saat memperbaiki tulisan.",
       });
     } finally {
       setIsLoading(false);
@@ -38,26 +38,26 @@ export default function GrammarPage() {
     <div className="grid gap-6 md:grid-cols-2">
       <div>
         <div className="mb-6">
-            <h1 className="text-3xl font-bold font-headline">Grammar Lessons</h1>
-            <p className="text-muted-foreground">Expand your knowledge with these lessons.</p>
+            <h1 className="text-3xl font-bold font-headline">Pelajaran Tata Bahasa</h1>
+            <p className="text-muted-foreground">Perdalam pengetahuan Anda dengan pelajaran ringkas ini.</p>
         </div>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
-            <AccordionTrigger>Present Tense</AccordionTrigger>
+            <AccordionTrigger>Present Tense (Waktu Sekarang)</AccordionTrigger>
             <AccordionContent>
-              The present tense is used to talk about things that are happening now or are true in general. For example: "I speak English." or "The sun rises in the east."
+              Gunakan untuk membicarakan kejadian saat ini atau fakta umum. Contoh: "I speak English." (Saya berbicara bahasa Inggris) atau "The sun rises in the east." (Matahari terbit dari timur).
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
-            <AccordionTrigger>Past Tense</AccordionTrigger>
+            <AccordionTrigger>Past Tense (Waktu Lampau)</AccordionTrigger>
             <AccordionContent>
-              The past tense is used for actions that started and finished in the past. For example: "I walked to the park yesterday."
+              Gunakan untuk tindakan yang dimulai dan selesai di masa lalu. Contoh: "I walked to the park yesterday." (Saya berjalan ke taman kemarin).
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
-            <AccordionTrigger>Future Tense</AccordionTrigger>
+            <AccordionTrigger>Future Tense (Waktu Depan)</AccordionTrigger>
             <AccordionContent>
-              The future tense describes things that have not happened yet. For example: "I will travel to Spain next year."
+              Gunakan untuk menggambarkan hal-hal yang belum terjadi. Contoh: "I will travel to Spain next year." (Saya akan bepergian ke Spanyol tahun depan).
             </AccordionContent>
           </AccordionItem>
         </Accordion>
@@ -65,29 +65,29 @@ export default function GrammarPage() {
       
       <Card>
         <CardHeader>
-          <CardTitle>Grammar Corrector</CardTitle>
+          <CardTitle>Asisten Koreksi AI</CardTitle>
           <CardDescription>
-            Write a sentence and let our AI check your grammar and spelling.
+            Tulis sebuah kalimat dan biarkan AI kami memeriksa tata bahasa dan ejaan Anda.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid w-full gap-4">
             <Textarea 
-              placeholder="Type your sentence here..." 
+              placeholder="Ketik kalimat bahasa Inggris Anda di sini..." 
               value={text}
               onChange={(e) => setText(e.target.value)}
               rows={4}
             />
             <Button onClick={handleCorrection} disabled={isLoading || !text.trim()}>
               {isLoading ? (
-                <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Correcting...</>
+                <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Memeriksa...</>
               ) : (
-                <><Wand2 className="mr-2 h-4 w-4" /> Correct Grammar</>
+                <><Wand2 className="mr-2 h-4 w-4" /> Perbaiki Tulisan</>
               )}
             </Button>
             {correctedText && (
               <div className="mt-4 p-4 bg-accent rounded-md">
-                <h4 className="font-semibold text-accent-foreground">Suggestion:</h4>
+                <h4 className="font-semibold text-accent-foreground">Saran Perbaikan:</h4>
                 <p className="text-accent-foreground">{correctedText}</p>
               </div>
             )}

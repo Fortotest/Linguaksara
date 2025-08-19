@@ -9,13 +9,13 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 const chartData = [
-  { day: "Mon", xp: 50 },
-  { day: "Tue", xp: 75 },
-  { day: "Wed", xp: 120 },
-  { day: "Thu", xp: 90 },
-  { day: "Fri", xp: 150 },
-  { day: "Sat", xp: 110 },
-  { day: "Sun", xp: 200 },
+  { day: "Sen", xp: 50 },
+  { day: "Sel", xp: 75 },
+  { day: "Rab", xp: 120 },
+  { day: "Kam", xp: 90 },
+  { day: "Jum", xp: 150 },
+  { day: "Sab", xp: 110 },
+  { day: "Min", xp: 200 },
 ];
 
 const chartConfig = {
@@ -30,8 +30,8 @@ export default function DashboardPage() {
     <>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-3xl font-bold font-headline">Welcome back, Sofia!</h1>
-          <p className="text-muted-foreground">Here's your progress and learning plan for today.</p>
+          <h1 className="text-3xl font-bold font-headline">Selamat Datang Kembali, Sofia!</h1>
+          <p className="text-muted-foreground">Ini rencana belajarmu untuk hari ini. Semangat!</p>
         </div>
         <div className="flex items-center gap-4">
           <div className="text-right">
@@ -44,8 +44,8 @@ export default function DashboardPage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle>Daily Learning Plan</CardTitle>
-            <CardDescription>Complete these tasks to reach your daily goal.</CardDescription>
+            <CardTitle>Rencana Belajar Harian</CardTitle>
+            <CardDescription>Selesaikan tugas ini untuk mencapai target harianmu.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
             <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary/70">
@@ -53,37 +53,37 @@ export default function DashboardPage() {
                 <BookOpen className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <p className="font-semibold">Vocabulary Practice</p>
-                <p className="text-sm text-muted-foreground">Expand your lexicon by learning 10 new words.</p>
+                <p className="font-semibold">Latihan Kosakata</p>
+                <p className="text-sm text-muted-foreground">Perkaya kosakatamu dengan 10 kata baru.</p>
               </div>
-              <Button className="ml-auto" size="sm">Start</Button>
+              <Button className="ml-auto" size="sm">Mulai</Button>
             </div>
             <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary/70">
               <div className="bg-primary/10 p-3 rounded-full">
                 <Bot className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <p className="font-semibold">AI Conversation</p>
-                <p className="text-sm text-muted-foreground">Improve your fluency with a 5-minute chat.</p>
+                <p className="font-semibold">Percakapan AI</p>
+                <p className="text-sm text-muted-foreground">Latih kelancaranmu dengan ngobrol 5 menit.</p>
               </div>
-              <Button className="ml-auto" size="sm">Start</Button>
+              <Button className="ml-auto" size="sm">Mulai</Button>
             </div>
             <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary/70">
               <div className="bg-primary/10 p-3 rounded-full">
                 <PenTool className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <p className="font-semibold">Grammar Lesson</p>
-                <p className="text-sm text-muted-foreground">Master the Past Tense rules.</p>
+                <p className="font-semibold">Pelajaran Tata Bahasa</p>
+                <p className="text-sm text-muted-foreground">Kuasai aturan 'Past Tense'.</p>
               </div>
-               <Button className="ml-auto" size="sm" variant="outline" disabled>Completed</Button>
+               <Button className="ml-auto" size="sm" variant="outline" disabled>Selesai</Button>
             </div>
           </CardContent>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Weekly Progress</CardTitle>
-            <CardDescription>Your XP gain over the last 7 days.</CardDescription>
+            <CardTitle>Progres Mingguan</CardTitle>
+            <CardDescription>Perolehan XP kamu dalam 7 hari terakhir.</CardDescription>
           </CardHeader>
           <CardContent>
             <ChartContainer config={chartConfig} className="h-[200px] w-full">
@@ -94,7 +94,6 @@ export default function DashboardPage() {
                   tickLine={false}
                   tickMargin={10}
                   axisLine={false}
-                  tickFormatter={(value) => value.slice(0, 3)}
                 />
                  <YAxis tickLine={false} axisLine={false} />
                 <ChartTooltip

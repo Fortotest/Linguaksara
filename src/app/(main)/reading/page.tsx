@@ -31,28 +31,28 @@ export default function ReadingPage() {
   return (
     <>
       <div>
-        <h1 className="text-3xl font-bold font-headline">Reading Comprehension</h1>
-        <p className="text-muted-foreground">Read the text below and click on the highlighted words to see their definitions.</p>
+        <h1 className="text-3xl font-bold font-headline">Latihan Membaca</h1>
+        <p className="text-muted-foreground">Baca teks di bawah dan klik kata yang ditandai untuk melihat artinya.</p>
       </div>
       <Card>
         <CardHeader>
-          <CardTitle>A Journey to the Ancient City</CardTitle>
-          <CardDescription>By Alex Thompson</CardDescription>
+          <CardTitle>Perjalanan ke Kota Kuno</CardTitle>
+          <CardDescription>Oleh Alex Thompson</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <Image
             src="https://placehold.co/800x300.png"
-            alt="Ancient city"
+            alt="Kota Kuno"
             width={800}
             height={300}
             className="w-full h-auto rounded-lg mb-4"
             data-ai-hint="ancient city landscape"
           />
           <p className="leading-relaxed">
-            The sun cast long shadows as our team made its final <WordWithDefinition word="ascent" definition="A climb or walk to the summit of a mountain or hill." /> towards the hidden city of Eldoria. For centuries, this place was considered a myth, a whisper among historians. The journey had been <WordWithDefinition word="arduous" definition="Involving or requiring strenuous effort; difficult and tiring." />, testing our limits at every turn. We navigated through dense jungles and crossed treacherous rivers.
+            Matahari menciptakan bayangan panjang saat tim kami melakukan <WordWithDefinition word="ascent" definition="Pendakian atau perjalanan naik ke puncak gunung atau bukit." /> terakhir menuju kota tersembunyi Eldoria. Selama berabad-abad, tempat ini dianggap mitos, bisikan di antara para sejarawan. Perjalanan ini sangat <WordWithDefinition word="arduous" definition="Membutuhkan usaha yang sangat berat; sulit dan melelahkan." />, menguji batas kemampuan kami di setiap belokan. Kami menjelajahi hutan lebat dan menyeberangi sungai-sungai berbahaya.
           </p>
           <p className="leading-relaxed">
-            As we passed through the stone gateway, a sense of <WordWithDefinition word="awe" definition="A feeling of reverential respect mixed with fear or wonder." /> washed over us. The architecture was magnificent, unlike anything we had seen before. Intricate carvings adorned every surface, telling stories of a long-lost civilization. We felt a <WordWithDefinition word="profound" definition="Very great or intense; having or showing great knowledge or insight." /> connection to the past, standing amidst the silent ruins. Our expedition's primary goal was to document these findings and preserve the legacy of this incredible place for future generations.
+            Saat kami melewati gerbang batu, rasa <WordWithDefinition word="awe" definition="Perasaan takjub dan hormat yang bercampur dengan sedikit rasa takut atau heran." /> menyelimuti kami. Arsitekturnya megah, tidak seperti apa pun yang pernah kami lihat sebelumnya. Ukiran-ukiran rumit menghiasi setiap permukaan, menceritakan kisah peradaban yang telah lama hilang. Kami merasakan hubungan yang <WordWithDefinition word="profound" definition="Sangat mendalam atau kuat; menunjukkan pengetahuan atau wawasan yang hebat." /> dengan masa lalu, berdiri di tengah reruntuhan yang sunyi. Tujuan utama ekspedisi kami adalah mendokumentasikan temuan ini dan melestarikan warisan tempat luar biasa ini untuk generasi mendatang.
           </p>
         </CardContent>
       </Card>

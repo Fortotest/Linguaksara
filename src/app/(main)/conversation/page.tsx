@@ -18,7 +18,7 @@ type Message = {
 
 export default function ConversationPage() {
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'bot', text: "Hello! I'm Lingua, your personal guide. What would you like to learn today?" }
+    { role: 'bot', text: "Halo! Saya Aksara, tutor AI pribadimu. Topik apa yang ingin kamu diskusikan hari ini?" }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +34,7 @@ export default function ConversationPage() {
     }
   }, [messages]);
 
-  const handleError = (description: string = "An unexpected error occurred. Please try again.") => {
+  const handleError = (description: string = "Terjadi kesalahan. Silakan coba lagi.") => {
     toast({
       variant: "destructive",
       title: "Error",
@@ -60,12 +60,12 @@ export default function ConversationPage() {
       if (conversationResponse?.text) {
           setMessages(prev => [...prev, { role: 'bot', text: conversationResponse.text }]);
       } else {
-        handleError("The AI returned an empty response. Please try rephrasing your message.");
+        handleError("AI tidak memberikan respons. Coba ulangi pesanmu.");
       }
 
     } catch (error) {
       console.error("AI conversation error:", error);
-      handleError("Sorry, an error occurred while communicating with the AI. Please check the console and try again.");
+      handleError("Maaf, terjadi kesalahan saat berkomunikasi dengan AI. Coba lagi nanti.");
       // Rollback the user message on error
       setMessages(prev => prev.slice(0, -1));
       // Restore input
@@ -79,8 +79,8 @@ export default function ConversationPage() {
     <div className="h-[calc(100vh-8rem)]">
         <Card className="h-full flex flex-col">
             <CardHeader>
-                <CardTitle>AI Conversation Practice</CardTitle>
-                <CardDescription>Chat with our AI to improve your speaking and fluency.</CardDescription>
+                <CardTitle>Latihan Percakapan AI</CardTitle>
+                <CardDescription>Ngobrol dengan AI untuk meningkatkan kelancaran berbicara Anda.</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow flex flex-col gap-4 overflow-hidden">
                 <ScrollArea className="flex-grow pr-4 -mr-4" ref={scrollAreaRef}>
@@ -109,7 +109,7 @@ export default function ConversationPage() {
                 <div className="flex w-full items-center space-x-2 mt-4">
                     <Input 
                         type="text" 
-                        placeholder="Type your message..." 
+                        placeholder="Ketik pesan Anda..." 
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyPress={(e) => e.key === 'Enter' && !isLoading && handleSend()}
@@ -117,7 +117,7 @@ export default function ConversationPage() {
                     />
                     <Button type="submit" onClick={handleSend} disabled={isLoading || !input.trim()}>
                         {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
-                        <span className="sr-only">Send</span>
+                        <span className="sr-only">Kirim</span>
                     </Button>
                 </div>
             </CardContent>

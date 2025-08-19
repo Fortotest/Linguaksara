@@ -19,7 +19,7 @@ export function UserNav() {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
-            <AvatarImage src="https://placehold.co/100x100.png" alt="@shadcn" data-ai-hint="user avatar" />
+            <AvatarImage src="https://placehold.co/100x100.png" alt="Avatar Pengguna" data-ai-hint="user avatar" />
             <AvatarFallback>S</AvatarFallback>
           </Avatar>
         </Button>
@@ -37,18 +37,18 @@ export function UserNav() {
         <DropdownMenuGroup>
           <DropdownMenuItem>
             <User className="mr-2 h-4 w-4" />
-            <span>Profile</span>
+            <span>Profil</span>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Settings className="mr-2 h-4 w-4" />
-            <span>Settings</span>
+            <span>Pengaturan</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
           <Link href="/">
             <LogOut className="mr-2 h-4 w-4" />
-            <span>Log out</span>
+            <span>Keluar</span>
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>

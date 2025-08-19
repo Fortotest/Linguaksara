@@ -14,14 +14,14 @@ import {
 import * as React from 'react';
 
 const vocabulary = [
-  { word: "Hello", translation: "Halo", hint: "A common greeting." },
-  { word: "Goodbye", translation: "Selamat tinggal", hint: "Used when leaving." },
-  { word: "Thank you", translation: "Terima kasih", hint: "Expressing gratitude." },
-  { word: "Please", translation: "Tolong", hint: "A polite request." },
-  { word: "Yes", translation: "Ya", hint: "Affirmation." },
-  { word: "No", translation: "Tidak", hint: "Negation." },
-  { word: "Excuse me", translation: "Permisi", hint: "To get attention." },
-  { word: "I'm sorry", translation: "Maaf", hint: "Apology." },
+  { word: "Hello", translation: "Halo", hint: "Sapaan yang umum." },
+  { word: "Goodbye", translation: "Selamat tinggal", hint: "Digunakan saat berpisah." },
+  { word: "Thank you", translation: "Terima kasih", hint: "Menyatakan rasa terima kasih." },
+  { word: "Please", translation: "Tolong", hint: "Permintaan yang sopan." },
+  { word: "Yes", translation: "Ya", hint: "Untuk mengiyakan." },
+  { word: "No", translation: "Tidak", hint: "Untuk menolak." },
+  { word: "Excuse me", translation: "Permisi", hint: "Untuk meminta perhatian." },
+  { word: "I'm sorry", translation: "Maaf", hint: "Permintaan maaf." },
 ];
 
 export default function VocabularyPage() {
@@ -54,8 +54,8 @@ export default function VocabularyPage() {
     <div className="flex flex-col items-center justify-center h-full">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold font-headline">Vocabulary Flashcards</h1>
-            <p className="text-muted-foreground">Click the card to flip it. Use arrows to navigate.</p>
+            <h1 className="text-3xl font-bold font-headline">Kartu Kosakata</h1>
+            <p className="text-muted-foreground">Klik kartu untuk membalik. Gunakan panah untuk navigasi.</p>
         </div>
 
         <Carousel setApi={setApi} className="w-full">
