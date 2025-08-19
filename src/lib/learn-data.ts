@@ -8,6 +8,7 @@ export const unitsData = {
       { id: "1", title: "Greetings and Introductions", description: "Pelajari cara menyapa dan memperkenalkan diri Anda.", type: "Lesson", completed: false },
       { id: "2", title: "Basic Phrases", description: "Kuasai frasa penting untuk komunikasi sehari-hari.", type: "Lesson", completed: false },
       { id: "3", title: "Alphabet and Numbers", description: "Kenali alfabet dan angka dalam bahasa Inggris.", type: "Lesson", completed: false },
+      { id: "5", title: "Asking Simple Questions", description: "Belajar membuat pertanyaan dasar (Who, What, Where).", type: "Lesson", completed: false },
       { id: "4", title: "Quiz: The Basics", description: "Uji pemahaman Anda tentang dasar-dasar.", type: "Quiz", completed: false },
     ] 
   },
@@ -38,4 +39,20 @@ export const unitsData = {
       { id: "4", "title": "Quiz: Hobbies & Media", "description": "Uji wawasan Anda tentang hobi dan media.", "type": "Quiz", "completed": false },
     ]
   },
+  "5": {
+    title: "Unit 5: Food and Dining",
+    lessons: [
+      { id: "1", title: "Ordering Food at a Restaurant", description: "Pelajari cara memesan makanan dan minuman.", type: "Lesson", completed: false },
+      { id: "2", title: "Common Food and Drink Names", description: "Kenali nama-nama makanan dan minuman umum.", type: "Lesson", completed: false },
+      { id: "3", title: "Quiz: Food and Dining", description: "Uji kosakata Anda seputar makanan.", type: "Quiz", completed: false },
+    ]
+  },
+  "6": {
+    title: "Unit 6: Daily Routines",
+    lessons: [
+      { id: "1", title: "Talking About Your Day", description: "Jelaskan aktivitas harian Anda dari pagi hingga malam.", type: "Lesson", completed: false },
+      { id: "2", title: "Telling Time", description: "Pelajari cara menanyakan dan memberitahu waktu.", type: "Lesson", completed: false },
+      { id: "3", title: "Quiz: Daily Routines", description: "Uji pemahaman Anda tentang rutinitas harian.", type: "Quiz", completed: false },
+    ]
+  }
 };

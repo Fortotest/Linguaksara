@@ -2,7 +2,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { GraduationCap, Plane, Briefcase, Film, CheckCircle } from "lucide-react";
+import { GraduationCap, Plane, Briefcase, Film, CheckCircle, Utensils, Clock } from "lucide-react";
 import Link from "next/link";
 
 const units = [
@@ -33,6 +33,20 @@ const units = [
     description: "Bicarakan tentang film, musik, dan hiburan favorit Anda.",
     progress: 0,
     icon: Film,
+  },
+  {
+    id: 5,
+    title: "Unit 5: Food and Dining",
+    description: "Pelajari cara memesan makanan dan berinteraksi di restoran.",
+    progress: 0,
+    icon: Utensils,
+  },
+    {
+    id: 6,
+    title: "Unit 6: Daily Routines",
+    description: "Bicarakan tentang jadwal dan kebiasaan harian Anda.",
+    progress: 0,
+    icon: Clock,
   },
 ];
 
