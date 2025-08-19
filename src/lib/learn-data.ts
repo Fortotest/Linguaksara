@@ -16,7 +16,7 @@ export const unitsData = {
   "2": { 
     prefix: "Unit 2",
     title: "People & Things",
-    description: "Pelajari kosakata tentang keluarga, pekerjaan, dan benda-benda di sekitar Anda.",
+    description: "Pelajari kosakata tentang keluarga, pekerjaan, dan benda di sekitar Anda.",
     lessons: [
       { id: "1", title: "Family Members", description: "Pelajari nama-nama anggota keluarga.", type: "Lesson", completed: false },
       { id: "2", title: "Common Jobs", description: "Kenali nama-nama pekerjaan umum.", type: "Lesson", completed: false },
@@ -27,7 +27,7 @@ export const unitsData = {
   "3": { 
     prefix: "Unit 3",
     title: "Simple Sentences",
-    description: "Mulai membuat kalimat sederhana menggunakan 'is', 'am', 'are'.",
+    description: "Belajar merangkai kalimat sederhana menggunakan kata kerja 'to be'.",
     lessons: [
       { id: "1", title: "Using 'is', 'am', 'are'", description: "Pelajari cara menggunakan 'to be' dalam kalimat.", type: "Lesson", completed: false },
       { id: "2", title: "This is / That is", description: "Belajar menunjuk benda dengan 'this' dan 'that'.", type: "Lesson", completed: false },
@@ -38,7 +38,7 @@ export const unitsData = {
   "4": { 
     prefix: "Unit 4",
     title: "Asking Questions",
-    description: "Belajar bertanya menggunakan 'What', 'Where', 'Who', dan 'How'.",
+    description: "Kuasai cara bertanya tentang berbagai hal memakai 'What' dan 'Where'.",
     lessons: [
       { id: "1", title: "What & Who", description: "Belajar bertanya tentang benda dan orang.", type: "Lesson", completed: false },
       { id: "2", title: "Where & When", description: "Belajar bertanya tentang tempat dan waktu.", type: "Lesson", completed: false },
@@ -49,7 +49,7 @@ export const unitsData = {
   "5": {
     prefix: "Unit 5",
     title: "Basic Action Verbs",
-    description: "Kuasai kata kerja aksi paling umum seperti 'have', 'eat', 'drink', 'go', 'want', dan 'like'.",
+    description: "Gunakan kata kerja aksi umum seperti 'have', 'eat', 'go', dan 'like'.",
     lessons: [
       { id: "1", title: "Using 'have' and 'has'", description: "Pelajari cara menyatakan kepemilikan.", type: "Lesson", completed: false },
       { id: "2", title: "Actions: 'eat', 'drink', 'go'", description: "Gunakan kata kerja untuk aktivitas sehari-hari.", type: "Lesson", completed: false },
@@ -60,7 +60,7 @@ export const unitsData = {
   "6": {
     prefix: "Unit 6",
     title: "Food and Dining",
-    description: "Pelajari cara memesan makanan dan berinteraksi di restoran.",
+    description: "Pelajari cara berinteraksi dan memesan makanan di sebuah restoran.",
     lessons: [
       { id: "1", title: "Common Food and Drinks", description: "Kenali nama-nama makanan dan minuman umum.", type: "Lesson", completed: false },
       { id: "2", title: "Ordering at a Restaurant", description: "Latihan memesan makanan dan minuman.", type: "Practice", completed: false },
@@ -70,7 +70,7 @@ export const unitsData = {
   "7": {
     prefix: "Unit 7",
     title: "Daily Routines",
-    description: "Bicarakan tentang jadwal dan kebiasaan harian Anda.",
+    description: "Bicarakan tentang jadwal, waktu, dan kebiasaan sehari-hari Anda.",
     lessons: [
       { id: "1", title: "Daily Activities", description: "Jelaskan aktivitas harian dari pagi hingga malam.", type: "Lesson", completed: false },
       { id: "2", title: "Telling Time", description: "Pelajari cara menanyakan dan memberitahu waktu.", type: "Lesson", completed: false },
@@ -80,7 +80,7 @@ export const unitsData = {
   "8": {
     prefix: "Unit 8",
     title: "Review & Consolidation",
-    description: "Uji semua yang telah kamu pelajari dari Unit 1 hingga 7 dalam sebuah latihan skenario besar.",
+    description: "Uji semua materi yang telah dipelajari dalam latihan skenario utuh.",
     lessons: [
         { id: "1", title: "Practice: A New Friend", description: "Latihan percakapan dari perkenalan hingga bertanya soal pekerjaan.", type: "Practice", completed: false },
         { id: "2", title: "Practice: Ordering Coffee", description: "Latihan menggabungkan semua skill untuk memesan di kafe.", type: "Practice", completed: false },
