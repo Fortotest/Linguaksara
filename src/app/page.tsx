@@ -26,10 +26,10 @@ export default function LandingPage() {
       <main className="flex-grow">
         <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4">
-            Platform Bahasa Inggris #1 di Indonesia
+            Kuasai Bahasa Inggris, Buka Peluang Dunia
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            Bergabunglah dengan jutaan orang dan kuasai bahasa Inggris bersama Linguaksara, platform belajar terbaik yang dirancang khusus untuk Anda—sepenuhnya gratis.
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            Bergabunglah dengan jutaan orang dan kuasai bahasa Inggris bersama Linguaksara, platform belajar bahasa Inggris #1 di Indonesia—dirancang khusus untuk Anda dan sepenuhnya gratis.
           </p>
           <Button size="lg" asChild>
             <Link href="/signup">Mulai Belajar, Gratis!</Link>
