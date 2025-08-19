@@ -3,7 +3,7 @@
  */
 import {googleAI} from '@genkit-ai/googleai';
 import {genkit} from 'genkit';
-import {firebasePlugin} from '@genkit-ai/firebase/plugin';
+import {firebase} from '@genkit-ai/firebase';
 import {next} from '@genkit-ai/next';
 
 export const ai = genkit({
@@ -11,7 +11,7 @@ export const ai = genkit({
     googleAI({
       apiKey: process.env.GEMINI_API_KEY,
     }),
-    firebasePlugin(),
+    firebase(),
     next(),
   ],
   logLevel: 'debug',
