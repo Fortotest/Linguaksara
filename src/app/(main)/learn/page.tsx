@@ -95,11 +95,11 @@ export default function LearnPage() {
                   <CardDescription>{unit.description}</CardDescription>
                 </div>
               </CardHeader>
-              <CardContent className="flex-grow">
+              <CardContent>
                 <Progress value={unitProgress} className="h-2" />
                 <p className="text-sm text-muted-foreground mt-2">{unitProgress}% Selesai</p>
               </CardContent>
-              <CardFooter>
+              <CardFooter className="mt-auto">
                 <Button asChild className="w-full" variant={isCompleted ? "outline" : "default"}>
                   <Link href={`/learn/${unit.id}`}>
                     {isCompleted ? <><CheckCircle className="mr-2 h-4 w-4" />Selesai</> : isStarted ? "Lanjutkan" : "Mulai Unit"}
