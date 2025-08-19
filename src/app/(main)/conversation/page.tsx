@@ -58,27 +58,27 @@ export default function ConversationPage() {
     try {
       const conversationHistory = newMessages.map(({role, text}) => ({role, text}));
       
-      const [conversationResponse, suggestionsResponse] = await Promise.all([
-        aiConversation({ messages: conversationHistory }),
-        aiConversationGrammarSuggestions({ text: userMessage.text })
-      ]);
+      const conversationResponse = await aiConversation({ messages: conversationHistory });
       
-      const { text: botText } = conversationResponse;
-      const { suggestions } = suggestionsResponse;
-
-      if (!botText) {
-        console.error("AI conversation returned empty response.");
+      if (!conversationResponse || !conversationResponse.text) {
+        console.error("AI conversation returned empty or invalid response.");
         handleError();
+        setIsLoading(false);
         return;
       }
+      
+      const suggestionsResponse = await aiConversationGrammarSuggestions({ text: userMessage.text });
 
       setMessages(prev => {
           const updatedMessages = [...prev];
           const lastMessageIndex = updatedMessages.length - 1;
           if(updatedMessages[lastMessageIndex].role === 'user') {
-              updatedMessages[lastMessageIndex] = { ...updatedMessages[lastMessageIndex], suggestions };
+              updatedMessages[lastMessageIndex] = { 
+                ...updatedMessages[lastMessageIndex], 
+                suggestions: suggestionsResponse.suggestions 
+              };
           }
-          return [...updatedMessages, { role: 'bot', text: botText }];
+          return [...updatedMessages, { role: 'bot', text: conversationResponse.text }];
       });
 
     } catch (error) {

@@ -33,12 +33,9 @@ const prompt = ai.definePrompt({
   name: 'aiConversationPrompt',
   input: {schema: AiConversationInputSchema},
   output: {schema: AiConversationOutputSchema},
-  prompt: `You are a friendly and encouraging language learning assistant. Your goal is to help users practice their speaking and fluency by having a conversation with them.
-
-Respond to the user's last message, keeping the conversation flowing naturally.
-- Engage with what they are saying.
-- Ask questions to encourage them to talk more.
-- IMPORTANT: Adapt your language to the language the user is writing in. If they write in Indonesian, respond in Indonesian. If they write in English, respond in English.
+  prompt: `You are a friendly and encouraging language learning assistant. 
+Your goal is to help users practice their fluency by having a natural conversation.
+Adapt your language to the language the user is writing in.
 
 Conversation History:
 {{#each messages}}
