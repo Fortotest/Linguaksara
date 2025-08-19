@@ -200,9 +200,9 @@ export default async function LessonPage({
                 <p>Selamat datang di salah satu pelajaran tata bahasa terpenting! Kata kerja 'to be' (dalam bentuk <strong>am</strong>, <strong>is</strong>, dan <strong>are</strong>) adalah tulang punggung dari ribuan kalimat dalam bahasa Inggris. Menguasainya berarti Anda membuka kunci untuk mendeskripsikan keadaan, identitas, dan kualitas.</p>
                 <p>Penggunaan 'am', 'is', atau 'are' bergantung sepenuhnya pada subjek kalimat (siapa atau apa yang Anda bicarakan). Aturannya sangat konsisten, jadi menghafalkannya akan sangat membantu. Ini adalah fondasi untuk membangun kalimat yang benar secara gramatikal.</p>
                 <ul>
-                  <li>Gunakan <strong>am</strong> hanya dengan subjek <strong>I</strong>. &rarr; <em>I <strong>am</strong> happy.</em> (Saya senang.)</li>
-                  <li>Gunakan <strong>is</strong> dengan subjek tunggal seperti <strong>he, she, it,</strong> atau satu nama/benda. &rarr; <em>She <strong>is</strong> a teacher. The book <strong>is</strong> red.</em></li>
-                  <li>Gunakan <strong>are</strong> dengan subjek <strong>you, we, they,</strong> atau subjek jamak. &rarr; <em>You <strong>are</strong> smart. They <strong>are</strong> students.</em></li>
+                  <li>Gunakan <strong>am</strong> hanya dengan subjek <strong>I</strong>. → <em>I <strong>am</strong> happy.</em> (Saya senang.)</li>
+                  <li>Gunakan <strong>is</strong> dengan subjek tunggal seperti <strong>he, she, it,</strong> atau satu nama/benda. → <em>She <strong>is</strong> a teacher. The book <strong>is</strong> red.</em></li>
+                  <li>Gunakan <strong>are</strong> dengan subjek <strong>you, we, they,</strong> atau subjek jamak. → <em>You <strong>are</strong> smart. They <strong>are</strong> students.</em></li>
                 </ul>
                 <p>Perhatikan bagaimana kata kerja ini menghubungkan subjek dengan deskripsinya. Dalam kalimat "He is a doctor," kata 'is' bertindak seperti jembatan yang menghubungkan 'He' (subjek) dengan 'a doctor' (deskripsinya). Tanpa jembatan ini, kalimatnya tidak akan lengkap.</p>
                 <Tip>
@@ -215,8 +215,8 @@ export default async function LessonPage({
                 <p>Setelah Anda bisa membuat kalimat sederhana, sekarang saatnya belajar menunjuk benda. Dalam bahasa Inggris, kita menggunakan <strong>'this'</strong> dan <strong>'that'</strong> untuk menunjuk benda tunggal. Pelajaran ini akan membantu Anda mengidentifikasi objek berdasarkan kedekatannya dengan Anda.</p>
                 <p>Aturannya sangat sederhana dan intuitif, berhubungan langsung dengan jarak fisik. 'This' digunakan untuk sesuatu yang berada dalam jangkauan Anda, sementara 'that' untuk sesuatu yang lebih jauh. Ini adalah cara dasar untuk memperjelas apa yang sedang Anda bicarakan.</p>
                 <ul>
-                  <li>Gunakan <strong>This is...</strong> untuk benda yang <strong>dekat</strong> dengan Anda. &rarr; <em>(sambil memegang buku) <strong>This is</strong> my book.</em></li>
-                  <li>Gunakan <strong>That is...</strong> untuk benda yang <strong>jauh</strong> dari Anda. &rarr; <em>(sambil menunjuk mobil di seberang jalan) <strong>That is</strong> a nice car.</em></li>
+                  <li>Gunakan <strong>This is...</strong> untuk benda yang <strong>dekat</strong> dengan Anda. → <em>(sambil memegang buku) <strong>This is</strong> my book.</em></li>
+                  <li>Gunakan <strong>That is...</strong> untuk benda yang <strong>jauh</strong> dari Anda. → <em>(sambil menunjuk mobil di seberang jalan) <strong>That is</strong> a nice car.</em></li>
                 </ul>
                 <p>Dengan menguasai 'this' dan 'that', Anda dapat berinteraksi dengan lingkungan fisik Anda secara lebih efektif. Anda bisa bertanya, "What is this?" sambil menunjuk sesuatu di tangan Anda, atau "What is that?" untuk menanyakan tentang sesuatu di kejauhan.</p>
                 <Tip>
@@ -231,8 +231,8 @@ export default async function LessonPage({
                 <p>Kemampuan bertanya adalah inti dari komunikasi dua arah. Dalam pelajaran ini, kita akan mempelajari dua kata tanya paling fundamental: <strong>'What'</strong> untuk menanyakan tentang benda atau informasi, dan <strong>'Who'</strong> untuk menanyakan tentang orang. Ini akan membuka pintu untuk mendapatkan informasi yang Anda butuhkan.</p>
                 <p>Menggunakan kata tanya yang tepat sangatlah penting. Jika Anda menggunakan 'Who' untuk menanyakan benda, atau 'What' untuk menanyakan orang, itu akan menyebabkan kebingungan. Memahami perbedaan antara keduanya adalah langkah pertama untuk menjadi komunikator yang efektif.</p>
                 <ul>
-                  <li>Gunakan <strong>What</strong> untuk menanyakan <strong>informasi</strong> atau <strong>benda</strong>. &rarr; <em><strong>What</strong> is your name? <strong>What</strong> is this?</em></li>
-                  <li>Gunakan <strong>Who</strong> untuk menanyakan tentang <strong>orang</strong>. &rarr; <em><strong>Who</strong> is she? <strong>Who</strong> is your teacher?</em></li>
+                  <li>Gunakan <strong>What</strong> untuk menanyakan <strong>informasi</strong> atau <strong>benda</strong>. → <em><strong>What</strong> is your name? <strong>What</strong> is this?</em></li>
+                  <li>Gunakan <strong>Who</strong> untuk menanyakan tentang <strong>orang</strong>. → <em><strong>Who</strong> is she? <strong>Who</strong> is your teacher?</em></li>
                 </ul>
                 <p>Mari kita lihat contohnya. Jika Anda melihat sebuah benda aneh di atas meja, Anda akan bertanya, "What is that?". Namun, jika Anda melihat seseorang yang tidak Anda kenal di sebuah pesta, Anda akan bertanya kepada teman Anda, "Who is that?".</p>
                 <Tip>
@@ -245,8 +245,8 @@ export default async function LessonPage({
                 <p>Mari kita lanjutkan perjalanan Anda dalam menguasai seni bertanya. Pelajaran ini akan fokus pada <strong>'Where'</strong> untuk menanyakan tentang lokasi, dan <strong>'When'</strong> untuk menanyakan tentang waktu. Keterampilan ini sangat penting untuk navigasi, membuat janji, dan memahami jadwal.</p>
                 <p>Mengetahui cara menanyakan lokasi akan membantu Anda saat bepergian atau mencari tempat baru. Demikian pula, menanyakan waktu memungkinkan Anda untuk menjadi tepat waktu dan terorganisir. Ini adalah kata tanya yang sangat praktis untuk kehidupan sehari-hari.</p>
                 <ul>
-                  <li>Gunakan <strong>Where</strong> untuk menanyakan tentang <strong>lokasi atau tempat</strong>. &rarr; <em><strong>Where</strong> is the station? <strong>Where</strong> do you live?</em></li>
-                  <li>Gunakan <strong>When</strong> untuk menanyakan tentang <strong>waktu atau tanggal</strong>. &rarr; <em><strong>When</strong> is the meeting? <strong>When</strong> is your birthday?</em></li>
+                  <li>Gunakan <strong>Where</strong> untuk menanyakan tentang <strong>lokasi atau tempat</strong>. → <em><strong>Where</strong> is the station? <strong>Where</strong> do you live?</em></li>
+                  <li>Gunakan <strong>When</strong> untuk menanyakan tentang <strong>waktu atau tanggal</strong>. → <em><strong>When</strong> is the meeting? <strong>When</strong> is your birthday?</em></li>
                 </ul>
                 <p>Bayangkan Anda tersesat di kota baru. Anda dapat mendekati seseorang dan bertanya, "Excuse me, where is the nearest hotel?". Atau, jika Anda ingin tahu kapan sebuah toko buka, Anda bisa bertanya, "When does the store open?".</p>
                 <Tip>
@@ -261,8 +261,8 @@ export default async function LessonPage({
                 <p>Setelah mempelajari kata kerja 'to be', saatnya menambahkan kata kerja penting lainnya ke dalam repertoar Anda. Pelajaran ini fokus pada <strong>'have'</strong> dan <strong>'has'</strong>, yang merupakan kata kerja utama untuk menyatakan kepemilikan. Anda akan belajar cara mengatakan apa yang Anda miliki.</p>
                 <p>Sama seperti 'is' dan 'are', pilihan antara 'have' dan 'has' bergantung pada subjek kalimat. Menguasai aturan ini akan memungkinkan Anda untuk berbicara tentang harta benda, hubungan, dan bahkan penyakit dengan benar.</p>
                 <ul>
-                  <li>Gunakan <strong>have</strong> dengan subjek <strong>I, you, we, they</strong>. &rarr; <em>I <strong>have</strong> a car. We <strong>have</strong> a dog.</em></li>
-                  <li>Gunakan <strong>has</strong> dengan subjek <strong>he, she, it</strong>. &rarr; <em>She <strong>has</strong> a new phone. He <strong>has</strong> a question.</em></li>
+                  <li>Gunakan <strong>have</strong> dengan subjek <strong>I, you, we, they</strong>. → <em>I <strong>have</strong> a car. We <strong>have</strong> a dog.</em></li>
+                  <li>Gunakan <strong>has</strong> dengan subjek <strong>he, she, it</strong>. → <em>She <strong>has</strong> a new phone. He <strong>has</strong> a question.</em></li>
                 </ul>
                 <p>Dengan 'have' dan 'has', Anda bisa membuat banyak sekali kalimat praktis. "I have a brother," "She has a meeting at 10," atau "They have two children." Ini adalah salah satu kata kerja paling serbaguna dalam bahasa Inggris.</p>
                 <Tip>
@@ -275,9 +275,9 @@ export default async function LessonPage({
                 <p>Kalimat Anda akan menjadi jauh lebih dinamis setelah pelajaran ini. Kita akan mempelajari beberapa kata kerja aksi (action verbs) paling umum: <strong>'eat'</strong> (makan), <strong>'drink'</strong> (minum), dan <strong>'go'</strong> (pergi). Ini adalah kata-kata yang mendeskripsikan aktivitas inti dalam kehidupan sehari-hari.</p>
                 <p>Kata kerja aksi adalah kata yang menunjukkan tindakan. Dengan menambahkannya ke dalam kalimat, Anda beralih dari hanya mendeskripsikan keadaan ("I am happy") menjadi menceritakan apa yang Anda lakukan ("I eat rice"). Ini adalah langkah besar dalam kemampuan bercerita Anda.</p>
                 <ul>
-                  <li><strong>eat:</strong> Digunakan untuk makanan. &rarr; <em>I <strong>eat</strong> breakfast at 7 AM.</em></li>
-                  <li><strong>drink:</strong> Digunakan untuk minuman. &rarr; <em>She <strong>drinks</strong> coffee every morning.</em></li>
-                  <li><strong>go:</strong> Digunakan untuk pergerakan ke suatu tempat. &rarr; <em>They <strong>go</strong> to school by bus.</em></li>
+                  <li><strong>eat:</strong> Digunakan untuk makanan. → <em>I <strong>eat</strong> breakfast at 7 AM.</em></li>
+                  <li><strong>drink:</strong> Digunakan untuk minuman. → <em>She <strong>drinks</strong> coffee every morning.</em></li>
+                  <li><strong>go:</strong> Digunakan untuk pergerakan ke suatu tempat. → <em>They <strong>go</strong> to school by bus.</em></li>
                 </ul>
                 <p>Gabungkan kata-kata ini dengan kosakata yang sudah Anda pelajari untuk membuat kalimat yang lebih kompleks. "I go to the restaurant and I eat chicken." Lihat? Anda sudah bisa menceritakan sebuah urutan kejadian sederhana. Ini adalah kekuatan dari kata kerja aksi.</p>
                 <Tip>
@@ -290,8 +290,8 @@ export default async function LessonPage({
                 <p>Komunikasi bukan hanya tentang fakta, tetapi juga tentang perasaan dan keinginan. Dalam pelajaran ini, Anda akan belajar cara mengekspresikan dua emosi penting: keinginan dengan kata <strong>'want'</strong> (ingin) dan kesukaan dengan kata <strong>'like'</strong> (suka). Ini akan membuat percakapan Anda lebih pribadi dan menarik.</p>
                 <p>Menyatakan apa yang Anda inginkan sangat penting dalam situasi seperti memesan di restoran atau berbelanja. Sementara itu, membicarakan apa yang Anda sukai (dan tidak sukai) adalah cara yang bagus untuk menjalin hubungan dengan orang lain dan berbagi tentang kepribadian Anda.</p>
                 <ul>
-                  <li><strong>want:</strong> Digunakan untuk menyatakan keinginan. Diikuti oleh kata benda. &rarr; <em>I <strong>want</strong> a new book.</em></li>
-                  <li><strong>like:</strong> Digunakan untuk menyatakan kesukaan. Diikuti oleh kata benda. &rarr; <em>I <strong>like</strong> cats.</em></li>
+                  <li><strong>want:</strong> Digunakan untuk menyatakan keinginan. Diikuti oleh kata benda. → <em>I <strong>want</strong> a new book.</em></li>
+                  <li><strong>like:</strong> Digunakan untuk menyatakan kesukaan. Diikuti oleh kata benda. → <em>I <strong>like</strong> cats.</em></li>
                 </ul>
                 <p>Frasa ini sangat berguna dalam percakapan sehari-hari. Di sebuah kafe, Anda bisa mengatakan, "I want a cup of tea, please." Saat berkenalan dengan teman baru, Anda bisa berbagi, "I like listening to music." Ini membantu orang lain mengenal Anda lebih baik.</p>
                 <Tip>
@@ -339,8 +339,8 @@ export default async function LessonPage({
                 <p>Ada beberapa cara untuk memberitahu waktu dalam bahasa Inggris, dari yang sangat sederhana hingga yang sedikit lebih kompleks. Kita akan mulai dengan metode yang paling mudah dan umum digunakan, yaitu dengan hanya menyebutkan jam lalu menitnya.</p>
                 <ul>
                   <li><strong>Bertanya:</strong> Cara paling umum untuk menanyakan waktu adalah, <em>"What time is it?"</em> atau <em>"What's the time?"</em></li>
-                  <li><strong>Menjawab (Jam Pas):</strong> Gunakan 'o'clock'. &rarr; <em>It's 7 o'clock.</em> (Jam 7 pas).</li>
-                  <li><strong>Menjawab (Dengan Menit):</strong> Sebutkan jam, lalu sebutkan menitnya. &rarr; <em>7:30 (seven thirty), 8:15 (eight fifteen).</em></li>
+                  <li><strong>Menjawab (Jam Pas):</strong> Gunakan 'o'clock'. → <em>It's 7 o'clock.</em> (Jam 7 pas).</li>
+                  <li><strong>Menjawab (Dengan Menit):</strong> Sebutkan jam, lalu sebutkan menitnya. → <em>7:30 (seven thirty), 8:15 (eight fifteen).</em></li>
                 </ul>
                 <p>Metode "jam lalu menit" adalah yang paling aman dan selalu dimengerti. Misalnya, jika seseorang bertanya "What time is it?" dan jam menunjukkan pukul 10:25, jawaban paling jelas adalah "It's ten twenty-five."</p>
                 <Tip>
