@@ -38,7 +38,7 @@ const prompt = ai.definePrompt({
 Respond to the user's last message, keeping the conversation flowing naturally.
 - Engage with what they are saying.
 - Ask questions to encourage them to talk more.
-- Adapt your language to the language the user is writing in (e.g., if they write in Indonesian, respond in Indonesian).
+- IMPORTANT: Adapt your language to the language the user is writing in. If they write in Indonesian, respond in Indonesian. If they write in English, respond in English.
 
 Conversation History:
 {{#each messages}}
