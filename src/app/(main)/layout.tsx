@@ -1,3 +1,4 @@
+
 import { MainNav } from "@/components/main-nav";
 import { UserNav } from "@/components/user-nav";
 import { Logo } from "@/components/logo";
@@ -18,12 +19,12 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               <span className="">Linguaksara</span>
             </Link>
           </div>
-          <div className="flex-1">
+          <div className="flex-1 overflow-auto py-2">
             <MainNav />
           </div>
         </div>
       </div>
-      <div className="flex flex-col bg-gradient-to-br from-blue-100 via-blue-50 to-white dark:from-blue-950/80 dark:via-slate-900 dark:to-background">
+      <div className="flex flex-col">
         <header className="flex h-14 items-center gap-4 border-b bg-card/60 px-4 shadow-sm backdrop-blur-lg lg:h-[60px] lg:px-6 sticky top-0 z-30">
           <Sheet>
             <SheetTrigger asChild>
@@ -64,7 +65,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           </div>
           <UserNav />
         </header>
-        <main className="flex flex-1 flex-col gap-4 p-4 sm:p-6 lg:gap-6 lg:p-8">
+        <main className="flex flex-1 flex-col gap-4 p-4 sm:p-6 lg:gap-6 lg:p-8 bg-gradient-to-br from-blue-100 via-blue-50 to-white dark:from-blue-950/80 dark:via-slate-900 dark:to-background overflow-auto">
           {children}
         </main>
       </div>
