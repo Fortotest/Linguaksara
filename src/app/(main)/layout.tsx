@@ -22,8 +22,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           </div>
         </div>
       </div>
-      <div className="flex flex-col bg-gradient-to-br from-blue-100 via-blue-50 to-white p-4 sm:p-6 md:p-8 dark:from-blue-950/80 dark:via-slate-900 dark:to-background">
-        <header className="flex h-14 items-center gap-4 rounded-xl border bg-card/60 px-4 shadow-lg backdrop-blur-lg lg:h-[60px] lg:px-6 mb-4">
+      <div className="flex flex-col bg-gradient-to-br from-blue-100 via-blue-50 to-white dark:from-blue-950/80 dark:via-slate-900 dark:to-background">
+        <header className="flex h-14 items-center gap-4 border-b bg-card/60 px-4 shadow-sm backdrop-blur-lg lg:h-[60px] lg:px-6 sticky top-0 z-30">
           {/* Mobile Nav can be added here if needed */}
           <div className="w-full flex-1">
             <form>
@@ -39,7 +39,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
           </div>
           <UserNav />
         </header>
-        <main className="flex flex-1 flex-col gap-4 lg:gap-6">
+        <main className="flex flex-1 flex-col gap-4 p-4 sm:p-6 lg:gap-6 lg:p-8">
           {children}
         </main>
       </div>

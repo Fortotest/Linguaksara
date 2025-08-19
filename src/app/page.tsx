@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 export default function LandingPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-100 via-blue-50 to-white dark:from-blue-950/80 dark:via-slate-900 dark:to-background">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-100 via-blue-50 to-white dark:from-blue-950/80 dark:via-slate-900 dark:to-background overflow-hidden">
       <header className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Logo className="h-8 w-8 text-primary" />
@@ -50,7 +50,7 @@ export default function LandingPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-center mb-12">Kenapa Memilih Linguaksara?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <Card className="text-center glass-card">
+              <Card className="text-center">
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                     <BookOpen className="h-8 w-8 text-primary" />
@@ -61,7 +61,7 @@ export default function LandingPage() {
                   <p className="text-muted-foreground">Materi dirancang khusus untuk pemula, membuat proses belajar jadi mudah dan menyenangkan.</p>
                 </CardContent>
               </Card>
-              <Card className="text-center glass-card">
+              <Card className="text-center">
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                     <Bot className="h-8 w-8 text-primary" />
@@ -72,7 +72,7 @@ export default function LandingPage() {
                   <p className="text-muted-foreground">Berlatih percakapan kapan saja dengan AI yang siap memberikan masukan instan.</p>
                 </CardContent>
               </Card>
-              <Card className="text-center glass-card">
+              <Card className="text-center">
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                     <Award className="h-8 w-8 text-primary" />
@@ -83,7 +83,7 @@ export default function LandingPage() {
                   <p className="text-muted-foreground">Kumpulkan poin, naik level, dan bersaing di papan peringkat agar tetap termotivasi.</p>
                 </CardContent>
               </Card>
-              <Card className="text-center glass-card">
+              <Card className="text-center">
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                     <Sparkles className="h-8 w-8 text-primary" />
