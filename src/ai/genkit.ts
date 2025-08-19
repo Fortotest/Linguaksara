@@ -6,7 +6,7 @@ import next from '@genkit-ai/next';
 export const ai = genkit({
   plugins: [
     googleAI(),
-    next, // Correct: pass the plugin object directly
+    next,
   ],
   model: 'googleai/gemini-2.0-flash',
   flowStateStore: 'firebase',

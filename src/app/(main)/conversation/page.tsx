@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Bot, Loader2, Send, Sparkles, User } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { aiConversationGrammarSuggestions } from '@/ai/flows/ai-conversation-grammar-suggestions';
 import { aiConversation } from '@/ai/flows/ai-conversation';
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from '@/lib/utils';
@@ -42,7 +41,6 @@ export default function ConversationPage() {
       title: "Error",
       description: "An unexpected error occurred. Please try again.",
     });
-    // remove the user message if there was an error
     setMessages(prev => prev.slice(0, -1));
   }
 
@@ -59,20 +57,12 @@ export default function ConversationPage() {
       const conversationHistory = newMessages.map(({role, text}) => ({role, text}));
       
       const conversationResponse = await aiConversation({ messages: conversationHistory });
-      
-      const suggestionsResponse = await aiConversationGrammarSuggestions({ text: userMessage.text });
 
-      setMessages(prev => {
-          const updatedMessages = [...prev];
-          const lastMessageIndex = updatedMessages.length - 1;
-          if(updatedMessages[lastMessageIndex].role === 'user') {
-              updatedMessages[lastMessageIndex] = { 
-                ...updatedMessages[lastMessageIndex], 
-                suggestions: suggestionsResponse.suggestions 
-              };
-          }
-          return [...updatedMessages, { role: 'bot', text: conversationResponse.text }];
-      });
+      if (!conversationResponse || !conversationResponse.text) {
+          throw new Error("AI did not return a valid response.");
+      }
+      
+      setMessages(prev => [...prev, { role: 'bot', text: conversationResponse.text }]);
 
     } catch (error) {
       console.error("AI conversation error:", error);
