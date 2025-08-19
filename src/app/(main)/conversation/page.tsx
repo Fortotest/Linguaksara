@@ -12,26 +12,26 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 
-type Message = {
-  role: 'user' | 'bot';
-  text: string;
-};
-
 type Scenario = {
   id: string;
   title: string;
   description: string;
-  icon: React.ElementType;
+  iconName: keyof typeof iconMap;
   missions: string[];
   initialBotMessage: string;
 }
+
+const iconMap = {
+    "coffee": Coffee,
+    "users": Users,
+};
 
 const scenarios: Scenario[] = [
   {
     id: 'coffee',
     title: "Memesan Kopi",
     description: "Latih cara memesan minuman di kafe.",
-    icon: Coffee,
+    iconName: "coffee",
     missions: ["Sapa barista", "Pesan satu minuman", "Tanyakan harganya", "Ucapkan terima kasih"],
     initialBotMessage: "Welcome to Linguaksara Cafe! What can I get for you today?"
   },
@@ -39,7 +39,7 @@ const scenarios: Scenario[] = [
     id: 'new_friend',
     title: "Bertemu Teman Baru",
     description: "Latih percakapan untuk berkenalan.",
-    icon: Users,
+    iconName: "users",
     missions: ["Sapa teman baru", "Perkenalkan diri Anda", "Tanyakan namanya", "Tanyakan kabarnya"],
     initialBotMessage: "Hi there! I don't think we've met before."
   }
@@ -119,7 +119,7 @@ export default function GuidedConversationPage() {
             <p className="text-muted-foreground mt-2 mb-8">Pilih skenario percakapan untuk memulai latihan.</p>
             <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
                 {scenarios.map(sc => {
-                    const Icon = sc.icon;
+                    const Icon = iconMap[sc.iconName];
                     return (
                         <Card key={sc.id} className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => startScenario(sc)}>
                             <CardHeader>
