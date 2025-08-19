@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { correctGrammar } from '@/ai/flows/grammar-correction';
+import { correctGrammar, type CorrectGrammarOutput } from '@/ai/flows/grammar-correction';
 import { Loader2, Wand2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
@@ -45,17 +45,17 @@ const FillInTheBlank = ({ question, options, answer, onCorrect }: { question: st
 
 export default function GrammarPage() {
   const [text, setText] = useState('');
-  const [correctedText, setCorrectedText] = useState('');
+  const [correctionResult, setCorrectionResult] = useState<CorrectGrammarOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
   const handleCorrection = async () => {
     if (!text.trim()) return;
     setIsLoading(true);
-    setCorrectedText('');
+    setCorrectionResult(null);
     try {
       const result = await correctGrammar({ text });
-      setCorrectedText(result.correctedText);
+      setCorrectionResult(result);
     } catch (error) {
       console.error("Error correcting grammar:", error);
       toast({
@@ -134,7 +134,7 @@ export default function GrammarPage() {
         <CardContent>
           <div className="grid w-full gap-4">
             <Textarea 
-              placeholder="Ketik kalimat bahasa Inggris Anda di sini..." 
+              placeholder="Ketik kalimat bahasa Inggris Anda di sini... (contoh: i is happyy becaus i learn english)" 
               value={text}
               onChange={(e) => setText(e.target.value)}
               rows={4}
@@ -146,10 +146,27 @@ export default function GrammarPage() {
                 <><Wand2 className="mr-2 h-4 w-4" /> Perbaiki Tulisan</>
               )}
             </Button>
-            {correctedText && (
-              <div className="mt-4 p-4 bg-accent rounded-md">
-                <h4 className="font-semibold text-accent-foreground">Saran Perbaikan:</h4>
-                <p className="text-accent-foreground">{correctedText}</p>
+            {correctionResult && (
+              <div className="mt-4 space-y-4">
+                <h3 className="font-semibold">Saran Perbaikan Ditemukan ({correctionResult.corrections.length}):</h3>
+                <Accordion type="multiple" className="w-full space-y-2">
+                    {correctionResult.corrections.map((correction, index) => (
+                        <AccordionItem key={index} value={`item-${index}`} className="border-b-0">
+                            <AccordionTrigger className="p-3 bg-secondary rounded-lg text-left hover:no-underline">
+                                <span className="font-semibold">{correction.type}:</span>&nbsp;<span>{correction.explanation.split('.')[0]}</span>
+                            </AccordionTrigger>
+                            <AccordionContent className="border-l-4 border-destructive pl-4 ml-3 pt-2 mt-1">
+                                 <p className="text-sm"><strong>Teks Asli:</strong> "...{correction.originalText}..."</p>
+                                 <p className="text-sm"><strong>Penjelasan:</strong> {correction.explanation}</p>
+                                 <p className="text-sm"><strong>Saran:</strong> Ganti dengan <strong className="text-green-600">{correction.suggestion}</strong></p>
+                            </AccordionContent>
+                        </AccordionItem>
+                    ))}
+                </Accordion>
+                <div className="p-4 bg-accent rounded-lg">
+                    <h4 className="font-semibold text-accent-foreground">Kalimat Akhir yang Direkomendasikan:</h4>
+                    <p className="font-bold text-lg text-green-700">{correctionResult.correctedText}</p>
+                </div>
               </div>
             )}
           </div>
