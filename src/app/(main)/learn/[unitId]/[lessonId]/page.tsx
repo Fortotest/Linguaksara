@@ -49,17 +49,6 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
     </div>
   );
   
-  const hasContent = () => {
-     if (lesson.type === 'Quiz' || lesson.type === 'Practice') return true;
-     if (params.unitId === '1') return ['1','2','3'].includes(params.lessonId);
-     if (params.unitId === '2') return ['1'].includes(params.lessonId);
-     if (params.unitId === '3') return ['1'].includes(params.lessonId);
-     if (params.unitId === '4') return ['1'].includes(params.lessonId);
-     if (params.unitId === '5') return ['1'].includes(params.lessonId);
-     if (params.unitId === '6') return ['1','2'].includes(params.lessonId);
-     return false;
-  }
-
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-8">
@@ -140,6 +129,19 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                 </ul>
               </>
             )}
+            {params.unitId === '2' && params.lessonId === '2' && (
+              <>
+                  <p>Mengetahui nama-nama pekerjaan umum akan membantu Anda dalam percakapan sehari-hari.</p>
+                  <h3 className="flex items-center gap-2"><Users className="h-5 w-5 text-primary"/>Pekerjaan Umum (Common Jobs)</h3>
+                  <ul>
+                      <li><strong>Teacher</strong> (Guru) - Someone who teaches students.</li>
+                      <li><strong>Doctor</strong> (Dokter) - Someone who treats sick people.</li>
+                      <li><strong>Engineer</strong> (Insinyur) - Someone who designs and builds things.</li>
+                      <li><strong>Artist</strong> (Seniman) - Someone who creates art.</li>
+                      <li><strong>Chef</strong> (Koki) - Someone who cooks food in a restaurant.</li>
+                  </ul>
+              </>
+            )}
 
              {/* Unit 3 Content */}
             {params.unitId === '3' && params.lessonId === '1' && (
@@ -155,6 +157,19 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                   <p>Anda bisa menyingkatnya! <strong>I am</strong> menjadi <strong>I'm</strong>. <strong>You are</strong> menjadi <strong>You're</strong>. <strong>He is</strong> menjadi <strong>He's</strong>.</p>
                 </Tip>
               </>
+            )}
+            {params.unitId === '3' && params.lessonId === '2' && (
+                <>
+                    <p>Menggunakan 'this' dan 'that' membantu Anda menunjuk benda-benda di sekitar Anda.</p>
+                    <h3 className="flex items-center gap-2"><BookCopy className="h-5 w-5 text-primary"/>This (Ini) vs. That (Itu)</h3>
+                    <ul>
+                        <li>Gunakan <strong>This is</strong> untuk benda yang dekat dengan Anda. &rarr; <strong>This is</strong> a book. (Ini adalah sebuah buku).</li>
+                        <li>Gunakan <strong>That is</strong> untuk benda yang jauh dari Anda. &rarr; <strong>That is</strong> a car. (Itu adalah sebuah mobil).</li>
+                    </ul>
+                    <Tip>
+                        <p>Bentuk jamaknya adalah <strong>These are</strong> (untuk benda dekat) dan <strong>Those are</strong> (untuk benda jauh).</p>
+                    </Tip>
+                </>
             )}
 
             {/* Unit 4 Content */}
@@ -174,6 +189,23 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                     <li><em>Who is your teacher?</em> (Siapa gurumu?)</li>
                 </ul>
               </>
+            )}
+             {params.unitId === '4' && params.lessonId === '2' && (
+                <>
+                    <p>Mari kita lanjutkan dengan kata tanya untuk tempat dan waktu.</p>
+                    <h3 className="flex items-center gap-2"><HelpCircle className="h-5 w-5 text-primary"/>Where (Di mana)</h3>
+                    <p>Gunakan 'Where' untuk menanyakan lokasi.</p>
+                    <ul>
+                        <li><em>Where is the bathroom?</em> (Di mana kamar mandi?)</li>
+                        <li><em>Where do you live?</em> (Di mana kamu tinggal?)</li>
+                    </ul>
+                    <h3 className="flex items-center gap-2"><HelpCircle className="h-5 w-5 text-primary"/>When (Kapan)</h3>
+                    <p>Gunakan 'When' untuk menanyakan waktu.</p>
+                    <ul>
+                        <li><em>When is your birthday?</em> (Kapan ulang tahunmu?)</li>
+                        <li><em>When does the movie start?</em> (Kapan filmnya mulai?)</li>
+                    </ul>
+                </>
             )}
             
             {/* Unit 5 Content */}
@@ -228,10 +260,6 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                 </ul>
               </>
             )}
-
-            {!hasContent() && (
-              <p className="text-muted-foreground">Konten untuk pelajaran ini sedang dalam pengembangan. Silakan periksa kembali nanti!</p>
-            )}
           </>
         )}
 
@@ -242,7 +270,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                     <CardContent className="p-6 space-y-6">
                         <div className="space-y-2">
                             <p className="font-semibold">Pertanyaan 1:</p>
-                            <p className="text-muted-foreground">Konten kuis sedang dalam pengembangan.</p>
+                            <p className="text-muted-foreground">Konten kuis sedang dalam pengembangan. Fitur kuis interaktif akan segera hadir!</p>
                         </div>
                     </CardContent>
                 </Card>
@@ -250,7 +278,12 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
         )}
         
         {lesson.type === 'Practice' && (
-             <p className="text-muted-foreground">Konten untuk latihan ini sedang dalam pengembangan. Silakan periksa kembali nanti!</p>
+             <div className="not-prose">
+              <p>Latihan interaktif ini akan membantu Anda menerapkan apa yang telah Anda pelajari.</p>
+              <Practice>
+                <p>Konten latihan sedang dalam pengembangan. Fitur latihan interaktif akan segera hadir!</p>
+              </Practice>
+             </div>
         )}
 
       </div>

@@ -1,56 +1,76 @@
 
+'use client';
+
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { GraduationCap, Home, Users, HelpCircle, Utensils, Clock, CheckCircle } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { unitsData } from "@/lib/learn-data";
 
-const units = [
+const unitDetails = [
   {
     id: 1,
     title: "Unit 1: The Basics",
     description: "Mulai dengan salam, perkenalan, dan alfabet untuk fondasi yang kuat.",
-    progress: 0,
     icon: GraduationCap,
   },
   {
     id: 2,
     title: "Unit 2: People & Things",
     description: "Pelajari kosakata tentang keluarga, pekerjaan, dan benda-benda di sekitar Anda.",
-    progress: 0,
     icon: Users,
   },
   {
     id: 3,
     title: "Unit 3: Simple Sentences",
     description: "Mulai membuat kalimat sederhana menggunakan 'is', 'am', 'are'.",
-    progress: 0,
     icon: Home, // Using Home icon as a substitute
   },
   {
     id: 4,
     title: "Unit 4: Asking Questions",
     description: "Belajar bertanya menggunakan 'What', 'Where', 'Who', dan 'How'.",
-    progress: 0,
     icon: HelpCircle,
   },
   {
     id: 5,
     title: "Unit 5: Food and Dining",
     description: "Pelajari cara memesan makanan dan berinteraksi di restoran.",
-    progress: 0,
     icon: Utensils,
   },
     {
     id: 6,
     title: "Unit 6: Daily Routines",
     description: "Bicarakan tentang jadwal dan kebiasaan harian Anda.",
-    progress: 0,
     icon: Clock,
   },
 ];
 
+
 export default function LearnPage() {
+  const searchParams = useSearchParams();
+  const [progress, setProgress] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    const newProgress = { ...progress };
+    let changed = false;
+    for (const [key, value] of searchParams.entries()) {
+      if (key.endsWith('Progress')) {
+        const unitId = key.replace('Progress', '');
+        if (newProgress[unitId] !== Number(value)) {
+          newProgress[unitId] = Number(value);
+          changed = true;
+        }
+      }
+    }
+    if (changed) {
+      setProgress(newProgress);
+    }
+  }, [searchParams, progress]);
+
   return (
     <>
       <div>
@@ -58,10 +78,11 @@ export default function LearnPage() {
         <p className="text-muted-foreground">Ikuti unit-unit ini untuk membangun keahlian Anda selangkah demi selangkah.</p>
       </div>
       <div className="grid gap-6 md:grid-cols-2">
-        {units.map((unit) => {
+        {unitDetails.map((unit) => {
           const Icon = unit.icon;
-          const isCompleted = unit.progress === 100;
-          const isStarted = unit.progress > 0;
+          const unitProgress = progress[`unit${unit.id}`] || 0;
+          const isCompleted = unitProgress === 100;
+          const isStarted = unitProgress > 0;
 
           return (
             <Card key={unit.id} className="flex flex-col">
@@ -75,8 +96,8 @@ export default function LearnPage() {
                 </div>
               </CardHeader>
               <CardContent className="flex-grow">
-                <Progress value={unit.progress} className="h-2" />
-                <p className="text-sm text-muted-foreground mt-2">{unit.progress}% Selesai</p>
+                <Progress value={unitProgress} className="h-2" />
+                <p className="text-sm text-muted-foreground mt-2">{unitProgress}% Selesai</p>
               </CardContent>
               <CardFooter>
                 <Button asChild className="w-full" variant={isCompleted ? "outline" : "default"}>

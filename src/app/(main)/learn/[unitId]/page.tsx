@@ -22,7 +22,11 @@ const getLessonIcon = (type: LessonType) => {
 export default function UnitDetailPage({ params }: { params: { unitId: string } }) {
   const unit = unitsData[params.unitId as keyof typeof unitsData];
   const searchParams = useSearchParams();
-  const [lessons, setLessons] = useState(unit?.lessons || []);
+  
+  // Initialize lessons with their default completion status
+  const [lessons, setLessons] = useState(() => {
+    return unit?.lessons.map(l => ({ ...l })) || [];
+  });
 
   useEffect(() => {
     const completedLessonId = searchParams.get('completedLessonId');
@@ -47,10 +51,14 @@ export default function UnitDetailPage({ params }: { params: { unitId: string } 
     )
   }
 
+  const completedCount = lessons.filter(l => l.completed).length;
+  const totalLessons = lessons.length;
+  const unitProgress = totalLessons > 0 ? Math.round((completedCount / totalLessons) * 100) : 0;
+
   return (
     <div className="max-w-4xl mx-auto">
         <div className="mb-6">
-            <Link href="/learn" className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary mb-2">
+            <Link href={`/learn?unit${params.unitId}Progress=${unitProgress}`} className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary mb-2">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Learning Path
             </Link>
