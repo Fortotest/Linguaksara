@@ -10,10 +10,13 @@ import { aiConversation } from '@/ai/flows/ai-conversation';
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
+import { aiConversationGrammarSuggestions } from '@/ai/flows/ai-conversation-grammar-suggestions';
+import { Badge } from '@/components/ui/badge';
 
 type Message = {
   role: 'user' | 'bot';
   text: string;
+  suggestions?: string[];
 };
 
 export default function ConversationPage() {
@@ -26,11 +29,11 @@ export default function ConversationPage() {
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (scrollAreaRef.current) {
-        const viewport = scrollAreaRef.current.querySelector('div[data-radix-scroll-area-viewport]');
-        if (viewport) {
-            viewport.scrollTop = viewport.scrollHeight;
-        }
+    const scrollViewport = scrollAreaRef.current?.querySelector('div[data-radix-scroll-area-viewport]');
+    if (scrollViewport) {
+      setTimeout(() => {
+        scrollViewport.scrollTop = scrollViewport.scrollHeight;
+      }, 100);
     }
   }, [messages]);
 
@@ -51,8 +54,6 @@ export default function ConversationPage() {
       if (conversationResponse && conversationResponse.text) {
           setMessages(prev => [...prev, { role: 'bot', text: conversationResponse.text }]);
       } else {
-        // AI returned empty response, handle it gracefully without showing an error toast to user.
-        // The prompt is now robust enough to ask for clarification.
         console.error("AI returned an empty or invalid response.");
         setMessages(prev => [...prev, { role: 'bot', text: "I'm not sure how to respond to that. Could you say it differently?" }]);
       }
