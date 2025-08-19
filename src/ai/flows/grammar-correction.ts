@@ -7,8 +7,7 @@
  * - CorrectGrammarOutput - The return type for the correctGrammar function.
  */
 
-import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
+import {defineFlow, definePrompt, z} from 'genkit';
 
 const CorrectGrammarInputSchema = z.object({
   text: z.string().describe('The text to be corrected.'),
@@ -24,7 +23,7 @@ export async function correctGrammar(input: CorrectGrammarInput): Promise<Correc
   return correctGrammarFlow(input);
 }
 
-const prompt = ai.definePrompt({
+const prompt = definePrompt({
   name: 'correctGrammarPrompt',
   input: {schema: CorrectGrammarInputSchema},
   output: {schema: CorrectGrammarOutputSchema},
@@ -33,7 +32,7 @@ const prompt = ai.definePrompt({
 Text: {{{text}}}`,
 });
 
-const correctGrammarFlow = ai.defineFlow(
+const correctGrammarFlow = defineFlow(
   {
     name: 'correctGrammarFlow',
     inputSchema: CorrectGrammarInputSchema,

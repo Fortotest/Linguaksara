@@ -1,4 +1,2 @@
-import { config } from 'dotenv';
-config();
-
-import '@/ai/flows/ai-conversation';
+import config from './config';
+export default config;

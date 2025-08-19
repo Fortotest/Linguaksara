@@ -7,8 +7,7 @@
  * - AiConversationGrammarSuggestionsOutput - The return type for the aiConversationGrammarSuggestions function.
  */
 
-import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
+import {defineFlow, definePrompt, z} from 'genkit';
 
 const AiConversationGrammarSuggestionsInputSchema = z.object({
   text: z.string().describe('The user input text to be analyzed.'),
@@ -24,7 +23,7 @@ export async function aiConversationGrammarSuggestions(input: AiConversationGram
   return aiConversationGrammarSuggestionsFlow(input);
 }
 
-const prompt = ai.definePrompt({
+const prompt = definePrompt({
   name: 'aiConversationGrammarSuggestionsPrompt',
   input: {schema: AiConversationGrammarSuggestionsInputSchema},
   output: {schema: AiConversationGrammarSuggestionsOutputSchema},
@@ -33,7 +32,7 @@ const prompt = ai.definePrompt({
 Sentence: {{{text}}}`,
 });
 
-const aiConversationGrammarSuggestionsFlow = ai.defineFlow(
+const aiConversationGrammarSuggestionsFlow = defineFlow(
   {
     name: 'aiConversationGrammarSuggestionsFlow',
     inputSchema: AiConversationGrammarSuggestionsInputSchema,

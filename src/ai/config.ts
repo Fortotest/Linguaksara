@@ -1,13 +1,14 @@
-import {genkit} from 'genkit';
+/**
+ * @fileOverview Genkit configuration file.
+ */
 import {googleAI} from '@genkit-ai/googleai';
-import next from '@genkit-ai/next';
+import {genkit} from 'genkit';
 
-export const ai = genkit({
+export default genkit({
   plugins: [
     googleAI({
       apiKey: process.env.GEMINI_API_KEY,
     }),
-    next(),
   ],
   logLevel: 'debug',
   flowStateStore: 'firebase',
