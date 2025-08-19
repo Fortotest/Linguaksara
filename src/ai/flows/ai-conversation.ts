@@ -7,7 +7,8 @@
  * - AiConversationOutput - The return type for the aiConversation function.
  */
 
-import {defineFlow, definePrompt, z} from 'genkit';
+import {z} from 'genkit';
+import {ai} from '../config';
 
 const MessageSchema = z.object({
   role: z.enum(['user', 'bot']),
@@ -28,7 +29,7 @@ export async function aiConversation(input: AiConversationInput): Promise<AiConv
   return aiConversationFlow(input);
 }
 
-const prompt = definePrompt({
+const prompt = ai.definePrompt({
   name: 'aiConversationPrompt',
   input: {schema: AiConversationInputSchema},
   output: {schema: AiConversationOutputSchema},
@@ -65,7 +66,7 @@ AI:
 });
 
 
-const aiConversationFlow = defineFlow(
+const aiConversationFlow = ai.defineFlow(
   {
     name: 'aiConversationFlow',
     inputSchema: AiConversationInputSchema,
