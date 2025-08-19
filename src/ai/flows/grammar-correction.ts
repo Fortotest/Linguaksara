@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview Grammar correction AI agent.
@@ -38,7 +39,7 @@ const prompt = ai.definePrompt({
   model: gemini15Flash,
   input: {schema: CorrectGrammarInputSchema},
   output: {schema: CorrectGrammarOutputSchema},
-  prompt: `You are an expert English grammar and spelling assistant.
+  prompt: `You are an expert English grammar and spelling assistant for language learners.
 Analyze the following text and identify all errors. For each error, provide a detailed breakdown.
 Your task is to populate the 'corrections' array and provide the final 'correctedText'.
 
@@ -50,7 +51,31 @@ Here are the rules for each correction object:
 
 After identifying all errors, provide the final, fully corrected sentence in the 'correctedText' field.
 
-Example Input: "i is happyy becaus i learn english"
+**SPECIAL RULE: Handling Non-English Input**
+If the user's text is not in English (e.g., it's in Indonesian), you must handle it gracefully.
+- Do not try to find grammar/spelling errors.
+- Create ONE correction object.
+- Set 'type' to 'Language'.
+- For 'explanation', state that the input seems to be in another language and provide the English translation. For example: "Kata 'kucing' adalah Bahasa Indonesia. Dalam bahasa Inggris, itu adalah 'cat'."
+- For 'suggestion', provide a simple, correct English sentence using the translated word. For example: "A cat is cute."
+- For 'correctedText', provide the same suggested English sentence.
+
+Example for Non-English Input:
+Input: "kucing"
+Expected Output:
+{
+  "correctedText": "A cat is cute.",
+  "corrections": [
+    {
+      "type": "Language",
+      "originalText": "kucing",
+      "explanation": "Kata 'kucing' adalah Bahasa Indonesia. Dalam bahasa Inggris, itu adalah 'cat'.",
+      "suggestion": "A cat is cute."
+    }
+  ]
+}
+
+Example for English Input: "i is happyy becaus i learn english"
 Expected Output:
 {
   "correctedText": "I am happy because I learn English.",
