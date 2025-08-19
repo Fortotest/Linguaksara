@@ -7,10 +7,8 @@ import { cn } from "@/lib/utils";
 import {
   LayoutDashboard,
   GraduationCap,
-  BookText,
   SpellCheck,
   BookOpenCheck,
-  MessagesSquare,
   Trophy,
 } from "lucide-react";
 
@@ -19,7 +17,6 @@ const navItems = [
   { href: "/learn", label: "Learn", icon: GraduationCap },
   { href: "/grammar", label: "Grammar", icon: SpellCheck },
   { href: "/reading", label: "Reading", icon: BookOpenCheck },
-  { href: "/conversation", label: "Conversation", icon: MessagesSquare },
   { href: "/leaderboard", label: "Leaderboard", icon: Trophy },
 ];
 

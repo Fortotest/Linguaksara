@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { ChatWidget } from "@/components/chat-widget";
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -68,6 +69,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <main className="flex flex-1 flex-col gap-4 p-4 sm:p-6 lg:gap-6 lg:p-8 bg-gradient-to-br from-blue-100 via-blue-50 to-white dark:from-blue-950/80 dark:via-slate-900 dark:to-background overflow-auto">
           {children}
         </main>
+        <ChatWidget />
       </div>
     </div>
   );
