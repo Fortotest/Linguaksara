@@ -19,8 +19,8 @@ const getLessonIcon = (type: LessonType) => {
   }
 };
 
-export default function UnitDetailPage({ params }: { params: { unitId: string } }) {
-  const unit = unitsData[params.unitId as keyof typeof unitsData];
+export default function UnitDetailPage({ params: {unitId} }: { params: { unitId: string } }) {
+  const unit = unitsData[unitId as keyof typeof unitsData];
   const searchParams = useSearchParams();
   
   const [lessons, setLessons] = useState(() => {
@@ -57,7 +57,7 @@ export default function UnitDetailPage({ params }: { params: { unitId: string } 
   return (
     <div className="max-w-4xl mx-auto">
         <div className="mb-6">
-            <Link href={`/learn?unit${params.unitId}Progress=${unitProgress}`} className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary mb-2">
+            <Link href={`/learn?unit${unitId}Progress=${unitProgress}`} className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary mb-2">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Learning Path
             </Link>
@@ -76,7 +76,7 @@ export default function UnitDetailPage({ params }: { params: { unitId: string } 
                             <Badge variant="outline" className="mt-1">{lesson.type}</Badge>
                         </div>
                         <Button asChild variant={lesson.completed ? "ghost" : "default"} size="sm" className="ml-auto" disabled={lesson.completed}>
-                           <Link href={`/learn/${params.unitId}/${lesson.id}`}>
+                           <Link href={`/learn/${unitId}/${lesson.id}`}>
                               {lesson.completed ? (
                                   <>
                                       <CheckCircle className="mr-2 h-5 w-5 text-green-500" />
