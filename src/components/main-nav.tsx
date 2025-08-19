@@ -33,7 +33,7 @@ export function MainNav({ className, ...props }: React.HTMLAttributes<HTMLElemen
     >
       {navItems.map((item) => {
         const Icon = item.icon;
-        const isActive = pathname === item.href;
+        const isActive = pathname.startsWith(item.href);
         return (
           <Link
             key={item.href}
