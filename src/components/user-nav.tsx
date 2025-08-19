@@ -1,3 +1,4 @@
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -38,12 +39,10 @@ export function UserNav() {
           <DropdownMenuItem>
             <User className="mr-2 h-4 w-4" />
             <span>Profile</span>
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Settings className="mr-2 h-4 w-4" />
             <span>Settings</span>
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
@@ -51,7 +50,6 @@ export function UserNav() {
           <Link href="/">
             <LogOut className="mr-2 h-4 w-4" />
             <span>Log out</span>
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>

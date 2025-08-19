@@ -1,8 +1,9 @@
+
 "use client";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Bot, BookOpen } from "lucide-react";
+import { CheckCircle2, Bot, BookOpen, PenTool } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
@@ -53,7 +54,7 @@ export default function DashboardPage() {
               </div>
               <div>
                 <p className="font-semibold">Vocabulary Practice</p>
-                <p className="text-sm text-muted-foreground">Learn 10 new words.</p>
+                <p className="text-sm text-muted-foreground">Learn 10 new words to expand your lexicon.</p>
               </div>
               <Button className="ml-auto" size="sm">Start</Button>
             </div>
@@ -63,18 +64,19 @@ export default function DashboardPage() {
               </div>
               <div>
                 <p className="font-semibold">AI Conversation</p>
-                <p className="text-sm text-muted-foreground">Practice for 5 minutes.</p>
+                <p className="text-sm text-muted-foreground">Practice speaking for 5 minutes to improve fluency.</p>
               </div>
               <Button className="ml-auto" size="sm">Start</Button>
             </div>
-            <div className="flex items-center gap-4 p-3 rounded-lg bg-background border">
-              <div className="bg-green-100 p-3 rounded-full">
-                <CheckCircle2 className="h-6 w-6 text-green-600" />
+            <div className="flex items-center gap-4 p-3 rounded-lg bg-secondary">
+              <div className="bg-accent p-3 rounded-full">
+                <PenTool className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <p className="font-semibold text-muted-foreground line-through">Grammar Lesson</p>
-                <p className="text-sm text-muted-foreground">Past Tense - Completed!</p>
+                <p className="font-semibold">Grammar Lesson</p>
+                <p className="text-sm text-muted-foreground">Review the rules for the Past Tense.</p>
               </div>
+               <Button className="ml-auto" size="sm">Start</Button>
             </div>
           </CardContent>
         </Card>
