@@ -40,7 +40,7 @@ export default function LandingPage() {
               alt="Pratinjau dashboard Linguaksara"
               width={1200}
               height={600}
-              className="rounded-xl shadow-2xl border-2 border-primary/20"
+              className=""
               data-ai-hint="language learning dashboard"
             />
           </div>
