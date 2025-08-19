@@ -8,7 +8,7 @@ import { unitsData } from "@/lib/learn-data";
 import type { LessonType } from "@/lib/learn-data";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useSearchParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const getLessonIcon = (type: LessonType) => {
@@ -19,7 +19,9 @@ const getLessonIcon = (type: LessonType) => {
   }
 };
 
-export default function UnitDetailPage({ params: {unitId} }: { params: { unitId: string } }) {
+export default function UnitDetailPage() {
+  const params = useParams();
+  const unitId = params.unitId as string;
   const unit = unitsData[unitId as keyof typeof unitsData];
   const searchParams = useSearchParams();
   
