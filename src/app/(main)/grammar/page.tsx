@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { correctGrammar, type CorrectGrammarOutput } from '@/ai/flows/grammar-correction';
-import { Loader2, Wand2 } from 'lucide-react';
+import { Loader2, Wand2, ChevronRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
@@ -149,22 +149,25 @@ export default function GrammarPage() {
             {correctionResult && (
               <div className="mt-4 space-y-4">
                 <h3 className="font-semibold">Saran Perbaikan Ditemukan ({correctionResult.corrections.length}):</h3>
-                <Accordion type="multiple" className="w-full space-y-2">
+                 <div className="w-full space-y-2">
                     {correctionResult.corrections.map((correction, index) => (
-                        <AccordionItem key={index} value={`item-${index}`} className="border-b-0">
-                            <AccordionTrigger className="p-3 bg-secondary rounded-lg text-left hover:no-underline">
-                                <span className="font-semibold">{correction.type}:</span>&nbsp;<span>{correction.explanation.split('.')[0]}</span>
-                            </AccordionTrigger>
-                            <AccordionContent className="border-l-4 border-destructive pl-4 ml-3 pt-2 mt-1">
-                                 <p className="text-sm"><strong>Teks Asli:</strong> "...{correction.originalText}..."</p>
-                                 <p className="text-sm"><strong>Penjelasan:</strong> {correction.explanation}</p>
-                                 <p className="text-sm"><strong>Saran:</strong> Ganti dengan <strong className="text-green-600">{correction.suggestion}</strong></p>
-                            </AccordionContent>
-                        </AccordionItem>
+                       <details key={index} className="group border-b last:border-b-0">
+                           <summary className="flex cursor-pointer items-center justify-between py-3 font-medium text-sm list-none transition-colors hover:bg-accent rounded-md px-2">
+                               <span>
+                                   <span className="font-bold">{correction.type}:</span> {correction.explanation.split('.')[0]}
+                               </span>
+                               <ChevronRight className="h-4 w-4 transition-transform duration-200 group-open:rotate-90" />
+                           </summary>
+                           <div className="mt-2 mb-4 ml-2 border-l-2 border-destructive pl-4 text-sm space-y-1">
+                               <p><strong>Teks Asli:</strong> "...<span className="font-mono bg-muted p-1 rounded-md">{correction.originalText}</span>..."</p>
+                               <p><strong>Penjelasan:</strong> {correction.explanation}</p>
+                               <p><strong>Saran:</strong> Ganti dengan <strong className="text-green-600 font-semibold">{correction.suggestion}</strong></p>
+                           </div>
+                       </details>
                     ))}
-                </Accordion>
-                <div className="p-4 bg-accent rounded-lg">
-                    <h4 className="font-semibold text-accent-foreground">Kalimat Akhir yang Direkomendasikan:</h4>
+                </div>
+                <div className="p-4 bg-green-500/10 rounded-lg">
+                    <h4 className="font-semibold text-green-800">Kalimat Akhir yang Direkomendasikan:</h4>
                     <p className="font-bold text-lg text-green-700">{correctionResult.correctedText}</p>
                 </div>
               </div>
