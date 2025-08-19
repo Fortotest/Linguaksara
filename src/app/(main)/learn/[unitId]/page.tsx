@@ -51,7 +51,7 @@ export default function UnitDetailPage({ params }: { params: { unitId: string } 
                             <h3 className="font-semibold">{lesson.title}</h3>
                             <Badge variant="outline" className="mt-1">{lesson.type}</Badge>
                         </div>
-                        <Button asChild variant={lesson.completed ? "ghost" : "default"} size="sm" className="ml-auto" disabled={lesson.completed}>
+                        <Button asChild variant={lesson.completed ? "ghost" : "default"} size="sm" className="ml-auto">
                            <Link href={`/learn/${params.unitId}/${lesson.id}`}>
                               {lesson.completed ? (
                                   <>
