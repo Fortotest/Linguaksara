@@ -12,7 +12,6 @@ import { aiConversationGrammarSuggestions } from '@/ai/flows/ai-conversation-gra
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
-import { Separator } from '@/components/ui/separator';
 
 type Message = {
     role: 'user' | 'bot';
@@ -31,12 +30,13 @@ export default function ConversationPage() {
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const scrollViewport = scrollAreaRef.current?.querySelector('div[data-radix-scroll-area-viewport]');
-    if (scrollViewport) {
-      setTimeout(() => {
-        scrollViewport.scrollTop = scrollViewport.scrollHeight;
-      }, 100);
-    }
+    // We need to use a timeout to ensure the DOM is updated before we try to scroll
+    setTimeout(() => {
+        const scrollViewport = scrollAreaRef.current?.querySelector('div[data-radix-scroll-area-viewport]');
+        if (scrollViewport) {
+            scrollViewport.scrollTop = scrollViewport.scrollHeight;
+        }
+    }, 100);
   }, [messages]);
   
   const getSuggestions = async (text: string) => {
@@ -98,15 +98,23 @@ export default function ConversationPage() {
                     {messages.map((message, index) => (
                         <div key={index} className={cn("flex items-start gap-4", message.role === 'user' ? 'justify-end' : 'justify-start')}>
                             {message.role === 'bot' && <Avatar className="h-8 w-8 bg-primary text-primary-foreground"><AvatarFallback><Bot /></AvatarFallback></Avatar>}
-                            <div className={cn("px-4 py-2 rounded-lg max-w-md shadow-sm", message.role === 'user' ? 'bg-primary text-primary-foreground rounded-br-none' : 'bg-muted rounded-bl-none')}>
+                            <div className={cn("px-4 py-2 rounded-lg max-w-[80%] shadow-sm", message.role === 'user' ? 'bg-primary text-primary-foreground rounded-br-none' : 'bg-muted rounded-bl-none')}>
                                 <p className="whitespace-pre-wrap">{message.text}</p>
                             </div>
                             {message.role === 'user' && <Avatar className="h-8 w-8"><AvatarFallback><User /></AvatarFallback></Avatar>}
                         </div>
                     ))}
+                    {isLoading && (
+                        <div className="flex items-start gap-4 justify-start">
+                            <Avatar className="h-8 w-8 bg-primary text-primary-foreground"><AvatarFallback><Bot /></AvatarFallback></Avatar>
+                            <div className="px-4 py-2 rounded-lg max-w-md shadow-sm bg-muted rounded-bl-none flex items-center">
+                                <Loader2 className="h-5 w-5 animate-spin" />
+                            </div>
+                        </div>
+                    )}
                 </div>
             </ScrollArea>
-            <div className="flex w-full items-center space-x-2 mt-4">
+            <div className="flex w-full items-center space-x-2 pt-4">
                 <Input 
                     type="text" 
                     placeholder="Ketik pesan Anda..." 
