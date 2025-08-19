@@ -12,49 +12,57 @@ import { useEffect, useState } from "react";
 const unitDetails = [
   {
     id: 1,
-    title: "Unit 1: The Basics",
+    prefix: "Unit 1",
+    title: "The Basics",
     description: "Mulai dengan salam, perkenalan, dan alfabet untuk fondasi yang kuat.",
     icon: GraduationCap,
   },
   {
     id: 2,
-    title: "Unit 2: People & Things",
+    prefix: "Unit 2",
+    title: "People & Things",
     description: "Pelajari kosakata tentang keluarga, pekerjaan, dan benda-benda di sekitar Anda.",
     icon: Users,
   },
   {
     id: 3,
-    title: "Unit 3: Simple Sentences",
+    prefix: "Unit 3",
+    title: "Simple Sentences",
     description: "Mulai membuat kalimat sederhana menggunakan 'is', 'am', 'are'.",
-    icon: Home, // Using Home icon as a substitute
+    icon: Home,
   },
   {
     id: 4,
-    title: "Unit 4: Asking Questions",
+    prefix: "Unit 4",
+    title: "Asking Questions",
     description: "Belajar bertanya menggunakan 'What', 'Where', 'Who', dan 'How'.",
     icon: HelpCircle,
   },
   {
     id: 5,
-    title: "Unit 5: Basic Action Verbs",
+    prefix: "Unit 5",
+    title: "Basic Action Verbs",
     description: "Kuasai kata kerja aksi paling umum seperti 'have', 'eat', 'drink', 'go', 'want', dan 'like'.",
     icon: Flame,
   },
   {
     id: 6,
-    title: "Unit 6: Food and Dining",
+    prefix: "Unit 6",
+    title: "Food and Dining",
     description: "Pelajari cara memesan makanan dan berinteraksi di restoran.",
     icon: Utensils,
   },
   {
     id: 7,
-    title: "Unit 7: Daily Routines",
+    prefix: "Unit 7",
+    title: "Daily Routines",
     description: "Bicarakan tentang jadwal dan kebiasaan harian Anda.",
     icon: Clock,
   },
   {
     id: 8,
-    title: "Unit 8: Review & Consolidation",
+    prefix: "Unit 8",
+    title: "Review & Consolidation",
     description: "Uji semua yang telah kamu pelajari dari Unit 1 hingga 7 dalam sebuah latihan skenario besar.",
     icon: Star,
   },
@@ -101,8 +109,9 @@ export default function LearnPage() {
                 <div className="p-3 bg-accent rounded-lg">
                   <Icon className="h-8 w-8 text-primary" />
                 </div>
-                <div>
-                  <CardTitle>{unit.title}</CardTitle>
+                <div className="w-full">
+                  <p className="text-sm font-semibold text-primary">{unit.prefix}</p>
+                  <CardTitle className="text-2xl font-bold font-headline !mt-0">{unit.title}</CardTitle>
                   <CardDescription>{unit.description}</CardDescription>
                 </div>
               </CardHeader>

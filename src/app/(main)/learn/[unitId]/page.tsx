@@ -23,7 +23,6 @@ export default function UnitDetailPage({ params }: { params: { unitId: string } 
   const unit = unitsData[params.unitId as keyof typeof unitsData];
   const searchParams = useSearchParams();
   
-  // Initialize lessons with their default completion status
   const [lessons, setLessons] = useState(() => {
     return unit?.lessons.map(l => ({ ...l })) || [];
   });
@@ -62,7 +61,7 @@ export default function UnitDetailPage({ params }: { params: { unitId: string } 
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Learning Path
             </Link>
-            <h1 className="text-4xl font-bold font-headline">{unit.title}</h1>
+            <h1 className="text-4xl font-bold font-headline">{unit.prefix}: {unit.title}</h1>
         </div>
 
         <div className="space-y-4">

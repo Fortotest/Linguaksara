@@ -3,7 +3,8 @@ export type LessonType = "Lesson" | "Quiz" | "Practice";
 
 export const unitsData = {
   "1": { 
-    title: "Unit 1: The Basics",
+    prefix: "Unit 1",
+    title: "The Basics",
     description: "Mulai dengan salam, perkenalan, dan alfabet untuk fondasi yang kuat.",
     lessons: [
       { id: "1", title: "Greetings and Introductions", description: "Pelajari cara menyapa dan memperkenalkan diri.", type: "Lesson", completed: false },
@@ -13,7 +14,8 @@ export const unitsData = {
     ] 
   },
   "2": { 
-    title: "Unit 2: People & Things",
+    prefix: "Unit 2",
+    title: "People & Things",
     description: "Pelajari kosakata tentang keluarga, pekerjaan, dan benda-benda di sekitar Anda.",
     lessons: [
       { id: "1", title: "Family Members", description: "Pelajari nama-nama anggota keluarga.", type: "Lesson", completed: false },
@@ -23,7 +25,8 @@ export const unitsData = {
     ]
   },
   "3": { 
-    title: "Unit 3: Simple Sentences",
+    prefix: "Unit 3",
+    title: "Simple Sentences",
     description: "Mulai membuat kalimat sederhana menggunakan 'is', 'am', 'are'.",
     lessons: [
       { id: "1", title: "Using 'is', 'am', 'are'", description: "Pelajari cara menggunakan 'to be' dalam kalimat.", type: "Lesson", completed: false },
@@ -33,7 +36,8 @@ export const unitsData = {
     ]
   },
   "4": { 
-    title: "Unit 4: Asking Questions",
+    prefix: "Unit 4",
+    title: "Asking Questions",
     description: "Belajar bertanya menggunakan 'What', 'Where', 'Who', dan 'How'.",
     lessons: [
       { id: "1", title: "What & Who", description: "Belajar bertanya tentang benda dan orang.", type: "Lesson", completed: false },
@@ -43,7 +47,8 @@ export const unitsData = {
     ]
   },
   "5": {
-    title: "Unit 5: Basic Action Verbs",
+    prefix: "Unit 5",
+    title: "Basic Action Verbs",
     description: "Kuasai kata kerja aksi paling umum seperti 'have', 'eat', 'drink', 'go', 'want', dan 'like'.",
     lessons: [
       { id: "1", title: "Using 'have' and 'has'", description: "Pelajari cara menyatakan kepemilikan.", type: "Lesson", completed: false },
@@ -53,16 +58,18 @@ export const unitsData = {
     ]
   },
   "6": {
-    title: "Unit 6: Food and Dining",
+    prefix: "Unit 6",
+    title: "Food and Dining",
     description: "Pelajari cara memesan makanan dan berinteraksi di restoran.",
     lessons: [
       { id: "1", title: "Common Food and Drinks", description: "Kenali nama-nama makanan dan minuman umum.", type: "Lesson", completed: false },
       { id: "2", title: "Ordering at a Restaurant", description: "Latihan memesan makanan dan minuman.", type: "Practice", completed: false },
-      { id: "3", title: "Quiz: Food and Dining", description: "Uji kosakata Anda seputar makanan.", type: "Quiz", completed: false },
+      { id: "3", "title": "Quiz: Food and Dining", "description": "Uji kosakata Anda seputar makanan.", "type": "Quiz", "completed": false },
     ]
   },
   "7": {
-    title: "Unit 7: Daily Routines",
+    prefix: "Unit 7",
+    title: "Daily Routines",
     description: "Bicarakan tentang jadwal dan kebiasaan harian Anda.",
     lessons: [
       { id: "1", title: "Daily Activities", description: "Jelaskan aktivitas harian dari pagi hingga malam.", type: "Lesson", completed: false },
@@ -71,7 +78,8 @@ export const unitsData = {
     ]
   },
   "8": {
-    title: "Unit 8: Review & Consolidation",
+    prefix: "Unit 8",
+    title: "Review & Consolidation",
     description: "Uji semua yang telah kamu pelajari dari Unit 1 hingga 7 dalam sebuah latihan skenario besar.",
     lessons: [
         { id: "1", title: "Practice: A New Friend", description: "Latihan percakapan dari perkenalan hingga bertanya soal pekerjaan.", type: "Practice", completed: false },
