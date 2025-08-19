@@ -4,7 +4,7 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { GraduationCap, Users, Home, HelpCircle, Utensils, Clock, CheckCircle, Flame, Star } from "lucide-react";
+import { GraduationCap, Users, Home, HelpCircle, Utensils, Clock, CheckCircle, Flame, Star, MessageSquareQuestion } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -36,7 +36,7 @@ const unitDetails = [
     prefix: "Unit 4",
     title: "Asking Questions",
     description: "Kuasai cara bertanya tentang berbagai hal memakai 'What' dan 'Where'.",
-    icon: HelpCircle,
+    icon: MessageSquareQuestion,
   },
   {
     id: 5,
