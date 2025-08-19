@@ -4,24 +4,21 @@ import { useState, useRef, useEffect } from 'react';
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Bot, Loader2, Send, Sparkles, User } from "lucide-react";
+import { Bot, Loader2, Send, User } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { aiConversation } from '@/ai/flows/ai-conversation';
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
-import { aiConversationGrammarSuggestions } from '@/ai/flows/ai-conversation-grammar-suggestions';
-import { Badge } from '@/components/ui/badge';
 
 type Message = {
   role: 'user' | 'bot';
   text: string;
-  suggestions?: string[];
 };
 
 export default function ConversationPage() {
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'bot', text: "Hello! What would you like to talk about today?" }
+    { role: 'bot', text: "Hello! I'm Lingua, your personal guide. What would you like to learn today?" }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -37,12 +34,21 @@ export default function ConversationPage() {
     }
   }, [messages]);
 
+  const handleError = (description: string = "An unexpected error occurred. Please try again.") => {
+    toast({
+      variant: "destructive",
+      title: "Error",
+      description: description,
+    });
+  };
+
   const handleSend = async () => {
     if (!input.trim()) return;
 
     const userMessage: Message = { role: 'user', text: input };
     const newMessages: Message[] = [...messages, userMessage];
     setMessages(newMessages);
+    const currentInput = input;
     setInput('');
     setIsLoading(true);
 
@@ -51,22 +57,19 @@ export default function ConversationPage() {
       
       const conversationResponse = await aiConversation({ messages: conversationHistory });
 
-      if (conversationResponse && conversationResponse.text) {
+      if (conversationResponse?.text) {
           setMessages(prev => [...prev, { role: 'bot', text: conversationResponse.text }]);
       } else {
-        console.error("AI returned an empty or invalid response.");
-        setMessages(prev => [...prev, { role: 'bot', text: "I'm not sure how to respond to that. Could you say it differently?" }]);
+        handleError("The AI returned an empty response. Please try rephrasing your message.");
       }
 
     } catch (error) {
       console.error("AI conversation error:", error);
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "An unexpected error occurred. Please try again.",
-      });
+      handleError();
       // Rollback the user message on error
       setMessages(prev => prev.slice(0, -1));
+      // Restore input
+      setInput(currentInput);
     } finally {
       setIsLoading(false);
     }

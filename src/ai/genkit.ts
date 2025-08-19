@@ -4,10 +4,12 @@ import next from '@genkit-ai/next';
 
 export const ai = genkit({
   plugins: [
-    googleAI(),
+    googleAI({
+      apiKey: process.env.GEMINI_API_KEY,
+    }),
     next(),
   ],
-  model: 'googleai/gemini-2.0-flash',
+  logLevel: 'debug',
   flowStateStore: 'firebase',
   traceStore: 'firebase',
 });
