@@ -7,8 +7,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PronunciationCoach } from "@/components/pronunciation-coach";
 
 export default function LessonPage({ params }: { params: { unitId: string, lessonId: string } }) {
-  const unit = unitsData[params.unitId as keyof typeof unitsData];
-  const lesson = unit?.lessons.find(l => l.id === params.lessonId);
+  const { unitId, lessonId } = params;
+  const unit = unitsData[unitId as keyof typeof unitsData];
+  const lesson = unit?.lessons.find(l => l.id === lessonId);
 
   if (!unit || !lesson) {
     return (
@@ -16,7 +17,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
             <h1 className="text-2xl font-bold">Pelajaran tidak ditemukan</h1>
             <p className="text-muted-foreground">Pelajaran yang Anda cari tidak ada.</p>
             <Button asChild className="mt-4">
-                <Link href={`/learn/${params.unitId}`}>Kembali ke Unit</Link>
+                <Link href={`/learn/${unitId}`}>Kembali ke Unit</Link>
             </Button>
         </div>
     )
@@ -52,7 +53,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-8">
-        <Link href={`/learn/${params.unitId}`} className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary mb-4">
+        <Link href={`/learn/${unitId}`} className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary mb-4">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Kembali ke {unit.title}
         </Link>
@@ -64,7 +65,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
         {lesson.type === 'Lesson' && (
           <>
             {/* Unit 1 Content */}
-            {params.unitId === '1' && params.lessonId === '1' && (
+            {unitId === '1' && lessonId === '1' && (
               <>
                 <p>Dalam pelajaran ini, kita akan fokus pada dasar-dasar yang akan membantu Anda memulai percakapan dalam bahasa Inggris.</p>
                 <h3 className="flex items-center gap-2"><MessageSquareQuote className="h-5 w-5 text-primary"/>Sapaan (Greetings)</h3>
@@ -92,7 +93,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                 </div>
               </>
             )}
-             {params.unitId === '1' && params.lessonId === '2' && (
+             {unitId === '1' && lessonId === '2' && (
               <>
                 <p>Mengenal alfabet dan angka adalah fondasi penting dalam belajar bahasa apa pun, termasuk bahasa Inggris.</p>
                 <h3 className="flex items-center gap-2"><BookCopy className="h-5 w-5 text-primary"/>The Alphabet (Alfabet)</h3>
@@ -103,7 +104,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                 <ul><li><strong>One</strong> (1), <strong>Two</strong> (2), <strong>Three</strong> (3), <strong>Four</strong> (4), <strong>Five</strong> (5), <strong>Six</strong> (6), <strong>Seven</strong> (7), <strong>Eight</strong> (8), <strong>Nine</strong> (9), <strong>Ten</strong> (10)</li></ul>
               </>
             )}
-             {params.unitId === '1' && params.lessonId === '3' && (
+             {unitId === '1' && lessonId === '3' && (
               <>
                 <p>Frasa dasar ini akan sangat berguna dalam berbagai situasi sehari-hari. Mari kita pelajari beberapa yang paling penting.</p>
                 <ul>
@@ -117,7 +118,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
             )}
 
             {/* Unit 2 Content */}
-            {params.unitId === '2' && params.lessonId === '1' && (
+            {unitId === '2' && lessonId === '1' && (
               <>
                 <p>Membicarakan keluarga adalah cara yang bagus untuk melatih kosakata dasar. Mari kita pelajari beberapa istilah penting.</p>
                 <h3 className="flex items-center gap-2"><Users className="h-5 w-5 text-primary"/>Keluarga Inti (Immediate Family)</h3>
@@ -129,7 +130,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                 </ul>
               </>
             )}
-            {params.unitId === '2' && params.lessonId === '2' && (
+            {unitId === '2' && lessonId === '2' && (
               <>
                   <p>Mengetahui nama-nama pekerjaan umum akan membantu Anda dalam percakapan sehari-hari.</p>
                   <h3 className="flex items-center gap-2"><Users className="h-5 w-5 text-primary"/>Pekerjaan Umum (Common Jobs)</h3>
@@ -144,7 +145,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
             )}
 
              {/* Unit 3 Content */}
-            {params.unitId === '3' && params.lessonId === '1' && (
+            {unitId === '3' && lessonId === '1' && (
               <>
                 <p>Kata 'is', 'am', dan 'are' adalah bentuk dari kata kerja 'to be', yang paling dasar dan penting dalam bahasa Inggris.</p>
                 <h3 className="flex items-center gap-2"><BookCopy className="h-5 w-5 text-primary"/>Penggunaan 'is', 'am', 'are'</h3>
@@ -158,7 +159,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                 </Tip>
               </>
             )}
-            {params.unitId === '3' && params.lessonId === '2' && (
+            {unitId === '3' && lessonId === '2' && (
                 <>
                     <p>Menggunakan 'this' dan 'that' membantu Anda menunjuk benda-benda di sekitar Anda.</p>
                     <h3 className="flex items-center gap-2"><BookCopy className="h-5 w-5 text-primary"/>This (Ini) vs. That (Itu)</h3>
@@ -173,7 +174,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
             )}
 
             {/* Unit 4 Content */}
-            {params.unitId === '4' && params.lessonId === '1' && (
+            {unitId === '4' && lessonId === '1' && (
               <>
                 <p>Kata tanya adalah kunci untuk mendapatkan informasi. Mari kita mulai dengan dua yang paling dasar: 'What' dan 'Who'.</p>
                 <h3 className="flex items-center gap-2"><HelpCircle className="h-5 w-5 text-primary"/>What (Apa)</h3>
@@ -190,7 +191,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                 </ul>
               </>
             )}
-             {params.unitId === '4' && params.lessonId === '2' && (
+             {unitId === '4' && lessonId === '2' && (
                 <>
                     <p>Mari kita lanjutkan dengan kata tanya untuk tempat dan waktu.</p>
                     <h3 className="flex items-center gap-2"><HelpCircle className="h-5 w-5 text-primary"/>Where (Di mana)</h3>
@@ -209,7 +210,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
             )}
 
             {/* Unit 5 Content - NEW */}
-            {params.unitId === '5' && params.lessonId === '1' && (
+            {unitId === '5' && lessonId === '1' && (
               <>
                 <p>Kata kerja 'have' dan 'has' sangat penting untuk menyatakan kepemilikan.</p>
                 <h3 className="flex items-center gap-2"><Flame className="h-5 w-5 text-primary"/>Menggunakan 'have' dan 'has'</h3>
@@ -219,7 +220,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                 </ul>
               </>
             )}
-            {params.unitId === '5' && params.lessonId === '2' && (
+            {unitId === '5' && lessonId === '2' && (
               <>
                 <p>Kata kerja aksi dasar ini akan membuat kalimat Anda lebih hidup.</p>
                 <h3 className="flex items-center gap-2"><Flame className="h-5 w-5 text-primary"/>Kata Kerja Aksi Umum</h3>
@@ -230,7 +231,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                 </ul>
               </>
             )}
-            {params.unitId === '5' && params.lessonId === '3' && (
+            {unitId === '5' && lessonId === '3' && (
               <>
                 <p>Belajar cara mengekspresikan apa yang Anda inginkan dan sukai.</p>
                 <h3 className="flex items-center gap-2"><Flame className="h-5 w-5 text-primary"/>Mengekspresikan Keinginan</h3>
@@ -247,7 +248,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
             )}
             
             {/* Unit 6 Content */}
-            {params.unitId === '6' && params.lessonId === '1' && (
+            {unitId === '6' && lessonId === '1' && (
               <>
                 <p>Mari kita pelajari nama-nama makanan dan minuman yang sering kita temui sehari-hari.</p>
                 <h3 className="flex items-center gap-2"><Utensils className="h-5 w-5 text-primary"/>Makanan (Food)</h3>
@@ -269,7 +270,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
             )}
 
             {/* Unit 7 Content */}
-            {params.unitId === '7' && params.lessonId === '1' && (
+            {unitId === '7' && lessonId === '1' && (
               <>
                 <p>Menceritakan kegiatan sehari-hari adalah cara yang bagus untuk melatih penggunaan present tense.</p>
                 <h3 className="flex items-center gap-2"><Clock className="h-5 w-5 text-primary"/>Kosakata Rutinitas Harian</h3>
@@ -284,7 +285,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                 </ul>
               </>
             )}
-            {params.unitId === '7' && params.lessonId === '2' && (
+            {unitId === '7' && lessonId === '2' && (
               <>
                 <p>Belajar membaca jam sangat penting untuk membicarakan jadwal.</p>
                 <h3 className="flex items-center gap-2"><Clock className="h-5 w-5 text-primary"/>Cara Bertanya Jam</h3>
@@ -320,15 +321,15 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
               <p>Latihan interaktif ini akan membantu Anda menerapkan apa yang telah Anda pelajari.</p>
               <Practice>
                 {/* Unit 2 Practice */}
-                {params.unitId === '2' && params.lessonId === '3' && (
+                {unitId === '2' && lessonId === '3' && (
                     <p>Sebutkan 5 benda yang Anda lihat di ruangan Anda sekarang dalam bahasa Inggris. Contoh: "This is a chair."</p>
                 )}
                  {/* Unit 3 Practice */}
-                {params.unitId === '3' && params.lessonId === '3' && (
+                {unitId === '3' && lessonId === '3' && (
                     <p>Buat 3 kalimat sederhana tentang diri Anda. Contoh: "I am a student. I am happy. I am not a doctor."</p>
                 )}
                 {/* Unit 4 Practice */}
-                {params.unitId === '4' && params.lessonId === '3' && (
+                {unitId === '4' && lessonId === '3' && (
                      <div className="space-y-4">
                         <p>Latih dialog singkat ini dengan teman atau dengan diri sendiri.</p>
                         <Dialogue character="A" text="Hi! How are you?" />
@@ -337,7 +338,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                      </div>
                 )}
                 {/* Unit 6 Practice */}
-                {params.unitId === '6' && params.lessonId === '2' && (
+                {unitId === '6' && lessonId === '2' && (
                     <div className="space-y-4">
                         <p>Bayangkan Anda berada di sebuah restoran. Latih dialog ini.</p>
                         <Dialogue character="Waiter" text="Hello. Can I help you?" />
@@ -347,7 +348,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                     </div>
                 )}
                 {/* Unit 8 Practice */}
-                 {params.unitId === '8' && params.lessonId === '1' && (
+                 {unitId === '8' && lessonId === '1' && (
                     <div className="space-y-4">
                         <p><strong>Skenario:</strong> Anda bertemu teman baru di sebuah acara.</p>
                         <ol className="list-decimal list-inside space-y-2">
@@ -359,7 +360,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                         </ol>
                     </div>
                 )}
-                {params.unitId === '8' && params.lessonId === '2' && (
+                {unitId === '8' && lessonId === '2' && (
                     <div className="space-y-4">
                         <p><strong>Skenario:</strong> Anda berada di kafe dan ingin memesan.</p>
                          <ol className="list-decimal list-inside space-y-2">
@@ -380,7 +381,7 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
 
       <div className="mt-8 mb-4 text-center">
         <Button asChild size="lg">
-          <Link href={`/learn/${params.unitId}?completedLessonId=${lesson.id}`}>
+          <Link href={`/learn/${unitId}?completedLessonId=${lesson.id}`}>
             <Check className="mr-2 h-4 w-4" />
             Selesaikan Pelajaran
           </Link>
