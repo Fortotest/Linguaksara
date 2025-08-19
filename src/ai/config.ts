@@ -3,8 +3,8 @@
  */
 import {googleAI} from '@genkit-ai/googleai';
 import {genkit} from 'genkit';
-import {firebase} from '@genkit-ai/firebase/v1';
-import {next} from '@genkit-ai/next/v1';
+import {firebase} from '@genkit-ai/firebase';
+import {next} from '@genkit-ai/next';
 
 export const ai = genkit({
   plugins: [
