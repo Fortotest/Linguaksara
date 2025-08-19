@@ -25,7 +25,7 @@ export default function LeaderboardPage() {
   return (
     <>
       <div className="relative overflow-hidden rounded-xl">
-        <Image src="https://placehold.co/1200x250.png" alt="Leaderboard banner" width={1200} height={250} className="w-full object-cover" data-ai-hint="abstract geometric background" />
+        <Image src="https://raw.githubusercontent.com/tesweb2025/Market-Intelligence-5.1/1ccb02596d257dec4beb1e512a6e9339df244cea/header%20231%20baru.jpg" alt="Leaderboard banner" width={1200} height={250} className="w-full object-cover" data-ai-hint="abstract geometric background" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
         <div className="absolute bottom-6 left-6">
             <h1 className="text-4xl font-bold font-headline text-card-foreground shadow-sm">Leaderboard</h1>
