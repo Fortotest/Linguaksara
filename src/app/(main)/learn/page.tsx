@@ -4,11 +4,10 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { GraduationCap, Home, Users, HelpCircle, Utensils, Clock, CheckCircle } from "lucide-react";
+import { GraduationCap, Users, Home, HelpCircle, Utensils, Clock, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { unitsData } from "@/lib/learn-data";
 
 const unitDetails = [
   {
@@ -41,7 +40,7 @@ const unitDetails = [
     description: "Pelajari cara memesan makanan dan berinteraksi di restoran.",
     icon: Utensils,
   },
-    {
+  {
     id: 6,
     title: "Unit 6: Daily Routines",
     description: "Bicarakan tentang jadwal dan kebiasaan harian Anda.",
