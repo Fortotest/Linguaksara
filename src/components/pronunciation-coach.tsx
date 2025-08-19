@@ -53,7 +53,7 @@ export function PronunciationCoach() {
       <CardContent>
         <div className="grid w-full gap-2">
           <Textarea
-            placeholder="Type any English sentence here..."
+            placeholder="Ketik kalimat bahasa Inggris di sini..."
             value={text}
             onChange={e => setText(e.target.value)}
             rows={3}
@@ -71,7 +71,7 @@ export function PronunciationCoach() {
           </Button>
           <audio ref={audioRef} className="hidden" />
           <p className="text-xs text-muted-foreground mt-2">
-            Type any sentence to hear its accurate pronunciation from our AI.
+            Ketik kalimat apa saja untuk mendengar pengucapan akurat dari AI kami.
           </p>
         </div>
       </CardContent>
