@@ -81,7 +81,7 @@ export default function ReadingStoryPage() {
             }
         } catch (error) {
             console.error("Error generating speech:", error);
-            toast({ variant: "destructive", title: "Audio Error", description: "Gagal memuat audio."});
+            toast({ variant: "destructive", title: "Audio Error", description: "Failed to load audio."});
         } finally {
             setIsLoadingAudio(false);
         }
@@ -104,12 +104,12 @@ export default function ReadingStoryPage() {
   if (!story) {
     return (
       <div className="text-center p-4">
-        <h1 className="text-2xl font-bold">Cerita tidak ditemukan</h1>
+        <h1 className="text-2xl font-bold">Story not found</h1>
         <p className="text-muted-foreground">
-          Cerita yang Anda cari tidak ada.
+          The story you are looking for does not exist.
         </p>
         <Button asChild className="mt-4">
-          <Link href="/reading">Kembali ke Perpustakaan</Link>
+          <Link href="/reading">Back to Library</Link>
         </Button>
       </div>
     );
@@ -165,8 +165,8 @@ export default function ReadingStoryPage() {
             return (
                 <Card className="mt-6">
                     <CardHeader>
-                        <CardTitle>Kuis Pemahaman</CardTitle>
-                        <CardDescription>Jawab pertanyaan berikut berdasarkan teks di atas.</CardDescription>
+                        <CardTitle>Comprehension Quiz</CardTitle>
+                        <CardDescription>Answer the following questions based on the text above.</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
                         {story.activity.questions.map((q, index) => (
@@ -183,12 +183,12 @@ export default function ReadingStoryPage() {
                             </div>
                         ))}
                         <Button onClick={handleSubmitQuiz} disabled={Object.keys(userAnswers).length !== story.activity.questions.length || score !== null}>
-                            Lihat Hasil
+                            Check Answers
                         </Button>
                         {score !== null && (
                             <div className="mt-4 p-4 rounded-lg bg-accent">
-                                <h3 className="font-bold text-lg">Hasil Anda:</h3>
-                                <p>Anda menjawab dengan benar {score} dari {story.activity.questions.length} pertanyaan!</p>
+                                <h3 className="font-bold text-lg">Your Result:</h3>
+                                <p>You answered {score} out of {story.activity.questions.length} questions correctly!</p>
                             </div>
                         )}
                     </CardContent>
@@ -200,8 +200,8 @@ export default function ReadingStoryPage() {
              return (
                 <Card className="mt-6">
                     <CardHeader>
-                        <CardTitle>Benar atau Salah?</CardTitle>
-                        <CardDescription>Tentukan apakah pernyataan berikut benar atau salah.</CardDescription>
+                        <CardTitle>True or False?</CardTitle>
+                        <CardDescription>Determine if the following statements are true or false.</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
                         {story.activity.questions.map((q, index) => (
@@ -217,7 +217,7 @@ export default function ReadingStoryPage() {
                                         score !== null && userAnswers[index] === true && userAnswers[index] !== q.answer && 'bg-red-500 hover:bg-red-600'
                                       )}
                                     >
-                                        Benar
+                                        True
                                     </Button>
                                     <Button
                                       variant={userAnswers[index] === false ? 'default' : 'outline'}
@@ -228,18 +228,18 @@ export default function ReadingStoryPage() {
                                         score !== null && userAnswers[index] === false && userAnswers[index] !== q.answer && 'bg-red-500 hover:bg-red-600'
                                       )}
                                     >
-                                        Salah
+                                        False
                                     </Button>
                                 </div>
                             </div>
                         ))}
                          <Button onClick={handleSubmitQuiz} disabled={Object.keys(userAnswers).length !== story.activity.questions.length || score !== null}>
-                            Lihat Hasil
+                            Check Answers
                         </Button>
                         {score !== null && (
                             <div className="mt-4 p-4 rounded-lg bg-accent">
-                                <h3 className="font-bold text-lg">Hasil Anda:</h3>
-                                <p>Anda menjawab dengan benar {score} dari {story.activity.questions.length} pertanyaan!</p>
+                                <h3 className="font-bold text-lg">Your Result:</h3>
+                                <p>You answered {score} out of {story.activity.questions.length} questions correctly!</p>
                             </div>
                         )}
                     </CardContent>
@@ -256,7 +256,7 @@ export default function ReadingStoryPage() {
       <div className="mb-8">
         <Link href="/reading" className="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-primary mb-4">
           <ArrowLeft className="mr-2 h-4 w-4" />
-          Kembali ke Perpustakaan
+          Back to Library
         </Link>
         <Card>
           <CardHeader>
@@ -295,7 +295,7 @@ export default function ReadingStoryPage() {
             <Button asChild size="lg">
               <Link href="/reading">
                 <CheckCircle className="mr-2 h-4 w-4" />
-                Selesai Membaca, Kembali ke Perpustakaan
+                Done Reading, Back to Library
               </Link>
             </Button>
         </div>
@@ -303,5 +303,3 @@ export default function ReadingStoryPage() {
     </div>
   );
 }
-
-    
