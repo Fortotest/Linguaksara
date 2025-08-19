@@ -28,7 +28,9 @@ const prompt = ai.definePrompt({
   name: 'correctGrammarPrompt',
   input: {schema: CorrectGrammarInputSchema},
   output: {schema: CorrectGrammarOutputSchema},
-  prompt: `Correct the grammar and spelling of the following text:\n\n{{{text}}}`,
+  prompt: `Correct the grammar and spelling of the following text and provide only the corrected version.
+
+Text: {{{text}}}`,
 });
 
 const correctGrammarFlow = ai.defineFlow(

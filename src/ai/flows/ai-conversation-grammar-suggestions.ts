@@ -16,7 +16,7 @@ const AiConversationGrammarSuggestionsInputSchema = z.object({
 export type AiConversationGrammarSuggestionsInput = z.infer<typeof AiConversationGrammarSuggestionsInputSchema>;
 
 const AiConversationGrammarSuggestionsOutputSchema = z.object({
-  suggestions: z.array(z.string()).describe('An array of alternative sentence suggestions.'),
+  suggestions: z.array(z.string()).describe('An array of up to three alternative sentence suggestions.'),
 });
 export type AiConversationGrammarSuggestionsOutput = z.infer<typeof AiConversationGrammarSuggestionsOutputSchema>;
 
@@ -28,13 +28,9 @@ const prompt = ai.definePrompt({
   name: 'aiConversationGrammarSuggestionsPrompt',
   input: {schema: AiConversationGrammarSuggestionsInputSchema},
   output: {schema: AiConversationGrammarSuggestionsOutputSchema},
-  prompt: `You are an AI-powered language learning assistant that provides grammar suggestions and alternative sentence structures to users.
+  prompt: `You are a language learning assistant. Provide up to three alternative, grammatically correct sentence suggestions for the user's text to improve clarity and fluency.
 
-  Given the following sentence, please provide three alternative sentence suggestions that are grammatically correct and improve the overall clarity and fluency:
-
-  Sentence: {{{text}}}
-
-  Suggestions:`, // Added a clear prompt for generating alternative sentence suggestions
+Sentence: {{{text}}}`,
 });
 
 const aiConversationGrammarSuggestionsFlow = ai.defineFlow(

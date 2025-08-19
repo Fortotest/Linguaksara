@@ -7,14 +7,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { correctGrammar } from '@/ai/flows/grammar-correction';
 import { Loader2, Wand2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 export default function GrammarPage() {
   const [text, setText] = useState('');
   const [correctedText, setCorrectedText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   const handleCorrection = async () => {
-    if (!text) return;
+    if (!text.trim()) return;
     setIsLoading(true);
     setCorrectedText('');
     try {
@@ -22,7 +24,11 @@ export default function GrammarPage() {
       setCorrectedText(result.correctedText);
     } catch (error) {
       console.error("Error correcting grammar:", error);
-      setCorrectedText("Sorry, an error occurred while correcting the text.");
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Sorry, an error occurred while correcting the text.",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -72,7 +78,7 @@ export default function GrammarPage() {
               onChange={(e) => setText(e.target.value)}
               rows={4}
             />
-            <Button onClick={handleCorrection} disabled={isLoading || !text}>
+            <Button onClick={handleCorrection} disabled={isLoading || !text.trim()}>
               {isLoading ? (
                 <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Correcting...</>
               ) : (

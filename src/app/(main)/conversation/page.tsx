@@ -46,14 +46,12 @@ export default function ConversationPage() {
     setIsLoading(true);
 
     try {
-      // Fetch suggestions and AI response in parallel
-      const [suggestionsResponse, conversationResponse] = await Promise.all([
-        aiConversationGrammarSuggestions({ text: userMessage.text }),
-        aiConversation({ messages: newMessages.map(({role, text}) => ({role, text})) })
-      ]);
-      
-      const { suggestions } = suggestionsResponse;
+      const conversationHistory = newMessages.map(({role, text}) => ({role, text}));
+      const conversationResponse = await aiConversation({ messages: conversationHistory });
       const { text: botText } = conversationResponse;
+      
+      const suggestionsResponse = await aiConversationGrammarSuggestions({ text: userMessage.text });
+      const { suggestions } = suggestionsResponse;
 
       setMessages(prev => {
           const updatedMessages = [...prev];
