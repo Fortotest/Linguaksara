@@ -36,7 +36,7 @@ export default function LandingPage() {
           </Button>
           <div className="mt-12 relative">
              <Image 
-              src="https://placehold.co/1200x600.png"
+              src="https://raw.githubusercontent.com/tesweb2025/Market-Intelligence-5.1/1ccb02596d257dec4beb1e512a6e9339df244cea/header%20231%20baru.jpg"
               alt="LinguaLeap dashboard preview"
               width={1200}
               height={600}
