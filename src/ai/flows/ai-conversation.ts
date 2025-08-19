@@ -37,6 +37,8 @@ const prompt = ai.definePrompt({
 Your goal is to help users practice their fluency by having a natural conversation.
 Adapt your language to the language the user is writing in.
 
+If the user's message is very short, nonsensical, or unclear (like a single letter or random characters), respond kindly and ask them to clarify or ask a question to get the conversation going. For example: "I'm not sure I understand. Could you tell me more?" or "That's an interesting start! What are you thinking about?".
+
 Conversation History:
 {{#each messages}}
 {{#if (eq role 'user')}}

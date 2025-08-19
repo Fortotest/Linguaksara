@@ -40,7 +40,7 @@ export default function ConversationPage() {
     toast({
       variant: "destructive",
       title: "Error",
-      description: "I'm having a little trouble understanding. Please try again.",
+      description: "An unexpected error occurred. Please try again.",
     });
     // remove the user message if there was an error
     setMessages(prev => prev.slice(0, -1));
@@ -59,13 +59,6 @@ export default function ConversationPage() {
       const conversationHistory = newMessages.map(({role, text}) => ({role, text}));
       
       const conversationResponse = await aiConversation({ messages: conversationHistory });
-      
-      if (!conversationResponse || !conversationResponse.text) {
-        console.error("AI conversation returned empty or invalid response.");
-        handleError();
-        setIsLoading(false);
-        return;
-      }
       
       const suggestionsResponse = await aiConversationGrammarSuggestions({ text: userMessage.text });
 
