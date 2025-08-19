@@ -9,6 +9,7 @@
 
 import {z} from 'genkit';
 import {ai} from '../config';
+import { gemini15Flash } from '@genkit-ai/googleai';
 
 const AiConversationGrammarSuggestionsInputSchema = z.object({
   text: z.string().describe('The user input text to be analyzed.'),
@@ -26,6 +27,7 @@ export async function aiConversationGrammarSuggestions(input: AiConversationGram
 
 const prompt = ai.definePrompt({
   name: 'aiConversationGrammarSuggestionsPrompt',
+  model: gemini15Flash,
   input: {schema: AiConversationGrammarSuggestionsInputSchema},
   output: {schema: AiConversationGrammarSuggestionsOutputSchema},
   prompt: `You are a language learning assistant. Provide up to three alternative, grammatically correct sentence suggestions for the user's text to improve clarity and fluency.

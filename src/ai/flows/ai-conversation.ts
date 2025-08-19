@@ -9,6 +9,7 @@
 
 import {z} from 'genkit';
 import {ai} from '../config';
+import { gemini15Flash } from '@genkit-ai/googleai';
 
 const MessageSchema = z.object({
   role: z.enum(['user', 'bot']),
@@ -31,6 +32,7 @@ export async function aiConversation(input: AiConversationInput): Promise<AiConv
 
 const prompt = ai.definePrompt({
   name: 'aiConversationPrompt',
+  model: gemini15Flash,
   input: {schema: AiConversationInputSchema},
   output: {schema: AiConversationOutputSchema},
   prompt: `Anda adalah Aksara, customer service yang ramah dan cerdas untuk aplikasi belajar bahasa Linguaksara.

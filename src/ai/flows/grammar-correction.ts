@@ -9,6 +9,7 @@
 
 import {z} from 'genkit';
 import {ai} from '../config';
+import { gemini15Flash } from '@genkit-ai/googleai';
 
 const CorrectGrammarInputSchema = z.object({
   text: z.string().describe('The text to be corrected.'),
@@ -26,6 +27,7 @@ export async function correctGrammar(input: CorrectGrammarInput): Promise<Correc
 
 const prompt = ai.definePrompt({
   name: 'correctGrammarPrompt',
+  model: gemini15Flash,
   input: {schema: CorrectGrammarInputSchema},
   output: {schema: CorrectGrammarOutputSchema},
   prompt: `Correct the grammar and spelling of the following text and provide only the corrected version.
