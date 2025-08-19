@@ -5,25 +5,25 @@ import { GraduationCap, Plane, Briefcase, Film } from "lucide-react";
 
 const units = [
   {
-    title: "Unit 1: Dasar-Dasar",
+    title: "Unit 1: The Basics",
     description: "Mulai dengan salam, perkenalan, dan frasa penting untuk percakapan sehari-hari.",
     progress: 100,
     icon: GraduationCap,
   },
   {
-    title: "Unit 2: Bepergian",
+    title: "Unit 2: Traveling",
     description: "Pelajari kosakata untuk bandara, hotel, dan berkeliling di kota baru.",
     progress: 75,
     icon: Plane,
   },
   {
-    title: "Unit 3: Di Tempat Kerja",
+    title: "Unit 3: At the Workplace",
     description: "Kuasai istilah bisnis, email, dan komunikasi profesional.",
     progress: 40,
     icon: Briefcase,
   },
   {
-    title: "Unit 4: Hobi & Media",
+    title: "Unit 4: Hobbies & Media",
     description: "Bicarakan tentang film, musik, dan hiburan favorit Anda.",
     progress: 0,
     icon: Film,
@@ -34,7 +34,7 @@ export default function LearnPage() {
   return (
     <>
       <div>
-        <h1 className="text-3xl font-bold font-headline">Jalur Belajar Anda</h1>
+        <h1 className="text-3xl font-bold font-headline">Your Learning Path</h1>
         <p className="text-muted-foreground">Ikuti unit-unit ini untuk membangun keahlian Anda selangkah demi selangkah.</p>
       </div>
       <div className="grid gap-6 md:grid-cols-2">

@@ -38,7 +38,7 @@ export default function GrammarPage() {
     <div className="grid gap-6 md:grid-cols-2">
       <div>
         <div className="mb-6">
-            <h1 className="text-3xl font-bold font-headline">Pelajaran Tata Bahasa</h1>
+            <h1 className="text-3xl font-bold font-headline">Grammar Lessons</h1>
             <p className="text-muted-foreground">Perdalam pengetahuan Anda dengan pelajaran ringkas ini.</p>
         </div>
         <Accordion type="single" collapsible className="w-full">
@@ -65,7 +65,7 @@ export default function GrammarPage() {
       
       <Card>
         <CardHeader>
-          <CardTitle>Asisten Koreksi AI</CardTitle>
+          <CardTitle>AI Correction Assistant</CardTitle>
           <CardDescription>
             Tulis sebuah kalimat dan biarkan AI kami memeriksa tata bahasa dan ejaan Anda.
           </CardDescription>

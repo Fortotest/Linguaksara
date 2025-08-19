@@ -54,7 +54,7 @@ export default function VocabularyPage() {
     <div className="flex flex-col items-center justify-center h-full">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold font-headline">Kartu Kosakata</h1>
+            <h1 className="text-3xl font-bold font-headline">Vocabulary Cards</h1>
             <p className="text-muted-foreground">Klik kartu untuk membalik. Gunakan panah untuk navigasi.</p>
         </div>
 

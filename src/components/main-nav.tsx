@@ -14,13 +14,13 @@ import {
 } from "lucide-react";
 
 const navItems = [
-  { href: "/dashboard", label: "Dasbor", icon: LayoutDashboard },
-  { href: "/learn", label: "Belajar", icon: GraduationCap },
-  { href: "/vocabulary", label: "Kosakata", icon: BookText },
-  { href: "/grammar", label: "Tata Bahasa", icon: SpellCheck },
-  { href: "/reading", label: "Membaca", icon: BookOpenCheck },
-  { href: "/conversation", label: "Percakapan", icon: MessagesSquare },
-  { href: "/leaderboard", label: "Peringkat", icon: Trophy },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/learn", label: "Learn", icon: GraduationCap },
+  { href: "/vocabulary", label: "Vocabulary", icon: BookText },
+  { href: "/grammar", label: "Grammar", icon: SpellCheck },
+  { href: "/reading", label: "Reading", icon: BookOpenCheck },
+  { href: "/conversation", label: "Conversation", icon: MessagesSquare },
+  { href: "/leaderboard", label: "Leaderboard", icon: Trophy },
 ];
 
 export function MainNav({ className, ...props }: React.HTMLAttributes<HTMLElement>) {

@@ -30,7 +30,7 @@ export default function DashboardPage() {
     <>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-3xl font-bold font-headline">Selamat Datang Kembali, Sofia!</h1>
+          <h1 className="text-3xl font-bold font-headline">Welcome Back, Sofia!</h1>
           <p className="text-muted-foreground">Ini rencana belajarmu untuk hari ini. Semangat!</p>
         </div>
         <div className="flex items-center gap-4">
@@ -44,7 +44,7 @@ export default function DashboardPage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle>Rencana Belajar Harian</CardTitle>
+            <CardTitle>Daily Learning Plan</CardTitle>
             <CardDescription>Selesaikan tugas ini untuk mencapai target harianmu.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
@@ -82,7 +82,7 @@ export default function DashboardPage() {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Progres Mingguan</CardTitle>
+            <CardTitle>Weekly Progress</CardTitle>
             <CardDescription>Perolehan XP kamu dalam 7 hari terakhir.</CardDescription>
           </CardHeader>
           <CardContent>

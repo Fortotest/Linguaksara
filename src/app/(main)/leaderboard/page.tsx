@@ -28,7 +28,7 @@ export default function LeaderboardPage() {
         <Image src="https://raw.githubusercontent.com/tesweb2025/Market-Intelligence-5.1/1ccb02596d257dec4beb1e512a6e9339df244cea/header%20231%20baru.jpg" alt="Banner Papan Peringkat" width={1200} height={250} className="w-full h-auto object-cover" data-ai-hint="abstract geometric background" />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
         <div className="absolute bottom-6 left-6">
-            <h1 className="text-4xl font-bold font-headline text-card-foreground shadow-sm">Papan Peringkat</h1>
+            <h1 className="text-4xl font-bold font-headline text-card-foreground shadow-sm">Leaderboard</h1>
             <p className="text-card-foreground/80 mt-1">Lihat siapa yang menjadi juara belajar minggu ini!</p>
         </div>
       </div>
@@ -38,8 +38,8 @@ export default function LeaderboardPage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[80px] text-center">Peringkat</TableHead>
-                <TableHead>Pemain</TableHead>
+                <TableHead className="w-[80px] text-center">Rank</TableHead>
+                <TableHead>Player</TableHead>
                 <TableHead className="text-right">Total XP</TableHead>
               </TableRow>
             </TableHeader>

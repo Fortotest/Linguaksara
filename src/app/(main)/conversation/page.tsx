@@ -79,7 +79,7 @@ export default function ConversationPage() {
     <div className="h-[calc(100vh-8rem)]">
         <Card className="h-full flex flex-col">
             <CardHeader>
-                <CardTitle>Latihan Percakapan AI</CardTitle>
+                <CardTitle>AI Conversation Practice</CardTitle>
                 <CardDescription>Ngobrol dengan AI untuk meningkatkan kelancaran berbicara Anda.</CardDescription>
             </CardHeader>
             <CardContent className="flex-grow flex flex-col gap-4 overflow-hidden">
