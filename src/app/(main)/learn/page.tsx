@@ -2,37 +2,37 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { GraduationCap, Plane, Briefcase, Film, CheckCircle, Utensils, Clock } from "lucide-react";
+import { GraduationCap, Home, Users, HelpCircle, Utensils, Clock, CheckCircle } from "lucide-react";
 import Link from "next/link";
 
 const units = [
   {
     id: 1,
     title: "Unit 1: The Basics",
-    description: "Mulai dengan salam, perkenalan, dan frasa penting untuk percakapan sehari-hari.",
+    description: "Mulai dengan salam, perkenalan, dan alfabet untuk fondasi yang kuat.",
     progress: 0,
     icon: GraduationCap,
   },
   {
     id: 2,
-    title: "Unit 2: Traveling",
-    description: "Pelajari kosakata untuk bandara, hotel, dan berkeliling di kota baru.",
+    title: "Unit 2: People & Things",
+    description: "Pelajari kosakata tentang keluarga, pekerjaan, dan benda-benda di sekitar Anda.",
     progress: 0,
-    icon: Plane,
+    icon: Home,
   },
   {
     id: 3,
-    title: "Unit 3: At the Workplace",
-    description: "Kuasai istilah bisnis, email, dan komunikasi profesional.",
+    title: "Unit 3: Simple Sentences",
+    description: "Mulai membuat kalimat sederhana menggunakan 'is', 'am', 'are'.",
     progress: 0,
-    icon: Briefcase,
+    icon: Users,
   },
   {
     id: 4,
-    title: "Unit 4: Hobbies & Media",
-    description: "Bicarakan tentang film, musik, dan hiburan favorit Anda.",
+    title: "Unit 4: Asking Questions",
+    description: "Belajar bertanya menggunakan 'What', 'Where', 'Who', dan 'How'.",
     progress: 0,
-    icon: Film,
+    icon: HelpCircle,
   },
   {
     id: 5,

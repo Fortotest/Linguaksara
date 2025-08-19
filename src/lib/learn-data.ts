@@ -5,52 +5,51 @@ export const unitsData = {
   "1": { 
     title: "Unit 1: The Basics", 
     lessons: [
-      { id: "1", title: "Greetings and Introductions", description: "Pelajari cara menyapa dan memperkenalkan diri Anda.", type: "Lesson", completed: true },
-      { id: "2", title: "Basic Phrases", description: "Kuasai frasa penting untuk komunikasi sehari-hari.", type: "Lesson", completed: true },
-      { id: "3", title: "Alphabet and Numbers", description: "Kenali alfabet dan angka dalam bahasa Inggris.", type: "Lesson", completed: false },
-      { id: "5", title: "Asking Simple Questions", description: "Belajar membuat pertanyaan dasar (Who, What, Where).", type: "Lesson", completed: false },
+      { id: "1", title: "Greetings and Introductions", description: "Pelajari cara menyapa dan memperkenalkan diri.", type: "Lesson", completed: false },
+      { id: "2", title: "The Alphabet & Numbers", description: "Kenali huruf dan angka dalam bahasa Inggris.", type: "Lesson", completed: false },
+      { id: "3", title: "Basic Phrases", description: "Kuasai frasa penting seperti 'thank you' dan 'please'.", type: "Lesson", completed: false },
       { id: "4", title: "Quiz: The Basics", description: "Uji pemahaman Anda tentang dasar-dasar.", type: "Quiz", completed: false },
     ] 
   },
   "2": { 
-    title: "Unit 2: Traveling",
+    title: "Unit 2: People & Things",
     lessons: [
-      { id: "1", title: "At the Airport", description: "Pelajari kosakata yang berguna di bandara.", type: "Lesson", completed: false },
-      { id: "2", title: "Booking a Hotel", description: "Simulasikan cara memesan kamar hotel.", type: "Lesson", completed: false },
-      { id: "3", title: "Asking for Directions", description: "Jangan tersesat! Pelajari cara menanyakan arah.", type: "Practice", completed: false },
-      { id: "4", title: "Quiz: Traveling", description: "Uji pengetahuan Anda seputar bepergian.", type: "Quiz", completed: false },
+      { id: "1", title: "Family Members", description: "Pelajari nama-nama anggota keluarga.", type: "Lesson", completed: false },
+      { id: "2", title: "Common Jobs", description: "Kenali nama-nama pekerjaan umum.", type: "Lesson", completed: false },
+      { id: "3", title: "Objects in a Room", description: "Sebutkan benda-benda yang ada di dalam ruangan.", type: "Practice", completed: false },
+      { id: "4", title: "Quiz: People & Things", description: "Uji kosakata Anda tentang orang dan benda.", type: "Quiz", completed: false },
     ]
   },
   "3": { 
-    title: "Unit 3: At the Workplace",
+    title: "Unit 3: Simple Sentences",
     lessons: [
-      { id: "1", title: "Writing a Professional Email", description: "Pelajari cara menyusun email yang profesional.", type: "Lesson", completed: false },
-      { id: "2", title: "Common Business Idioms", description: "Kuasai idiom yang sering digunakan di dunia kerja.", type: "Lesson", completed: false },
-      { id: "3", title: "Phone Call Simulation", description: "Latih kemampuan menelepon dalam bahasa Inggris.", type: "Practice", completed: false },
-      { id: "4", title: "Quiz: Workplace English", description: "Uji kemampuan bahasa Inggris bisnis Anda.", type: "Quiz", completed: false },
+      { id: "1", title: "Using 'is', 'am', 'are'", description: "Pelajari cara menggunakan 'to be' dalam kalimat.", type: "Lesson", completed: false },
+      { id: "2", title: "This is / That is", description: "Belajar menunjuk benda dengan 'this' dan 'that'.", type: "Lesson", completed: false },
+      { id: "3", title: "Making Simple Statements", description: "Latihan membuat kalimat positif dan negatif sederhana.", type: "Practice", completed: false },
+      { id: "4", title: "Quiz: Simple Sentences", description: "Uji kemampuan Anda membuat kalimat.", type: "Quiz", completed: false },
     ]
   },
   "4": { 
-    title: "Unit 4: Hobbies & Media",
+    title: "Unit 4: Asking Questions",
     lessons: [
-      { id: "1", title: "Talking About Movies", description: "Diskusikan film favorit Anda seperti seorang kritikus.", type: "Lesson", completed: false },
-      { id: "2", title: "Discussing Music Genres", description: "Pelajari cara membicarakan selera musik Anda.", type: "Lesson", completed: false },
-      { id: "3", title: "Reading a News Article", description: "Latih pemahaman membaca dengan artikel berita.", type: "Practice", completed: false },
-      { id: "4", "title": "Quiz: Hobbies & Media", "description": "Uji wawasan Anda tentang hobi dan media.", "type": "Quiz", "completed": false },
+      { id: "1", title: "What & Who", description: "Belajar bertanya tentang benda dan orang.", type: "Lesson", completed: false },
+      { id: "2", title: "Where & When", description: "Belajar bertanya tentang tempat dan waktu.", type: "Lesson", completed: false },
+      { id: "3", title: "How are you?", description: "Latih cara menanyakan kabar dan menjawabnya.", type: "Practice", completed: false },
+      { id: "4", "title": "Quiz: Asking Questions", "description": "Uji kemampuan Anda dalam bertanya.", "type": "Quiz", "completed": false },
     ]
   },
   "5": {
     title: "Unit 5: Food and Dining",
     lessons: [
-      { id: "1", title: "Ordering Food at a Restaurant", description: "Pelajari cara memesan makanan dan minuman.", type: "Lesson", completed: false },
-      { id: "2", title: "Common Food and Drink Names", description: "Kenali nama-nama makanan dan minuman umum.", type: "Lesson", completed: false },
+      { id: "1", title: "Common Food and Drinks", description: "Kenali nama-nama makanan dan minuman umum.", type: "Lesson", completed: false },
+      { id: "2", title: "Ordering at a Restaurant", description: "Latihan memesan makanan dan minuman.", type: "Practice", completed: false },
       { id: "3", title: "Quiz: Food and Dining", description: "Uji kosakata Anda seputar makanan.", type: "Quiz", completed: false },
     ]
   },
   "6": {
     title: "Unit 6: Daily Routines",
     lessons: [
-      { id: "1", title: "Talking About Your Day", description: "Jelaskan aktivitas harian Anda dari pagi hingga malam.", type: "Lesson", completed: false },
+      { id: "1", title: "Daily Activities", description: "Jelaskan aktivitas harian dari pagi hingga malam.", type: "Lesson", completed: false },
       { id: "2", title: "Telling Time", description: "Pelajari cara menanyakan dan memberitahu waktu.", type: "Lesson", completed: false },
       { id: "3", title: "Quiz: Daily Routines", description: "Uji pemahaman Anda tentang rutinitas harian.", type: "Quiz", completed: false },
     ]

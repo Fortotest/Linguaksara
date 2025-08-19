@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { unitsData } from "@/lib/learn-data";
-import { ArrowLeft, Check, Lightbulb, Pencil, MessageSquareQuote, HelpCircle, BookCopy, Utensils, Clock } from "lucide-react";
+import { ArrowLeft, Check, Lightbulb, Pencil, MessageSquareQuote, HelpCircle, BookCopy, Utensils, Clock, Home, Users } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -48,6 +48,17 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
       <div className="flex-1 bg-muted rounded-md p-3 text-sm">{text}</div>
     </div>
   );
+  
+  const hasContent = () => {
+     if (lesson.type === 'Quiz' || lesson.type === 'Practice') return true;
+     if (params.unitId === '1') return ['1','2','3'].includes(params.lessonId);
+     if (params.unitId === '2') return ['1'].includes(params.lessonId);
+     if (params.unitId === '3') return ['1'].includes(params.lessonId);
+     if (params.unitId === '4') return ['1'].includes(params.lessonId);
+     if (params.unitId === '5') return ['1'].includes(params.lessonId);
+     if (params.unitId === '6') return ['1','2'].includes(params.lessonId);
+     return false;
+  }
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -63,10 +74,10 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
       <div className="prose dark:prose-invert max-w-none">
         {lesson.type === 'Lesson' && (
           <>
-            {params.lessonId === '1' && params.unitId === '1' && (
+            {/* Unit 1 Content */}
+            {params.unitId === '1' && params.lessonId === '1' && (
               <>
                 <p>Dalam pelajaran ini, kita akan fokus pada dasar-dasar yang akan membantu Anda memulai percakapan dalam bahasa Inggris.</p>
-                
                 <h3 className="flex items-center gap-2"><MessageSquareQuote className="h-5 w-5 text-primary"/>Sapaan (Greetings)</h3>
                 <p>Sapaan adalah cara untuk memulai percakapan. Berikut adalah beberapa sapaan yang paling umum:</p>
                 <ul>
@@ -76,11 +87,6 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                   <li><strong>Good afternoon!</strong> - Digunakan di siang hari.</li>
                   <li><strong>Good evening!</strong> - Digunakan di malam hari.</li>
                 </ul>
-
-                <Tip>
-                  <p>"Hi" lebih umum digunakan di antara teman atau dalam situasi informal. Gunakan "Hello" atau sapaan berdasarkan waktu dalam situasi yang lebih formal.</p>
-                </Tip>
-
                 <h3 className="flex items-center gap-2"><MessageSquareQuote className="h-5 w-5 text-primary"/>Perkenalan (Introductions)</h3>
                 <p>Setelah menyapa, Anda mungkin ingin memperkenalkan diri. Berikut caranya:</p>
                 <ul>
@@ -88,11 +94,6 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                     <li><strong>I am [Your Name].</strong> (Saya [Nama Anda].)</li>
                     <li><strong>Nice to meet you.</strong> (Senang bertemu dengan Anda.)</li>
                 </ul>
-
-                <Practice>
-                  <p>Coba perkenalkan diri Anda dengan lantang sekarang. Ucapkan: "Hello, my name is [Nama Anda]. Nice to meet you."</p>
-                </Practice>
-
                 <h4 className="font-semibold">Contoh Dialog</h4>
                 <div className="not-prose">
                   <Dialogue character="Anna" text="Hello!" />
@@ -102,8 +103,18 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                 </div>
               </>
             )}
-
-             {params.lessonId === '2' && params.unitId === '1' && (
+             {params.unitId === '1' && params.lessonId === '2' && (
+              <>
+                <p>Mengenal alfabet dan angka adalah fondasi penting dalam belajar bahasa apa pun, termasuk bahasa Inggris.</p>
+                <h3 className="flex items-center gap-2"><BookCopy className="h-5 w-5 text-primary"/>The Alphabet (Alfabet)</h3>
+                <p>Alfabet bahasa Inggris memiliki 26 huruf. Pengucapannya mungkin berbeda dari bahasa Indonesia. Dengarkan dan ulangi.</p>
+                <p className="font-mono text-lg tracking-widest">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
+                <h3 className="flex items-center gap-2"><BookCopy className="h-5 w-5 text-primary"/>Numbers (Angka)</h3>
+                <p>Mari kita mulai dengan angka 1 sampai 10.</p>
+                <ul><li><strong>One</strong> (1), <strong>Two</strong> (2), <strong>Three</strong> (3), <strong>Four</strong> (4), <strong>Five</strong> (5), <strong>Six</strong> (6), <strong>Seven</strong> (7), <strong>Eight</strong> (8), <strong>Nine</strong> (9), <strong>Ten</strong> (10)</li></ul>
+              </>
+            )}
+             {params.unitId === '1' && params.lessonId === '3' && (
               <>
                 <p>Frasa dasar ini akan sangat berguna dalam berbagai situasi sehari-hari. Mari kita pelajari beberapa yang paling penting.</p>
                 <ul>
@@ -113,103 +124,113 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                     <li><strong>I'm sorry.</strong> - Untuk meminta maaf.</li>
                     <li><strong>I don't understand.</strong> - Gunakan ini jika Anda tidak mengerti apa yang dikatakan seseorang.</li>
                 </ul>
-                <Tip>
-                    <p>Menggunakan "please" dan "thank you" akan membuat Anda terdengar lebih sopan dan ramah. Ini adalah kebiasaan yang baik dalam budaya berbahasa Inggris.</p>
+              </>
+            )}
+
+            {/* Unit 2 Content */}
+            {params.unitId === '2' && params.lessonId === '1' && (
+              <>
+                <p>Membicarakan keluarga adalah cara yang bagus untuk melatih kosakata dasar. Mari kita pelajari beberapa istilah penting.</p>
+                <h3 className="flex items-center gap-2"><Users className="h-5 w-5 text-primary"/>Keluarga Inti (Immediate Family)</h3>
+                <ul>
+                    <li><strong>Mother</strong> (Ibu), <strong>Father</strong> (Ayah) - Secara bersamaan disebut <strong>Parents</strong> (Orang Tua).</li>
+                    <li><strong>Sister</strong> (Saudari), <strong>Brother</strong> (Saudara) - Secara bersamaan disebut <strong>Siblings</strong> (Saudara Kandung).</li>
+                    <li><strong>Wife</strong> (Istri), <strong>Husband</strong> (Suami) - Secara bersamaan disebut <strong>Spouse</strong> (Pasangan).</li>
+                    <li><strong>Daughter</strong> (Anak perempuan), <strong>Son</strong> (Anak laki-laki) - Secara bersamaan disebut <strong>Children</strong> (Anak-anak).</li>
+                </ul>
+              </>
+            )}
+
+             {/* Unit 3 Content */}
+            {params.unitId === '3' && params.lessonId === '1' && (
+              <>
+                <p>Kata 'is', 'am', dan 'are' adalah bentuk dari kata kerja 'to be', yang paling dasar dan penting dalam bahasa Inggris.</p>
+                <h3 className="flex items-center gap-2"><BookCopy className="h-5 w-5 text-primary"/>Penggunaan 'is', 'am', 'are'</h3>
+                <ul>
+                    <li>Gunakan <strong>am</strong> dengan <strong>I</strong>. &rarr; <strong>I am</strong> a student. (Saya adalah seorang siswa)</li>
+                    <li>Gunakan <strong>are</strong> dengan <strong>you, we, they</strong>. &rarr; <strong>You are</strong> happy. (Kamu senang). <strong>We are</strong> friends. (Kami teman).</li>
+                    <li>Gunakan <strong>is</strong> dengan <strong>he, she, it</strong>. &rarr; <strong>He is</strong> a doctor. (Dia adalah seorang dokter). <strong>She is</strong> tall. (Dia tinggi).</li>
+                </ul>
+                 <Tip>
+                  <p>Anda bisa menyingkatnya! <strong>I am</strong> menjadi <strong>I'm</strong>. <strong>You are</strong> menjadi <strong>You're</strong>. <strong>He is</strong> menjadi <strong>He's</strong>.</p>
                 </Tip>
               </>
             )}
 
-            {params.lessonId === '3' && params.unitId === '1' && (
-                <>
-                    <p>Mengenal alfabet dan angka adalah fondasi penting dalam belajar bahasa apa pun, termasuk bahasa Inggris.</p>
-                    <h3 className="flex items-center gap-2"><BookCopy className="h-5 w-5 text-primary"/>The Alphabet (Alfabet)</h3>
-                    <p>Alfabet bahasa Inggris memiliki 26 huruf. Pengucapannya mungkin berbeda dari bahasa Indonesia. Dengarkan dan ulangi.</p>
-                    <p className="font-mono text-lg tracking-widest">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
-                    <h3 className="flex items-center gap-2"><BookCopy className="h-5 w-5 text-primary"/>Numbers (Angka)</h3>
-                    <p>Mari kita mulai dengan angka 1 sampai 10.</p>
-                    <ul>
-                        <li><strong>One</strong> (1)</li>
-                        <li><strong>Two</strong> (2)</li>
-                        <li><strong>Three</strong> (3)</li>
-                        <li><strong>Four</strong> (4)</li>
-                        <li><strong>Five</strong> (5)</li>
-                        <li><strong>Six</strong> (6)</li>
-                        <li><strong>Seven</strong> (7)</li>
-                        <li><strong>Eight</strong> (8)</li>
-                        <li><strong>Nine</strong> (9)</li>
-                        <li><strong>Ten</strong> (10)</li>
-                    </ul>
-                    <Practice>
-                        <p>Coba sebutkan nomor telepon Anda dalam bahasa Inggris, angka per angka. Contoh: "My number is two-one-two-five-five-five-one-two-three-four."</p>
-                    </Practice>
-                </>
-            )}
-
-            {params.lessonId === '5' && params.unitId === '1' && (
-                <>
-                    <p>Bertanya adalah cara terbaik untuk mendapatkan informasi. Mari pelajari cara membuat pertanyaan sederhana.</p>
-                    <h3 className="flex items-center gap-2"><HelpCircle className="h-5 w-5 text-primary"/>Kata Tanya Dasar (Basic Question Words)</h3>
-                    <p>Ini adalah "5W" yang terkenal, ditambah "How".</p>
-                    <ul>
-                        <li><strong>What?</strong> (Apa?) - Untuk menanyakan tentang benda atau informasi. Contoh: <em>What is your name?</em></li>
-                        <li><strong>Where?</strong> (Di mana?) - Untuk menanyakan lokasi. Contoh: <em>Where is the bathroom?</em></li>
-                        <li><strong>Who?</strong> (Siapa?) - Untuk menanyakan tentang orang. Contoh: <em>Who is that?</em></li>
-                        <li><strong>When?</strong> (Kapan?) - Untuk menanyakan waktu. Contoh: <em>When is the meeting?</em></li>
-                        <li><strong>Why?</strong> (Mengapa?) - Untuk menanyakan alasan. Contoh: <em>Why are you late?</em></li>
-                        <li><strong>How?</strong> (Bagaimana?) - Untuk menanyakan cara atau kondisi. Contoh: <em>How are you?</em></li>
-                    </ul>
-                    <Tip>
-                        <p>Untuk jawaban sederhana, Anda bisa mulai dengan "It is..." atau "He/She is...". Contoh: "Where is the book?" -> "It is on the table."</p>
-                    </Tip>
-                </>
+            {/* Unit 4 Content */}
+            {params.unitId === '4' && params.lessonId === '1' && (
+              <>
+                <p>Kata tanya adalah kunci untuk mendapatkan informasi. Mari kita mulai dengan dua yang paling dasar: 'What' dan 'Who'.</p>
+                <h3 className="flex items-center gap-2"><HelpCircle className="h-5 w-5 text-primary"/>What (Apa)</h3>
+                <p>Gunakan 'What' untuk menanyakan tentang benda atau informasi.</p>
+                <ul>
+                    <li><em>What is your name?</em> (Siapa namamu?)</li>
+                    <li><em>What is this?</em> (Apa ini?)</li>
+                </ul>
+                <h3 className="flex items-center gap-2"><HelpCircle className="h-5 w-5 text-primary"/>Who (Siapa)</h3>
+                <p>Gunakan 'Who' untuk menanyakan tentang orang.</p>
+                <ul>
+                    <li><em>Who is that?</em> (Siapa itu?)</li>
+                    <li><em>Who is your teacher?</em> (Siapa gurumu?)</li>
+                </ul>
+              </>
             )}
             
-            {params.lessonId === '1' && params.unitId === '5' && (
-                <>
-                    <p>Makan di luar adalah pengalaman yang menyenangkan. Pelajaran ini akan membantu Anda memesan makanan dengan percaya diri.</p>
-                    <h3 className="flex items-center gap-2"><Utensils className="h-5 w-5 text-primary"/>Frasa Kunci di Restoran</h3>
-                    <ul>
-                        <li>Meminta meja: <strong>"A table for two, please."</strong> (Meja untuk dua orang.)</li>
-                        <li>Meminta menu: <strong>"Can I see the menu, please?"</strong> (Bolehkah saya lihat menunya?)</li>
-                        <li>Siap memesan: <strong>"I'm ready to order."</strong> (Saya siap memesan.)</li>
-                        <li>Memesan makanan: - <strong>"I would like the chicken soup."</strong> (Saya ingin memesan sup ayam.) atau <strong>"I'll have the steak."</strong> (Saya pesan steak.)</li>
-                        <li>Meminta tagihan: <strong>"Can I have the bill, please?"</strong> (Bolehkah saya minta tagihannya?)</li>
-                    </ul>
-                     <h4 className="font-semibold">Contoh Dialog</h4>
-                    <div className="not-prose">
-                        <Dialogue character="Waiter" text="Hello, are you ready to order?" />
-                        <Dialogue character="You" text="Yes, I would like the pasta, please." />
-                        <Dialogue character="Waiter" text="Anything to drink?" />
-                        <Dialogue character="You" text="Just water for me, thank you." />
-                    </div>
-                </>
+            {/* Unit 5 Content */}
+            {params.unitId === '5' && params.lessonId === '1' && (
+              <>
+                <p>Mari kita pelajari nama-nama makanan dan minuman yang sering kita temui sehari-hari.</p>
+                <h3 className="flex items-center gap-2"><Utensils className="h-5 w-5 text-primary"/>Makanan (Food)</h3>
+                <ul>
+                    <li><strong>Rice</strong> (Nasi)</li>
+                    <li><strong>Bread</strong> (Roti)</li>
+                    <li><strong>Chicken</strong> (Ayam)</li>
+                    <li><strong>Fish</strong> (Ikan)</li>
+                    <li><strong>Vegetables</strong> (Sayuran)</li>
+                </ul>
+                <h3 className="flex items-center gap-2"><Utensils className="h-5 w-5 text-primary"/>Minuman (Drinks)</h3>
+                <ul>
+                    <li><strong>Water</strong> (Air)</li>
+                    <li><strong>Tea</strong> (Teh)</li>
+                    <li><strong>Coffee</strong> (Kopi)</li>
+                    <li><strong>Juice</strong> (Jus)</li>
+                </ul>
+              </>
             )}
 
-            {params.lessonId === '1' && params.unitId === '6' && (
-                <>
-                    <p>Menceritakan kegiatan sehari-hari adalah cara yang bagus untuk melatih penggunaan present tense.</p>
-                    <h3 className="flex items-center gap-2"><Clock className="h-5 w-5 text-primary"/>Kosakata Rutinitas Harian</h3>
-                    <ul>
-                        <li><strong>Wake up</strong> - Bangun tidur</li>
-                        <li><strong>Take a shower</strong> - Mandi</li>
-                        <li><strong>Have breakfast</strong> - Sarapan</li>
-                        <li><strong>Go to work/school</strong> - Pergi kerja/sekolah</li>
-                        <li><strong>Have lunch</strong> - Makan siang</li>
-                        <li><strong>Finish work</strong> - Selesai kerja</li>
-                        <li><strong>Have dinner</strong> - Makan malam</li>
-                        <li><strong>Watch TV</strong> - Menonton TV</li>
-                        <li><strong>Go to bed</strong> - Tidur</li>
-                    </ul>
-                    <Practice>
-                        <p>Coba buat kalimat sederhana tentang rutinitas Anda. Contoh: "I wake up at 6 AM. Then, I have breakfast. I go to work at 8 AM."</p>
-                    </Practice>
-                </>
+            {/* Unit 6 Content */}
+            {params.unitId === '6' && params.lessonId === '1' && (
+              <>
+                <p>Menceritakan kegiatan sehari-hari adalah cara yang bagus untuk melatih penggunaan present tense.</p>
+                <h3 className="flex items-center gap-2"><Clock className="h-5 w-5 text-primary"/>Kosakata Rutinitas Harian</h3>
+                <ul>
+                    <li><strong>Wake up</strong> - Bangun tidur</li>
+                    <li><strong>Take a shower</strong> - Mandi</li>
+                    <li><strong>Have breakfast</strong> - Sarapan</li>
+                    <li><strong>Go to work/school</strong> - Pergi kerja/sekolah</li>
+                    <li><strong>Have lunch</strong> - Makan siang</li>
+                    <li><strong>Have dinner</strong> - Makan malam</li>
+                    <li><strong>Go to bed</strong> - Tidur</li>
+                </ul>
+              </>
+            )}
+            {params.unitId === '6' && params.lessonId === '2' && (
+              <>
+                <p>Belajar membaca jam sangat penting untuk membicarakan jadwal.</p>
+                <h3 className="flex items-center gap-2"><Clock className="h-5 w-5 text-primary"/>Cara Bertanya Jam</h3>
+                <ul>
+                    <li><strong>What time is it?</strong> (Jam berapa sekarang?)</li>
+                </ul>
+                 <h3 className="flex items-center gap-2"><Clock className="h-5 w-5 text-primary"/>Cara Memberi Tahu Jam</h3>
+                <ul>
+                    <li>Gunakan <strong>"o'clock"</strong> untuk jam pas. &rarr; <em>It's 7 o'clock.</em> (Sekarang jam 7 pas.)</li>
+                    <li>Sebutkan jam lalu menitnya. &rarr; <em>It's 7:30.</em> (Dibaca: seven thirty)</li>
+                </ul>
+              </>
             )}
 
-             {(!['1', '2', '3', '5'].includes(params.lessonId) || params.unitId !== '1') && 
-              (!['1'].includes(params.lessonId) || !['5','6'].includes(params.unitId)) &&
-              (
-                <p className="text-muted-foreground">Konten untuk pelajaran ini sedang dalam pengembangan. Silakan periksa kembali nanti!</p>
+            {!hasContent() && (
+              <p className="text-muted-foreground">Konten untuk pelajaran ini sedang dalam pengembangan. Silakan periksa kembali nanti!</p>
             )}
           </>
         )}
@@ -220,16 +241,8 @@ export default function LessonPage({ params }: { params: { unitId: string, lesso
                 <Card className="my-6 not-prose">
                     <CardContent className="p-6 space-y-6">
                         <div className="space-y-2">
-                            <p className="font-semibold">1. Bagaimana cara Anda menyapa seseorang di pagi hari?</p>
-                            <p className="text-sm text-green-600 dark:text-green-400">Jawaban: Good morning.</p>
-                        </div>
-                         <div className="space-y-2">
-                            <p className="font-semibold">2. Apa yang Anda katakan setelah seseorang berterima kasih kepada Anda?</p>
-                            <p className="text-sm text-green-600 dark:text-green-400">Jawaban: You're welcome.</p>
-                        </div>
-                         <div className="space-y-2">
-                            <p className="font-semibold">3. "Nice to meet you" artinya...</p>
-                            <p className="text-sm text-green-600 dark:text-green-400">Jawaban: Senang bertemu dengan Anda.</p>
+                            <p className="font-semibold">Pertanyaan 1:</p>
+                            <p className="text-muted-foreground">Konten kuis sedang dalam pengembangan.</p>
                         </div>
                     </CardContent>
                 </Card>
